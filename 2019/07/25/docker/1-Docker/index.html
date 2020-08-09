@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/koala_avatar.png?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="docker的安装配置。操作，镜像管理。连接实例。终端融合。">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(1) Docker">
+<meta property="og:url" content="https://jediobi.github.io/2019/07/25/docker/1-Docker/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="docker的安装配置。操作，镜像管理。连接实例。终端融合。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-08T18:53:53.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(1) Docker">
+<meta name="twitter:description" content="docker的安装配置。操作，镜像管理。连接实例。终端融合。">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://jediobi.github.io/2019/07/25/docker/1-Docker/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>(1) Docker | nomq</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">nomq</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/25/docker/1-Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/koala_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(1) Docker
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-25 19:04:51" itemprop="dateCreated datePublished" datetime="2019-07-25T19:04:51+08:00">2019-07-25</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>docker的安装配置。<br>操作，镜像管理。<br>连接实例。终端融合。</p>
+<a id="more"></a>
+<h3 id="1-install-docker"><a href="#1-install-docker" class="headerlink" title="1. install docker"></a><strong>1. install docker</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~:wget -qO- https://get.docker.com/ | sh</span><br><span class="line">~:sudo usermod -aG docker user_group</span><br><span class="line">~:reboot</span><br><span class="line">~:sudo service docker start</span><br><span class="line">~:docker run hello-world</span><br></pre></td></tr></table></figure>
+<h3 id="2-docker-mirrors"><a href="#2-docker-mirrors" class="headerlink" title="2. docker mirrors"></a><strong>2. docker mirrors</strong></h3><ul>
+<li><h4 id="2-1-etc-docker-daemon-json"><a href="#2-1-etc-docker-daemon-json" class="headerlink" title="2.1 /etc/docker/daemon.json"></a>2.1 /etc/docker/daemon.json</h4> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"registry-mirrors"</span>: [<span class="string">"http://hub-mirror.c.163.com"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-docker-command"><a href="#3-docker-command" class="headerlink" title="3. docker command"></a><strong>3. docker command</strong></h3><ul>
+<li><h4 id="3-1-run"><a href="#3-1-run" class="headerlink" title="3.1 run"></a>3.1 run</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker run ubuntu:15.10 /bin/echo &quot;Hello world&quot;</span><br></pre></td></tr></table></figure>
+<p>  run <code>ubuntu:15.10</code> and use <code>/bin/echo</code> to print “Hello world”.</p>
+<p>  命令格式：docker run [OPTIONS] IMAGE [COMMAND] [ARG…]</p>
+<p>  run 命令使用镜像创建容器实例并启动，COMMAND ARGS… 表示任务和任务参数， run命令必须指定任务，但是任务可以在 dockerfile的 Cmd节点配置，所以命令行里是一个可选参数。</p>
+<p>  <code>docker inspect name</code> 可以查看 dockerfile。</p>
+<p>  任务中的前台任务决定了容器的运行时间。docker的机制是如果没有任何前台任务，则认为容器空闲，容器会自动exit。所以对于一些service类型的任务可能需要改到前台执行。</p>
+<p>  自定义容器时，一般用一个空的Linux镜像，没有指定任务，为了保持容器运行，一般会指定 /bin/bash, 然后使用 -t 创建一个终端使之在前台运行，但是终端的exit命令会退出终端导致前台任务结束，容器也就停止了。所以要增加一个 -d 守护进程，退出或在后台可以继续保持前台任务执行。 -i 参数可以连接到容器的标准输入，标准输入也是一个前台任务(使用ctrl+c会退出stdin)，一般不单独用。</p>
+</li>
+<li><h4 id="3-2-ps"><a href="#3-2-ps" class="headerlink" title="3.2 ps"></a>3.2 ps</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker ps</span><br></pre></td></tr></table></figure>
+<p>  list the running containers.</p>
+</li>
+<li><h4 id="3-3-logs"><a href="#3-3-logs" class="headerlink" title="3.3 logs"></a>3.3 logs</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:docker logs &#123;name[or container_id]&#125;</span><br><span class="line">~:docker logs -f &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>  pirnt the specified container’s logs.<br>  <code>logs -f</code> just like <code>tail -f</code>.</p>
+</li>
+<li><h4 id="3-4-stop"><a href="#3-4-stop" class="headerlink" title="3.4 stop"></a>3.4 stop</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker stop &#123;name[or container_id]&#125;</span><br></pre></td></tr></table></figure>
+<p>  stop the specified container.</p>
+</li>
+<li><h4 id="3-5-—help"><a href="#3-5-—help" class="headerlink" title="3.5 —help"></a>3.5 —help</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker [command] --help</span><br></pre></td></tr></table></figure>
+<p>  print help info of a docker command.</p>
+</li>
+<li><h4 id="3-6-pull"><a href="#3-6-pull" class="headerlink" title="3.6 pull"></a>3.6 pull</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker pull [repository]</span><br></pre></td></tr></table></figure>
+<p>  pull a repository image.</p>
+</li>
+<li><h4 id="3-7-images"><a href="#3-7-images" class="headerlink" title="3.7 images"></a>3.7 images</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker images</span><br></pre></td></tr></table></figure>
+<p>  list the images in this computer.</p>
+</li>
+<li><h4 id="3-8-port"><a href="#3-8-port" class="headerlink" title="3.8 port"></a>3.8 port</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker port &#123;[name] or [container_id]&#125; &#123;[null] or [container port]&#125;</span><br></pre></td></tr></table></figure>
+<p>  print the port mapping of a container.</p>
+</li>
+<li><h4 id="3-9-rm"><a href="#3-9-rm" class="headerlink" title="3.9 rm"></a>3.9 rm</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker rm &#123;[name] or [container_id]&#125;</span><br></pre></td></tr></table></figure>
+<p>  rm a container.</p>
+</li>
+<li><h4 id="3-10-search"><a href="#3-10-search" class="headerlink" title="3.10 search"></a>3.10 search</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker search [string]</span><br></pre></td></tr></table></figure>
+<p>  search specified content such like tomcat or mysql in image repository.</p>
+</li>
+<li><h4 id="3-11-commit"><a href="#3-11-commit" class="headerlink" title="3.11 commit"></a>3.11 commit</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker commit -m=&quot;commit info&quot; -a=&quot;author name&quot; [container_id] [target repository name like &apos;repository_name:tag&apos;]</span><br></pre></td></tr></table></figure>
+<p>  save your changes in this container by create a new container.<br>  一般用于自定义容器，对一个容器实例做的任何修改保存为一个新的image。</p>
+</li>
+<li><h4 id="3-12-tag"><a href="#3-12-tag" class="headerlink" title="3.12 tag"></a>3.12 tag</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker tag [repo[:tag]] [repository_name:tag]</span><br></pre></td></tr></table></figure>
+<p>  使用已有镜像创建一个自定义镜像，一般是使用别人的镜像 tag 出一个自己的初始镜像，然后改造。</p>
+</li>
+</ul>
+<h3 id="4-docker-run命令补充"><a href="#4-docker-run命令补充" class="headerlink" title="4. docker run命令补充"></a><strong>4. docker run命令补充</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-t    create a terminal in the container</span><br><span class="line">-i     open stdin</span><br><span class="line">-d    container work in background</span><br><span class="line">-p    端口映射，docker run -p 5000:5000 &#123;&#125; &#123;&#125; --&gt; mapping container port to specified host port.</span><br><span class="line">-P   随机端口映射，docker run -P &#123;&#125; &#123;&#125; --&gt; mapping container port to random host port.</span><br><span class="line">run --name     docker run --name [name] &#123;&#125; &#123;&#125; --&gt; run a container and make a name for it.</span><br></pre></td></tr></table></figure>
+<p><code>-p</code> 指定端口映射，格式 [宿主机ip:][宿主机端口:]容器端口，除了容器端口是必须参数，其他两个可以不指定。宿主机一般有多个ip，比如多网卡设备，默认为空表示使用所有宿主机ip，宿主机端口不指定时将会做随机映射。</p>
+<p><code>-P</code> 为dockerfile的EXPOSE或 参数中指定的端口做随机映射。</p>
+<h3 id="5-attach-the-same-docker-terminal"><a href="#5-attach-the-same-docker-terminal" class="headerlink" title="5. attach the same docker terminal"></a><strong>5. <code>attach</code> the same docker terminal</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker attach &lt;container_id&gt;</span><br></pre></td></tr></table></figure>
+<p>open the same terminal of a container.</p>
+<h3 id="6-exec-execute-another-terminal"><a href="#6-exec-execute-another-terminal" class="headerlink" title="6. exec execute another terminal"></a><strong>6. <code>exec</code> execute another terminal</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker exec -it &lt;container_id&gt; bash</span><br></pre></td></tr></table></figure>
+<p>open a new terminal of a docker container.</p>
+<h3 id="7-轻量级linux镜像-alpine"><a href="#7-轻量级linux镜像-alpine" class="headerlink" title="7. 轻量级linux镜像 alpine"></a><strong>7. 轻量级linux镜像 alpine</strong></h3><h3 id="8-其他命令"><a href="#8-其他命令" class="headerlink" title="8. 其他命令"></a><strong>8. 其他命令</strong></h3><ul>
+<li><p>查看容器或镜像的dockerfile</p>
+<p>  <code>docker inspect [name/id]</code></p>
+</li>
+<li><p>查看所有网卡</p>
+<p>  <code>docker network ls</code></p>
+</li>
+<li><p>查看网卡配置，比如bridge</p>
+<p>  <code>docker network inspect bridge</code></p>
+</li>
+</ul>
+<h3 id="9-注意"><a href="#9-注意" class="headerlink" title="9. 注意"></a><strong>9. 注意</strong></h3><p>禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/07/25/docker/1-Docker/">(1) Docker</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 nomq 的个人博客">nomq</a></p>
+  <p><span>发布时间:</span>2019年07月25日 - 19:07</p>
+  <p><span>最后更新:</span>2020年08月09日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2019/07/25/docker/1-Docker/" title="(1) Docker">https://jediobi.github.io/2019/07/25/docker/1-Docker/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://jediobi.github.io/2019/07/25/docker/1-Docker/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/25/ethereum/Usage-3-ethereum-develop-environment-on-geth/" rel="next" title="Usage (3) - ethereum develop environment on geth">
+                <i class="fa fa-chevron-left"></i> Usage (3) - ethereum develop environment on geth
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/25/c++/1-vim-g-single-file/" rel="prev" title="(1) vim g++ single file">
+                (1) vim g++ single file <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/koala_avatar.png" alt="nomq">
+  
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">222</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/JediObi" title="GitHub &rarr; https://github.com/JediObi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-install-docker"><span class="nav-number">1.</span> <span class="nav-text">1. install docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-docker-mirrors"><span class="nav-number">2.</span> <span class="nav-text">2. docker mirrors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-etc-docker-daemon-json"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 /etc/docker/daemon.json</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-docker-command"><span class="nav-number">3.</span> <span class="nav-text">3. docker command</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-run"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 run</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-ps"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 ps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-logs"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 logs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-stop"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 stop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-—help"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 —help</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-pull"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 pull</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-images"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-port"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 port</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-rm"><span class="nav-number">3.9.</span> <span class="nav-text">3.9 rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10-search"><span class="nav-number">3.10.</span> <span class="nav-text">3.10 search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-11-commit"><span class="nav-number">3.11.</span> <span class="nav-text">3.11 commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-12-tag"><span class="nav-number">3.12.</span> <span class="nav-text">3.12 tag</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-docker-run命令补充"><span class="nav-number">4.</span> <span class="nav-text">4. docker run命令补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-attach-the-same-docker-terminal"><span class="nav-number">5.</span> <span class="nav-text">5. attach the same docker terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-exec-execute-another-terminal"><span class="nav-number">6.</span> <span class="nav-text">6. exec execute another terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-轻量级linux镜像-alpine"><span class="nav-number">7.</span> <span class="nav-text">7. 轻量级linux镜像 alpine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-其他命令"><span class="nav-number">8.</span> <span class="nav-text">8. 其他命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-注意"><span class="nav-number">9.</span> <span class="nav-text">9. 注意</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+
+  
+
+  
+</div>
+<!--
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  
+  
+  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>

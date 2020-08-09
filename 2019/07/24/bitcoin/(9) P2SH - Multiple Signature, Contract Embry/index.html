@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/koala_avatar.png?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="比特币高级交易模式-多签和智能合约">
+<meta name="keywords" content="bitcoin,数字货币">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(9) P2SH - Multiple Signature, Contract Embry">
+<meta property="og:url" content="https://jediobi.github.io/2019/07/24/bitcoin/(9) P2SH - Multiple Signature, Contract Embry/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="比特币高级交易模式-多签和智能合约">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-08T18:53:53.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(9) P2SH - Multiple Signature, Contract Embry">
+<meta name="twitter:description" content="比特币高级交易模式-多签和智能合约">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://jediobi.github.io/2019/07/24/bitcoin/(9) P2SH - Multiple Signature, Contract Embry/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>(9) P2SH - Multiple Signature, Contract Embry | nomq</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">nomq</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/24/bitcoin/(9) P2SH - Multiple Signature, Contract Embry/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/koala_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(9) P2SH - Multiple Signature, Contract Embry
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-24 22:09:07" itemprop="dateCreated datePublished" datetime="2019-07-24T22:09:07+08:00">2019-07-24</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/bitcoin/" itemprop="url" rel="index"><span itemprop="name">bitcoin</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>比特币高级交易模式-多签和智能合约</p>
+<a id="more"></a>
+<h2 id="P2SH-Multiple-Signature-Contract-Embry"><a href="#P2SH-Multiple-Signature-Contract-Embry" class="headerlink" title="P2SH - Multiple Signature, Contract Embry"></a><strong>P2SH - Multiple Signature, Contract Embry</strong></h2><h3 id="1-P2SH模式简介"><a href="#1-P2SH模式简介" class="headerlink" title="1. P2SH模式简介"></a><strong>1. P2SH模式简介</strong></h3><ul>
+<li><h4 id="1-1-The-creation-of-P2SH"><a href="#1-1-The-creation-of-P2SH" class="headerlink" title="1.1 The creation of P2SH."></a>1.1 The creation of P2SH.</h4><p>  <strong>==&gt;</strong> Create UTXO : To create a P2SH transaction output, you need a multiple signed address for output position. </p>
+</li>
+<li><h4 id="1-2-The-recommendation-of-P2SH’s-output"><a href="#1-2-The-recommendation-of-P2SH’s-output" class="headerlink" title="1.2 The recommendation of P2SH’s output."></a>1.2 The recommendation of P2SH’s output.</h4><p>  <strong>==&gt;</strong> Use P2SH OUTPUT : To use a P2SH utxo, you and your companys need to sign the transaction multiple times with your and your companys’ private keys to generate scriptSig. </p>
+</li>
+<li><h4 id="1-3-M-of-N"><a href="#1-3-M-of-N" class="headerlink" title="1.3 M-of-N"></a>1.3 M-of-N</h4><p>  <strong>==&gt;</strong> P2SH is the derivatives of M-of-N. </p>
+<p>  <strong>==&gt;</strong> Create UTXO : M-of-N is the manual process to create a scriptPubKey with m, n and pubKey of each address. P2SH use a multi-signed address’s scriptPubKey to instead of scriptPubKey by manual process. Actually the manual process in M-of-N will produce a multi-signed address just like P2SH (You can see this by <code>decodescript &lt;scriptPubKey&gt;</code>).  </p>
+<p>  <strong>==&gt;</strong> Use OUTPUT : The transaction need to be signed multiple times with all private keys of scriptPubKey to generate scriptSig. This processes is same with P2SH. </p>
+</li>
+</ul>
+<h3 id="2-Init-Test-Environment"><a href="#2-Init-Test-Environment" class="headerlink" title="2. Init Test Environment"></a><strong>2. Init Test Environment</strong></h3><ul>
+<li><h4 id="2-1-generate-200-blocks-at-node-1"><a href="#2-1-generate-200-blocks-at-node-1" class="headerlink" title="2.1 generate 200 blocks at node 1"></a>2.1 generate 200 blocks at node 1</h4><p>  <code>~:make generate BLOCKS=200</code></p>
+<p>  ==================== State =======================</p>
+<p>  Wallet at Node1 -&gt; W1<br>  Wallet at Node2 -&gt; W2<br>  W1_balance: 5000<br>  W2_balance: 0   </p>
+<p>  ================================================</p>
+</li>
+<li><h4 id="2-2-generate-2-new-addresses-at-node2-and-get-their-private-keys"><a href="#2-2-generate-2-new-addresses-at-node2-and-get-their-private-keys" class="headerlink" title="2.2 generate 2 new addresses at node2 and get their private keys"></a>2.2 generate 2 new addresses at node2 and get their private keys</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~:make address2</span><br><span class="line">~:make address2</span><br><span class="line">~:bitcoin-cli -datadir=2 dumpprivkey &lt;address&gt;</span><br></pre></td></tr></table></figure>
+<p>  ==================== Result =======================</p>
+<p>  Address1 -&gt; A1<br>  Address2 -&gt; A2  </p>
+<p>  A1_hash: moX3qTsaLt9NjvQBGHy78jvmLZX9ZWk7aP<br>  A1_privKey: cN3ggP6FEmQF9zWt2FUNP8rxCLxNLBCgRcmWfD7jtqAvx1Geud7w     </p>
+<p>  A2_hash: n3MXNfADQRYwwJ4iwoNLMWxA3bwba7hsiU<br>  A2_privKey: cQkEdyskEDiRJdadFgq9DD9yDbc6Kib5YPkNdH6fZX3U4TZxoj7n    </p>
+<p>  =================================================</p>
+<p>  =================== State =========================</p>
+<p>  W1_balance: 5000<br>  W2_balance: 0<br>  A1_balance:  0<br>  A2_balance:  0  </p>
+<p>  =================================================</p>
+</li>
+<li><h4 id="2-3-send-200-btc-from-node1-to-node2"><a href="#2-3-send-200-btc-from-node1-to-node2" class="headerlink" title="2.3 send 200 btc from node1 to node2"></a>2.3 send 200 btc from node1 to node2</h4><p>  send 200 btc to <code>A1</code>. </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:make sendfrom1 ADDRESS=moX3qTsaLt9NjvQBGHy78jvmLZX9ZWk7aP AMOUNT=200</span><br><span class="line">~:make generate BLOCKS=10</span><br></pre></td></tr></table></figure>
+<p>  ==================== State ========================</p>
+<p>  W1_balance: 5299.99987060<br>  W2_balance: 200<br>  A1_balance: 200<br>  A2_balance: 0   </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="3-Create-multiple-signatured-address"><a href="#3-Create-multiple-signatured-address" class="headerlink" title="3. Create multiple signatured address"></a><strong>3. Create multiple signatured address</strong></h3><p>Create a multiple signatured address <code>A3</code> to receive output. </p>
+<ul>
+<li><h4 id="3-1-command"><a href="#3-1-command" class="headerlink" title="3.1 command"></a>3.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 createmultisig 2 &apos;[&quot;A1_pubKey&quot;,&quot;A2_pubKey&quot;]&apos;</span><br></pre></td></tr></table></figure>
+<p>  If you keep the private keys of all the address, you can just use the addresses instead of the pubkeys of them to generate multiple signatrued address.  </p>
+</li>
+<li><h4 id="3-2-generate-multiple-signatured-address"><a href="#3-2-generate-multiple-signatured-address" class="headerlink" title="3.2 generate multiple signatured address"></a>3.2 generate multiple signatured address</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 createmultisig 2 &apos;[&quot;moX3qTsaLt9NjvQBGHy78jvmLZX9ZWk7aP&quot;,&quot;n3MXNfADQRYwwJ4iwoNLMWxA3bwba7hsiU&quot;]&apos;</span><br></pre></td></tr></table></figure>
+<p>  ==================== Result =======================</p>
+<p>  Address 3 -&gt; A3<br>  {<br>  &emsp;&emsp;”address”: “2N5q4afW3cCVVUR8365imV5nJq6r7oe76yS”,<br>  &emsp;&emsp;”redeemScript”: “52210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742a210392edcffb03a4b48ac5083ed2bbc05b15b4bd2168bf00d69f446ca19cae3ca6f752ae”<br>  } </p>
+<p>  =================================================</p>
+</li>
+<li><h4 id="3-3-get-scriptPubKey-of-A3"><a href="#3-3-get-scriptPubKey-of-A3" class="headerlink" title="3.3 get scriptPubKey of A3"></a>3.3 get scriptPubKey of A3</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 validateaddress 2N5q4afW3cCVVUR8365imV5nJq6r7oe76yS</span><br></pre></td></tr></table></figure>
+<p>  ==================== Result =======================</p>
+<p>  {<br>  &emsp;&emsp;”isvalid”: true,<br>  &emsp;&emsp;”address”: “2N5q4afW3cCVVUR8365imV5nJq6r7oe76yS”,<br>  &emsp;&emsp;”scriptPubKey”: “a9148a07cca1f387bad85410be81e9c0747be94234ea87”,<br>  &emsp;&emsp;”ismine”: false,<br>  &emsp;&emsp;”iswatchonly”: false,<br>  &emsp;&emsp;”isscript”: true<br>  } </p>
+<p>  =================================================</p>
+<p>  ==================== State ========================</p>
+<p>  W1_balance: 5299.99987060<br>  W2_balance: 200<br>  A1_balance: 200<br>  A2_balance: 0<br>  A3_balance: 0   </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="4-Create-P2SH-transaction"><a href="#4-Create-P2SH-transaction" class="headerlink" title="4. Create P2SH transaction"></a><strong>4. Create P2SH transaction</strong></h3><p>Create transaction <code>X</code> that outputs to the multiple signatured address <code>A3</code>. </p>
+<ul>
+<li><h4 id="4-1-command"><a href="#4-1-command" class="headerlink" title="4.1 command"></a>4.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># show utxo</span><br><span class="line">~:bitcoin-cli -datadir=2 listunspent</span><br><span class="line"># create raw transaction</span><br><span class="line">~:bitcoin-cli -datadir=2 createrawtransaction &apos;[&#123;&quot;txid&quot;:&quot;&quot;, &quot;vout&quot;:, &lt;&quot;sequence&quot;:&gt;&#125;]&apos; &apos;&#123;&quot;A1&quot;:189.9999,&quot;A3&quot;:10&#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="4-2-create-transaction-X"><a href="#4-2-create-transaction-X" class="headerlink" title="4.2 create transaction X"></a>4.2 create transaction X</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 listunspent</span><br><span class="line">~:bitcoin-cli -datadir=2 createrawtransaction &apos;[&#123;&quot;txid&quot;:&quot;9fceca794c2c156ee3a2c56dcec96be6dd6a95339057262d972e96931f687b2e&quot;, &quot;vout&quot;:1&#125;]&apos; &apos;&#123;&quot;moX3qTsaLt9NjvQBGHy78jvmLZX9ZWk7aP&quot;:189.9999,&quot;2N5q4afW3cCVVUR8365imV5nJq6r7oe76yS&quot;:10&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>  ==================== Result X ======================</p>
+<p>  01000000012e7b681f93962e972d26579033956adde66bc9ce6dc5a2e36e152c4c79cace9f0100000000ffffffff02f0d67c6c040000001976a91457c5a1d30532a4bef13cdc3f7eab5c0b50001eba88ac00ca9a3b0000000017a9148a07cca1f387bad85410be81e9c0747be94234ea8700000000 </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="5-Use-private-key-1-to-sign-X"><a href="#5-Use-private-key-1-to-sign-X" class="headerlink" title="5. Use private key 1 to sign X"></a><strong>5. Use private key 1 to sign X</strong></h3><p>Sign X and get signed raw transaction X1.</p>
+<ul>
+<li><h4 id="5-1-command"><a href="#5-1-command" class="headerlink" title="5.1 command"></a>5.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 signrawtransaction x &apos;[]&apos; &apos;[&quot;A1_privKey&quot;]&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="5-2-sign-X"><a href="#5-2-sign-X" class="headerlink" title="5.2 sign X"></a>5.2 sign X</h4><p>  generate X1 </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 signrawtransaction 01000000012e7b681f93962e972d26579033956adde66bc9ce6dc5a2e36e152c4c79cace9f0100000000ffffffff02f0d67c6c040000001976a91457c5a1d30532a4bef13cdc3f7eab5c0b50001eba88ac00ca9a3b0000000017a9148a07cca1f387bad85410be81e9c0747be94234ea8700000000 &apos;[]&apos; &apos;[&quot;cN3ggP6FEmQF9zWt2FUNP8rxCLxNLBCgRcmWfD7jtqAvx1Geud7w&quot;]&apos;</span><br></pre></td></tr></table></figure>
+<p>  ==================== Result X1 =====================</p>
+<p>  01000000012e7b681f93962e972d26579033956adde66bc9ce6dc5a2e36e152c4c79cace9f010000006b483045022100f565e7e70622da2afbd14d2fcf6ea64658ce4f83858f56a0addef6618171d8bd0220792e2e7a30d4097b21ad87c5026ddd67bda2aea0995aeec7c3df1553dc4df15701210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742affffffff02f0d67c6c040000001976a91457c5a1d30532a4bef13cdc3f7eab5c0b50001eba88ac00ca9a3b0000000017a9148a07cca1f387bad85410be81e9c0747be94234ea8700000000 </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="6-Boardcast-X1-and-make-record"><a href="#6-Boardcast-X1-and-make-record" class="headerlink" title="6. Boardcast X1 and make record"></a><strong>6. Boardcast X1 and make record</strong></h3><ul>
+<li><h4 id="6-1-command"><a href="#6-1-command" class="headerlink" title="6.1 command"></a>6.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 sendrawtransaction X1 </span><br><span class="line">~:make generate BLOCKS=10</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="6-2-boardcast-and-make-record"><a href="#6-2-boardcast-and-make-record" class="headerlink" title="6.2 boardcast and make record"></a>6.2 boardcast and make record</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 sendrawtransaction 01000000012e7b681f93962e972d26579033956adde66bc9ce6dc5a2e36e152c4c79cace9f010000006b483045022100f565e7e70622da2afbd14d2fcf6ea64658ce4f83858f56a0addef6618171d8bd0220792e2e7a30d4097b21ad87c5026ddd67bda2aea0995aeec7c3df1553dc4df15701210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742affffffff02f0d67c6c040000001976a91457c5a1d30532a4bef13cdc3f7eab5c0b50001eba88ac00ca9a3b0000000017a9148a07cca1f387bad85410be81e9c0747be94234ea8700000000 </span><br><span class="line">~:make generate BLOCKS=10</span><br></pre></td></tr></table></figure>
+<p>  ===================== Result ======================</p>
+<p>  X1 txid:  2ac8a4e25f6e68f667d75249176abac6f07ee75bcdc508d90856888f2731c1dc </p>
+<p>  =================================================</p>
+<p>  ==================== State ========================</p>
+<p>  W1_balance: 5799.99987060<br>  W2_balance: 189.9999<br>  A1_balance: 189.9999<br>  A2_balance: 0<br>  A3_balance: 10  </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="7-Create-new-transaction-that-recommend-the-P2SH’s-output"><a href="#7-Create-new-transaction-that-recommend-the-P2SH’s-output" class="headerlink" title="7. Create new transaction that recommend the P2SH’s output"></a><strong>7. Create new transaction that recommend the P2SH’s output</strong></h3><p>Create a new transcation Y that recommend X1’s output 1 as input. </p>
+<ul>
+<li><h4 id="7-1-command"><a href="#7-1-command" class="headerlink" title="7.1 command"></a>7.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># show utxo</span><br><span class="line">~:bitcoin-cli -datadir=2 listunspent</span><br><span class="line"># get tx hex</span><br><span class="line">~:bitcoin-cli -datadir=2 getrawtransaction &lt;txid&gt;</span><br><span class="line"># decode hex</span><br><span class="line">~:bitcoin-cli -datadir=2 decoderawtransaction &lt;hex&gt;</span><br><span class="line"></span><br><span class="line"># create transaction</span><br><span class="line">~:bitcoin-cli -datadir=2 createrawtransaction &apos;[&#123;&quot;txid&quot;:&quot;X1_txid&quot;, &quot;vout&quot;: 1&#125;]&apos; &apos;&#123;&quot;A2&quot;:9.9999&#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="7-2-create-transaction-Y"><a href="#7-2-create-transaction-Y" class="headerlink" title="7.2 create transaction Y"></a>7.2 create transaction Y</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 createrawtransaction &apos;[&#123;&quot;txid&quot;:&quot;2ac8a4e25f6e68f667d75249176abac6f07ee75bcdc508d90856888f2731c1dc&quot;, &quot;vout&quot;:1&#125;]&apos; &apos;&#123;&quot;n3MXNfADQRYwwJ4iwoNLMWxA3bwba7hsiU&quot;:9.9999&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p>  ===================== Result Y =====================</p>
+<p>  0100000001dcc131278f885608d908c5cd5be77ef0c6ba6a174952d767f6686e5fe2a4c82a0100000000ffffffff01f0a29a3b000000001976a914ef8a388d9996d9b316b6e335183f483493770e6588ac00000000 </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="8-Use-private-key-1-to-sign-the-new-transaction"><a href="#8-Use-private-key-1-to-sign-the-new-transaction" class="headerlink" title="8. Use private key 1 to sign the new transaction."></a><strong>8. Use private key 1 to sign the new transaction.</strong></h3><p>Use A1_priveKey to sign Y. It will generate Y1.<br>Note: After signing, you will get a full stack of output info. {hex:,complete:false} means signing successfully finished. The error stack can be ignored if it is success. </p>
+<ul>
+<li><h4 id="8-1-command"><a href="#8-1-command" class="headerlink" title="8.1 command"></a>8.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 signrawtransaction Y &apos;[&#123;&quot;txid&quot;:&quot;&quot;, &quot;vout&quot;:, &quot;scriptPubKey&quot;:&quot;A3_scriptPubKey&quot;, &quot;redeemScript&quot;: &quot;A3_redeemscript&quot;&#125;]&apos; &apos;[&quot;A1_privKey&quot;]&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="8-2-sign-transaction-Y-to-Y1"><a href="#8-2-sign-transaction-Y-to-Y1" class="headerlink" title="8.2 sign transaction Y to Y1"></a>8.2 sign transaction Y to Y1</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 signrawtransaction 0100000001dcc131278f885608d908c5cd5be77ef0c6ba6a174952d767f6686e5fe2a4c82a0100000000ffffffff01f0a29a3b000000001976a914ef8a388d9996d9b316b6e335183f483493770e6588ac00000000 &apos;[&#123;&quot;txid&quot;:&quot;2ac8a4e25f6e68f667d75249176abac6f07ee75bcdc508d90856888f2731c1dc&quot;, &quot;vout&quot;:1, &quot;scriptPubKey&quot;:&quot;a9148a07cca1f387bad85410be81e9c0747be94234ea87&quot;, &quot;redeemScript&quot;:&quot;52210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742a210392edcffb03a4b48ac5083ed2bbc05b15b4bd2168bf00d69f446ca19cae3ca6f752ae&quot;&#125;]&apos; &apos;[&quot;cN3ggP6FEmQF9zWt2FUNP8rxCLxNLBCgRcmWfD7jtqAvx1Geud7w&quot;]&apos;</span><br></pre></td></tr></table></figure>
+<p>  ===================== Result Y1 ====================</p>
+<p>  0100000001dcc131278f885608d908c5cd5be77ef0c6ba6a174952d767f6686e5fe2a4c82a01000000910047304402204263c6b3970694a5c3fea4a781bdb2d97e9489b2b70972d1749419a251e2afb602207f5f4aac6d097adfc39ffddafe3321219f5fa6a3fa03ce2258b47bd7fff8e81e014752210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742a210392edcffb03a4b48ac5083ed2bbc05b15b4bd2168bf00d69f446ca19cae3ca6f752aeffffffff01f0a29a3b000000001976a914ef8a388d9996d9b316b6e335183f483493770e6588ac00000000 </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="9-Use-private-key-2-to-sign-the-transaction-Y1"><a href="#9-Use-private-key-2-to-sign-the-transaction-Y1" class="headerlink" title="9. Use private key 2 to sign the transaction Y1"></a><strong>9. Use private key 2 to sign the transaction Y1</strong></h3><p>Use A2_privKey to sign Y1 and generate Y2.</p>
+<ul>
+<li><h4 id="9-1-command"><a href="#9-1-command" class="headerlink" title="9.1 command"></a>9.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 signrawtransaction Y1 &apos;[&#123;&quot;txid&quot;:&quot;&quot;, &quot;vout&quot;:, &quot;scriptPubKey&quot;:&quot;A3_scriptPubKey&quot;, &quot;redeemScript&quot;: &quot;A3_redeemscript&quot;&#125;]&apos; &apos;[&quot;A2_privKey&quot;]&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="9-2-sign-transaction-Y1"><a href="#9-2-sign-transaction-Y1" class="headerlink" title="9.2 sign transaction Y1"></a>9.2 sign transaction Y1</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 signrawtransaction 0100000001dcc131278f885608d908c5cd5be77ef0c6ba6a174952d767f6686e5fe2a4c82a01000000910047304402204263c6b3970694a5c3fea4a781bdb2d97e9489b2b70972d1749419a251e2afb602207f5f4aac6d097adfc39ffddafe3321219f5fa6a3fa03ce2258b47bd7fff8e81e014752210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742a210392edcffb03a4b48ac5083ed2bbc05b15b4bd2168bf00d69f446ca19cae3ca6f752aeffffffff01f0a29a3b000000001976a914ef8a388d9996d9b316b6e335183f483493770e6588ac00000000 &apos;[&#123;&quot;txid&quot;:&quot;2ac8a4e25f6e68f667d75249176abac6f07ee75bcdc508d90856888f2731c1dc&quot;, &quot;vout&quot;:1, &quot;scriptPubKey&quot;:&quot;a9148a07cca1f387bad85410be81e9c0747be94234ea87&quot;,&quot;redeemScript&quot;:&quot;52210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742a210392edcffb03a4b48ac5083ed2bbc05b15b4bd2168bf00d69f446ca19cae3ca6f752ae&quot;&#125;]&apos; &apos;[&quot;cQkEdyskEDiRJdadFgq9DD9yDbc6Kib5YPkNdH6fZX3U4TZxoj7n&quot;]&apos;</span><br></pre></td></tr></table></figure>
+<p>  ===================== Result Y2 ====================</p>
+<p>  0100000001dcc131278f885608d908c5cd5be77ef0c6ba6a174952d767f6686e5fe2a4c82a01000000d90047304402204263c6b3970694a5c3fea4a781bdb2d97e9489b2b70972d1749419a251e2afb602207f5f4aac6d097adfc39ffddafe3321219f5fa6a3fa03ce2258b47bd7fff8e81e01473044022061599deb6773f0fe57ffdad2cd382c16135e106add6ed6b48320969a8b314ef9022048ec961daf7e6dcffc2c6d954b6648a36c1b3f1ba9d9deef6a4874e56beb72db014752210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742a210392edcffb03a4b48ac5083ed2bbc05b15b4bd2168bf00d69f446ca19cae3ca6f752aeffffffff01f0a29a3b000000001976a914ef8a388d9996d9b316b6e335183f483493770e6588ac00000000 </p>
+<p>  =================================================</p>
+</li>
+</ul>
+<h3 id="10-Boardcast-transaction-Y2-signed-after-7-and-make-record"><a href="#10-Boardcast-transaction-Y2-signed-after-7-and-make-record" class="headerlink" title="10. Boardcast transaction Y2 signed after (7) and make record."></a><strong>10. Boardcast transaction Y2 signed after (7) and make record.</strong></h3><ul>
+<li><h4 id="10-1-command"><a href="#10-1-command" class="headerlink" title="10.1 command"></a>10.1 command</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 sendrawtransaction y3</span><br><span class="line">~:make generate BLOCKS=10</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="10-2-boardcast"><a href="#10-2-boardcast" class="headerlink" title="10.2 boardcast"></a>10.2 boardcast</h4></li>
+<li><h4 id="10-3-make-record"><a href="#10-3-make-record" class="headerlink" title="10.3 make record"></a>10.3 make record</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:bitcoin-cli -datadir=2 sendrawtransaction 0100000001dcc131278f885608d908c5cd5be77ef0c6ba6a174952d767f6686e5fe2a4c82a01000000d90047304402204263c6b3970694a5c3fea4a781bdb2d97e9489b2b70972d1749419a251e2afb602207f5f4aac6d097adfc39ffddafe3321219f5fa6a3fa03ce2258b47bd7fff8e81e01473044022061599deb6773f0fe57ffdad2cd382c16135e106add6ed6b48320969a8b314ef9022048ec961daf7e6dcffc2c6d954b6648a36c1b3f1ba9d9deef6a4874e56beb72db014752210387f89fca6896b35752e37cc3e61c614abfedfb80269a8794283ed40657d9742a210392edcffb03a4b48ac5083ed2bbc05b15b4bd2168bf00d69f446ca19cae3ca6f752aeffffffff01f0a29a3b000000001976a914ef8a388d9996d9b316b6e335183f483493770e6588ac00000000</span><br><span class="line">~:make generate BLOCKS=10</span><br></pre></td></tr></table></figure>
+<p>  ==================== State ========================</p>
+<p>  W1_balance: 6299.99987060<br>  W2_balance: 199.9998<br>  A1_balance: 189.9999<br>  A2_balance: 9.9999<br>  A3_balance: 0   </p>
+<p>  =================================================</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/07/24/bitcoin/(9) P2SH - Multiple Signature, Contract Embry/">(9) P2SH - Multiple Signature, Contract Embry</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 nomq 的个人博客">nomq</a></p>
+  <p><span>发布时间:</span>2019年07月24日 - 22:07</p>
+  <p><span>最后更新:</span>2020年08月09日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2019/07/24/bitcoin/(9) P2SH - Multiple Signature, Contract Embry/" title="(9) P2SH - Multiple Signature, Contract Embry">https://jediobi.github.io/2019/07/24/bitcoin/(9) P2SH - Multiple Signature, Contract Embry/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://jediobi.github.io/2019/07/24/bitcoin/(9) P2SH - Multiple Signature, Contract Embry/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/bitcoin/" rel="tag"># bitcoin</a>
+          
+            <a href="/tags/数字货币/" rel="tag"># 数字货币</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/24/bitcoin/(8) P2PKH - Basical transaction/" rel="next" title="(8) P2PKH - Basical transaction">
+                <i class="fa fa-chevron-left"></i> (8) P2PKH - Basical transaction
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/24/bitcoin/(10) sequence and lock time/" rel="prev" title="(10) sequence and lock time">
+                (10) sequence and lock time <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/koala_avatar.png" alt="nomq">
+  
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">222</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/JediObi" title="GitHub &rarr; https://github.com/JediObi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#P2SH-Multiple-Signature-Contract-Embry"><span class="nav-number">1.</span> <span class="nav-text">P2SH - Multiple Signature, Contract Embry</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-P2SH模式简介"><span class="nav-number">1.1.</span> <span class="nav-text">1. P2SH模式简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-The-creation-of-P2SH"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 The creation of P2SH.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-The-recommendation-of-P2SH’s-output"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 The recommendation of P2SH’s output.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-M-of-N"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 M-of-N</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Init-Test-Environment"><span class="nav-number">1.2.</span> <span class="nav-text">2. Init Test Environment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-generate-200-blocks-at-node-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 generate 200 blocks at node 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-generate-2-new-addresses-at-node2-and-get-their-private-keys"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 generate 2 new addresses at node2 and get their private keys</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-send-200-btc-from-node1-to-node2"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 send 200 btc from node1 to node2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Create-multiple-signatured-address"><span class="nav-number">1.3.</span> <span class="nav-text">3. Create multiple signatured address</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-command"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-generate-multiple-signatured-address"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 generate multiple signatured address</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-get-scriptPubKey-of-A3"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 get scriptPubKey of A3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Create-P2SH-transaction"><span class="nav-number">1.4.</span> <span class="nav-text">4. Create P2SH transaction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-command"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-create-transaction-X"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 create transaction X</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Use-private-key-1-to-sign-X"><span class="nav-number">1.5.</span> <span class="nav-text">5. Use private key 1 to sign X</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-command"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-sign-X"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 sign X</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Boardcast-X1-and-make-record"><span class="nav-number">1.6.</span> <span class="nav-text">6. Boardcast X1 and make record</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-command"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-boardcast-and-make-record"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 boardcast and make record</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Create-new-transaction-that-recommend-the-P2SH’s-output"><span class="nav-number">1.7.</span> <span class="nav-text">7. Create new transaction that recommend the P2SH’s output</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-command"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-create-transaction-Y"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2 create transaction Y</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Use-private-key-1-to-sign-the-new-transaction"><span class="nav-number">1.8.</span> <span class="nav-text">8. Use private key 1 to sign the new transaction.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-command"><span class="nav-number">1.8.1.</span> <span class="nav-text">8.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2-sign-transaction-Y-to-Y1"><span class="nav-number">1.8.2.</span> <span class="nav-text">8.2 sign transaction Y to Y1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Use-private-key-2-to-sign-the-transaction-Y1"><span class="nav-number">1.9.</span> <span class="nav-text">9. Use private key 2 to sign the transaction Y1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-1-command"><span class="nav-number">1.9.1.</span> <span class="nav-text">9.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-sign-transaction-Y1"><span class="nav-number">1.9.2.</span> <span class="nav-text">9.2 sign transaction Y1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Boardcast-transaction-Y2-signed-after-7-and-make-record"><span class="nav-number">1.10.</span> <span class="nav-text">10. Boardcast transaction Y2 signed after (7) and make record.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-command"><span class="nav-number">1.10.1.</span> <span class="nav-text">10.1 command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-2-boardcast"><span class="nav-number">1.10.2.</span> <span class="nav-text">10.2 boardcast</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-3-make-record"><span class="nav-number">1.10.3.</span> <span class="nav-text">10.3 make record</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+
+  
+
+  
+</div>
+<!--
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  
+  
+  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>

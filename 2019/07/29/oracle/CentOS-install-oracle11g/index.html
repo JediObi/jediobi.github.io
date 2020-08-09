@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/koala_avatar.png?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="oracle数据库在centos上的安装">
+<meta name="keywords" content="centos,oracle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS install oracle11g">
+<meta property="og:url" content="https://jediobi.github.io/2019/07/29/oracle/CentOS-install-oracle11g/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="oracle数据库在centos上的安装">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-08T18:53:53.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS install oracle11g">
+<meta name="twitter:description" content="oracle数据库在centos上的安装">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://jediobi.github.io/2019/07/29/oracle/CentOS-install-oracle11g/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>CentOS install oracle11g | nomq</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">nomq</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/29/oracle/CentOS-install-oracle11g/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/koala_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CentOS install oracle11g
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-29 14:39:25" itemprop="dateCreated datePublished" datetime="2019-07-29T14:39:25+08:00">2019-07-29</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/oracle/" itemprop="url" rel="index"><span itemprop="name">oracle</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>oracle数据库在centos上的安装</p>
+<a id="more"></a>
+<h2 id="1-prepare-the-runtime-environment"><a href="#1-prepare-the-runtime-environment" class="headerlink" title="1. prepare the runtime environment"></a><strong>1. prepare the runtime environment</strong></h2><h3 id="1-1-swap-partition"><a href="#1-1-swap-partition" class="headerlink" title="1.1 swap partition"></a><strong>1.1 swap partition</strong></h3><pre><code>`~:free` to see swap size
+It shouldn&#39;t be less than 2G.
+Change it.
+</code></pre><p><strong>Note: root user</strong></p>
+<ul>
+<li><h4 id="1-1-1-close-the-swap"><a href="#1-1-1-close-the-swap" class="headerlink" title="1.1.1 close the swap"></a>1.1.1 close the swap</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:swapoff -a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><h4 id="1-1-2-create-swap-file"><a href="#1-1-2-create-swap-file" class="headerlink" title="1.1.2 create swap file"></a>1.1.2 create swap file</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=/var/swapfile bs=1M count=4096</span><br></pre></td></tr></table></figure>
+<p>create a swap file at /var/swapfile, capacity is 4G.</p>
+</li>
+<li><h4 id="1-1-3-make-the-swap-file-become-swap-partition"><a href="#1-1-3-make-the-swap-file-become-swap-partition" class="headerlink" title="1.1.3 make the swap file become swap partition"></a>1.1.3 make the swap file become swap partition</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:mkswap /var/swapfile</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-1-4-open-swap"><a href="#1-1-4-open-swap" class="headerlink" title="1.1.4 open swap"></a>1.1.4 open swap</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:swapon /var/swapfile</span><br><span class="line">~:free</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-1-5-mount-swap-partition-when-startup"><a href="#1-1-5-mount-swap-partition-when-startup" class="headerlink" title="1.1.5 mount swap partition when startup"></a>1.1.5 mount swap partition when startup</h4><p>==&gt; vim /etc/fstab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/swapfile	swap	swap	defaults	0 0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="1-2-install-dependencies"><a href="#1-2-install-dependencies" class="headerlink" title="1.2 install dependencies"></a><strong>1.2 install dependencies</strong></h3><p><strong>Note: root user</strong></p>
+<p><strong>==&gt;</strong> to see if you’ve installed the package<br><code>rpm -q package_name</code><br><strong>==&gt;</strong> install a package<br><code>yum install package_name</code><br><strong>==&gt;</strong> for example here we install a package of x64 and x86.<br><code>~:yum install -y libaio</code><br><code>~:yum install -y libaio*.i686</code><br><strong>==&gt;</strong> dependencies list<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">binutils-2.17.50.0.6</span><br><span class="line"></span><br><span class="line">compat-libstdc++-33-3.2.3</span><br><span class="line"></span><br><span class="line">compat-libstdc++-33-3.2.3 (32 bit)</span><br><span class="line"></span><br><span class="line">elfutils-libelf-0.125</span><br><span class="line"></span><br><span class="line">elfutils-libelf-devel-0.125</span><br><span class="line"></span><br><span class="line">gcc-4.1.2</span><br><span class="line"></span><br><span class="line">gcc-c++-4.1.2</span><br><span class="line"></span><br><span class="line">glibc-2.5-24</span><br><span class="line"></span><br><span class="line">--&gt;glibc-2.5-24 (32 bit) </span><br><span class="line"></span><br><span class="line">glibc-common-2.5</span><br><span class="line"></span><br><span class="line">glibc-devel-2.5</span><br><span class="line"></span><br><span class="line">glibc-devel-2.5 (32 bit) </span><br><span class="line"></span><br><span class="line">glibc-headers-2.5</span><br><span class="line"></span><br><span class="line">ksh-20060214</span><br><span class="line"></span><br><span class="line">libaio-0.3.106</span><br><span class="line"></span><br><span class="line">libaio-0.3.106 (32 bit) </span><br><span class="line"></span><br><span class="line">libaio-devel-0.3.106</span><br><span class="line"></span><br><span class="line">libaio-devel-0.3.106 (32 bit)</span><br><span class="line"></span><br><span class="line">libgcc-4.1.2</span><br><span class="line"></span><br><span class="line">libgcc-4.1.2 (32 bit)</span><br><span class="line"></span><br><span class="line">libstdc++-4.1.2</span><br><span class="line"></span><br><span class="line">libstdc++-4.1.2 (32 bit)</span><br><span class="line"></span><br><span class="line">libstdc++-devel 4.1.2</span><br><span class="line"></span><br><span class="line">make-3.81</span><br><span class="line"></span><br><span class="line">sysstat-7.0.2</span><br><span class="line"></span><br><span class="line">unixODBC-2.2.11 (32-bit) or later</span><br><span class="line"></span><br><span class="line">unixODBC-devel-2.2.11 (32-bit) or later</span><br><span class="line"></span><br><span class="line">unixODBC-devel-2.2.11 (64-bit) or later</span><br><span class="line"></span><br><span class="line">unixODBC-2.2.11 (64-bit) or later</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-3-add-user-and-group-for-oracle"><a href="#1-3-add-user-and-group-for-oracle" class="headerlink" title="1.3 add user and group for oracle"></a><strong>1.3 add user and group for oracle</strong></h3><p><strong>Note: root user</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~:groupadd oinstall</span><br><span class="line">~:groupadd dba</span><br><span class="line">~:useradd -g oinstall -G dba oracle</span><br><span class="line">~:passwd oracle</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-change-linux-kernal-config-to-adapt-oracle"><a href="#1-4-change-linux-kernal-config-to-adapt-oracle" class="headerlink" title="1.4 change linux kernal config to adapt oracle"></a><strong>1.4 change linux kernal config to adapt oracle</strong></h3><p><strong>Note: root user</strong></p>
+<ul>
+<li><h4 id="1-4-1-change-config"><a href="#1-4-1-change-config" class="headerlink" title="1.4.1 change config"></a>1.4.1 change config</h4><p>  vim /etc/sysctl.conf</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fs.aio-max-nr = 1048576</span><br><span class="line">fs.file-max = 6815744</span><br><span class="line">kernel.shmall = 2097152		# [2048*1024 k] at least 1/4 of RAM</span><br><span class="line">kernel.shmmax = 536870912  # [4*1024*1024*1024 b] at least 1/2 of RAM, set kernel.shmmax 4G if RAM is small than 4G.</span><br><span class="line">kernel.shmmni = 4096</span><br><span class="line">kernel.sem = 250 32000 100 128</span><br><span class="line">net.ipv4.ip_local_port_range = 9000 65500</span><br><span class="line">net.core.rmem_default = 262144</span><br><span class="line">net.core.rmem_max = 4194304</span><br><span class="line">net.core.wmem_default = 262144</span><br><span class="line">net.core.wmem_max = 1048576</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-4-2-make-the-config-run"><a href="#1-4-2-make-the-config-run" class="headerlink" title="1.4.2 make the config run"></a>1.4.2 make the config run</h4><p>  <code>~:/sbin/sysctl -p</code></p>
+</li>
+</ul>
+<h3 id="1-5-limits-hard-ware-usage-of-oracle"><a href="#1-5-limits-hard-ware-usage-of-oracle" class="headerlink" title="1.5 limits hard ware usage of oracle"></a><strong>1.5 limits hard ware usage of oracle</strong></h3><p><strong>Note: root user</strong></p>
+<ul>
+<li><h4 id="1-5-1-limits"><a href="#1-5-1-limits" class="headerlink" title="1.5.1 limits"></a>1.5.1 limits</h4><p>  <strong>==&gt;</strong> vim /etc/security/limits.conf </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">oracle soft nproc 2047</span><br><span class="line"></span><br><span class="line">oracle hard nproc 16384</span><br><span class="line"></span><br><span class="line">oracle soft nofile 1024</span><br><span class="line"></span><br><span class="line">oracle hard nofile 65536</span><br><span class="line"></span><br><span class="line">oracle soft stack 10240</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-5-2-the-limits-depend-on-pam"><a href="#1-5-2-the-limits-depend-on-pam" class="headerlink" title="1.5.2 the limits depend on pam"></a>1.5.2 the limits depend on pam</h4><p>  <strong>==&gt;</strong> vim /etc/pam.d/login</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">session required /lib/security/pam_limits.so</span><br><span class="line"></span><br><span class="line">session required pam_limits.so</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-5-3-other-limits"><a href="#1-5-3-other-limits" class="headerlink" title="1.5.3 other limits"></a>1.5.3 other limits</h4><p>  <strong>==&gt;</strong> vim /etc/profile</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if [ $USER = &quot;oracle&quot; ]; then</span><br><span class="line"></span><br><span class="line">    if [ $SHELL = &quot;/bin/ksh&quot; ]; then</span><br><span class="line"></span><br><span class="line">        ulimit -p 16384</span><br><span class="line"></span><br><span class="line">        ulimit -n 65536</span><br><span class="line"></span><br><span class="line">    else</span><br><span class="line"></span><br><span class="line">        ulimit -u 16384 -n 65536</span><br><span class="line"></span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="1-6-create-install-direcotry"><a href="#1-6-create-install-direcotry" class="headerlink" title="1.6 create install direcotry"></a><strong>1.6 create install direcotry</strong></h3><p><strong>Note: root user</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~:cd /usr/local</span><br><span class="line">~:mkdir -p oracle_about/app/</span><br><span class="line">~:chown -R oracle:oinstall oracle_about/app/</span><br><span class="line">~:chmod -R 775 oracle_about/app/</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-create-install-location-describe-file"><a href="#1-7-create-install-location-describe-file" class="headerlink" title="1.7 create install location describe file"></a><strong>1.7 create install location describe file</strong></h3><p><strong>Note: root user</strong></p>
+<ul>
+<li><h4 id="1-7-1-create-install-file"><a href="#1-7-1-create-install-file" class="headerlink" title="1.7.1 create install file"></a>1.7.1 create install file</h4><p>  <strong>==&gt;</strong> vim /etc/oraInst.loc</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inventory_loc=/usr/local/oracle_about/app/oracle/oraInventory</span><br><span class="line">inst_group=oinstall</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-7-2-change-user-and-authority-of-the-install-location-describe-file"><a href="#1-7-2-change-user-and-authority-of-the-install-location-describe-file" class="headerlink" title="1.7.2 change user and authority of the install location describe file"></a>1.7.2 change user and authority of the install location describe file</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:chown oracle:oinstall /etc/oraInst.loc</span><br><span class="line">~:chmod 664 /etc/oraInst.loc</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="1-8-config-oracle-environment-variables"><a href="#1-8-config-oracle-environment-variables" class="headerlink" title="1.8 config oracle environment variables"></a><strong>1.8 config oracle environment variables</strong></h3><p><strong>Note: oracle user</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - oracle</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="1-8-1-config-bash-profile"><a href="#1-8-1-config-bash-profile" class="headerlink" title="1.8.1 config ~/.bash_profile"></a>1.8.1 config ~/.bash_profile</h4><p>  <strong>==&gt;</strong> vim ~/.bash_profile</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ORACLE_BASE=/usr/local/oracle_about/app/oracle</span><br><span class="line">export ORACLE_SID=orcl</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-8-2-make-it-effective"><a href="#1-8-2-make-it-effective" class="headerlink" title="1.8.2 make it effective"></a>1.8.2 make it effective</h4><p>  <code>~:source .bash_profile</code></p>
+</li>
+<li><h4 id="1-8-3-check-the-environment-variables"><a href="#1-8-3-check-the-environment-variables" class="headerlink" title="1.8.3 check the environment variables"></a>1.8.3 check the environment variables</h4><p>  <code>~:env</code></p>
+</li>
+</ul>
+<h3 id="1-9-unzip-install-binary-file"><a href="#1-9-unzip-install-binary-file" class="headerlink" title="1.9 unzip install binary file"></a><strong>1.9 unzip install binary file</strong></h3><p><strong>Note: root user</strong></p>
+<p><strong>==&gt;</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:chown oracle:oinstall 1of2.zip</span><br><span class="line">~:chown oracle:oinstall 2of2.zip</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note: oracle user</strong></p>
+<p>unzip to /home/oracle<br>then you can see /home/oracle/database</p>
+<h3 id="1-10-copy-reponse-template"><a href="#1-10-copy-reponse-template" class="headerlink" title="1.10 copy reponse template"></a><strong>1.10 copy reponse template</strong></h3><p><strong>Note: oracle user</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~:mkdir etc</span><br><span class="line">~:cp ~/database/response/* ~/etc</span><br><span class="line"># change authority</span><br><span class="line">~:chmod 700 /home/oracle/etc/*.rsp</span><br></pre></td></tr></table></figure>
+<h3 id="1-11-config-reponse-template"><a href="#1-11-config-reponse-template" class="headerlink" title="1.11 config reponse template"></a><strong>1.11 config reponse template</strong></h3><p><strong>Note: oracle user</strong></p>
+<p><strong>==&gt;</strong> vim /home/oracle/etc/db_install.rsp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">oracle.install.option=INSTALL_DB_SWONLY // line 29, install type</span><br><span class="line"></span><br><span class="line">ORACLE_HOSTNAME=xx12ab4OB21xN // line 37, your hostname, use command hostname to get</span><br><span class="line">UNIX_GROUP_NAME=oinstall // line 42, user&apos;s group</span><br><span class="line"></span><br><span class="line">INVENTORY_LOCATION=/u01/app/oracle/oraInventory // line 47, INVENTORY derectory</span><br><span class="line"></span><br><span class="line">SELECTED_LANGUAGES=en,zh_CN,zh_TW // line 78, language</span><br><span class="line"></span><br><span class="line">ORACLE_HOME=/u01/app/oracle/product/11.2.0/db_1 // line 83, oracle_home</span><br><span class="line"></span><br><span class="line">ORACLE_BASE=/u01/app/oracle // line 88, oracle_base</span><br><span class="line"></span><br><span class="line">oracle.install.db.InstallEdition=EE // line 99, oracle version</span><br><span class="line"></span><br><span class="line">oracle.install.db.isCustomInstall=true // line 108, true means you can custom some configrations</span><br><span class="line"></span><br><span class="line">oracle.install.db.DBA_GROUP=dba // line 142,  dba group</span><br><span class="line"></span><br><span class="line">oracle.install.db.OPER_GROUP=oinstall // line 147,  oper group</span><br><span class="line"></span><br><span class="line">oracle.install.db.config.starterdb.type=GENERAL_PURPOSE // line 160,  db type</span><br><span class="line"></span><br><span class="line">oracle.install.db.config.starterdb.globalDBName=orcl // line 165,  global DBName</span><br><span class="line"></span><br><span class="line">oracle.install.db.config.starterdb.SID=orcl // line 170, SID</span><br><span class="line"></span><br><span class="line">oracle.install.db.config.starterdb.memoryLimit=512 // line 192, min ram use</span><br><span class="line"></span><br><span class="line">oracle.install.db.config.starterdb.password.ALL=oracle // line 233, all dba user password</span><br><span class="line"></span><br><span class="line">DECLINE_SECURITY_UPDATES=true // line 385, security updates</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-install-oracle"><a href="#2-install-oracle" class="headerlink" title="2. install oracle"></a><strong>2. install oracle</strong></h2><h3 id="2-1-install-oracle"><a href="#2-1-install-oracle" class="headerlink" title="2.1 install oracle"></a><strong>2.1 install oracle</strong></h3><ul>
+<li><h4 id="2-1-1-oracle-user"><a href="#2-1-1-oracle-user" class="headerlink" title="2.1.1 oracle user"></a>2.1.1 oracle user</h4><ol>
+<li><p>install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~:cd database</span><br><span class="line">~:./runInstaller -silent -responseFile /home/oracle/etc/db_install.rsp</span><br><span class="line"># installer will install in background, you can see logs </span><br><span class="line">~:cd /usr/local/oracle_about/app/oracle/oraInventory</span><br><span class="line">~:tail -100f installActions*.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>susccsful log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">To execute the configuration scripts:</span><br><span class="line"></span><br><span class="line">1. Open a terminal window </span><br><span class="line"></span><br><span class="line">2. Log in as &quot;root&quot; </span><br><span class="line"></span><br><span class="line">3. Run the scripts </span><br><span class="line"></span><br><span class="line">4. Return to this window and hit &quot;Enter&quot; key to continue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Successfully Setup Software.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>root.sh</p>
+<p><strong>Note: root user</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:cd /usr/local/oracle_about/app/oracle/product/11.2.0/db_1</span><br><span class="line">~:./root.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-2-config-oracle-environment-variables"><a href="#2-2-config-oracle-environment-variables" class="headerlink" title="2.2 config oracle environment variables"></a><strong>2.2 config oracle environment variables</strong></h3><p><strong>Note: oracle user</strong></p>
+<p><strong>==&gt;</strong> vim ~/.bash_profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1</span><br><span class="line"></span><br><span class="line">export TNS_ADMIN=$ORACLE_HOME/network/admin</span><br><span class="line"></span><br><span class="line">export PATH=.:$&#123;PATH&#125;:$HOME/bin:$ORACLE_HOME/bin</span><br><span class="line"></span><br><span class="line">export PATH=$&#123;PATH&#125;:/usr/bin:/bin:/usr/bin/X11:/usr/local/bin</span><br><span class="line"></span><br><span class="line">export LD_LIBRARY_PATH=$&#123;LD_LIBRARY_PATH&#125;:$ORACLE_HOME/lib</span><br><span class="line"></span><br><span class="line">export LD_LIBRARY_PATH=$&#123;LD_LIBRARY_PATH&#125;:$ORACLE_HOME/oracm/lib</span><br><span class="line"></span><br><span class="line">export LD_LIBRARY_PATH=$&#123;LD_LIBRARY_PATH&#125;:/lib:/usr/lib:/usr/local/lib</span><br><span class="line"></span><br><span class="line">export CLASSPATH=$&#123;CLASSPATH&#125;:$ORACLE_HOME/JRE</span><br><span class="line"></span><br><span class="line">export CLASSPATH=$&#123;CLASSPATH&#125;:$ORACLE_HOME/JRE/lib</span><br><span class="line"></span><br><span class="line">export CLASSPATH=$&#123;CLASSPATH&#125;:$ORACLE_HOME/jlib</span><br><span class="line"></span><br><span class="line">export CLASSPATH=$&#123;CLASSPATH&#125;:$ORACLE_HOME/rdbms/jlib</span><br><span class="line"></span><br><span class="line">export CLASSPATH=$&#123;CLASSPATH&#125;:$ORACLE_HOME/network/jlib</span><br><span class="line"></span><br><span class="line">export LIBPATH=$&#123;CLASSPATH&#125;:$ORACLE_HOME/lib:$ORACLE_HOME/ctx/lib</span><br><span class="line"></span><br><span class="line">export ORACLE_OWNER=oracle</span><br><span class="line"></span><br><span class="line">export SPFILE_PATH=$ORACLE_HOME/dbs</span><br><span class="line"></span><br><span class="line">export ORA_NLS10=$ORACLE_HOME/nls/data</span><br></pre></td></tr></table></figure></p>
+<p><strong>==&gt;</strong> source ~/.bash_profile</p>
+<h3 id="2-3-config-listening"><a href="#2-3-config-listening" class="headerlink" title="2.3 config listening"></a><strong>2.3 config listening</strong></h3><p><strong>Note: oracle user</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:$ORACLE_HOME/bin/netca /silent /responseFile /home/oracle/etc/netca.rsp</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-create-database"><a href="#2-4-create-database" class="headerlink" title="2.4 create database"></a><strong>2.4 create database</strong></h3><p><strong>Note: oracle user</strong></p>
+<ul>
+<li><h4 id="2-4-1-config-template"><a href="#2-4-1-config-template" class="headerlink" title="2.4.1 config template"></a>2.4.1 config template</h4><p>  <strong>==&gt;</strong> vim /home/oracle/etc/dbca.rsp</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GDBNAME=&quot;orcl.java-linux-test&quot; // line 78, service_name=SID+hostname</span><br><span class="line"></span><br><span class="line">SID=&quot;orcl&quot; // line 149, SID</span><br><span class="line"></span><br><span class="line">CHARACTERSET=&quot;AL32UTF8&quot; // line 415, charset</span><br><span class="line"></span><br><span class="line">NATIONALCHARACTERSET=&quot;UTF8&quot; // line 425, charset</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="2-4-2-create"><a href="#2-4-2-create" class="headerlink" title="2.4.2 create"></a>2.4.2 create</h4><p>  $ORACLE_HOME/bin/dbca -silent -responseFile /home/oracle/dbca.rsp</p>
+</li>
+<li><h4 id="2-4-3-get-result"><a href="#2-4-3-get-result" class="headerlink" title="2.4.3 get result"></a>2.4.3 get result</h4><p>  ps -ef | grep ora_ | grep -v grep | wc -l</p>
+</li>
+</ul>
+<h3 id="2-5-start-listening"><a href="#2-5-start-listening" class="headerlink" title="2.5 start listening"></a><strong>2.5 start listening</strong></h3><p><strong>Note: oracle user</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~:cd /usr/local/oracle_about/app/oracle/product/11.2.0/db_1/bin</span><br><span class="line">~:lsnrctl status</span><br><span class="line">~:lsnrctl start</span><br></pre></td></tr></table></figure>
+<h3 id="2-6-using-dbstart-and-dbshut-to-contol-listening"><a href="#2-6-using-dbstart-and-dbshut-to-contol-listening" class="headerlink" title="2.6 using dbstart and dbshut to contol listening"></a><strong>2.6 using <code>dbstart</code> and <code>dbshut</code> to contol listening</strong></h3><p><strong>Note: oracle user</strong></p>
+<p><strong>==&gt;</strong> vim /etc/oratab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">racl:/u01/app/oracle/product/11.2.0/db_1:Y // N becomes Y</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~:cd /usr/local/oracle_about/app/oracle/product/11.2.0/db_1/bin</span><br><span class="line">~:dbstart $ORACLE_HOME</span><br><span class="line">~:dbshut	$ORACLE_HOME</span><br><span class="line">~:lsnrctl status</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/07/29/oracle/CentOS-install-oracle11g/">CentOS install oracle11g</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 nomq 的个人博客">nomq</a></p>
+  <p><span>发布时间:</span>2019年07月29日 - 14:07</p>
+  <p><span>最后更新:</span>2020年08月09日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2019/07/29/oracle/CentOS-install-oracle11g/" title="CentOS install oracle11g">https://jediobi.github.io/2019/07/29/oracle/CentOS-install-oracle11g/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://jediobi.github.io/2019/07/29/oracle/CentOS-install-oracle11g/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/centos/" rel="tag"># centos</a>
+          
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/29/oracle/oracle11g在windows上安装/" rel="next" title="oracle11g在windows上安装">
+                <i class="fa fa-chevron-left"></i> oracle11g在windows上安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/31/oracle/oracle-operation/" rel="prev" title="oracle operation">
+                oracle operation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/koala_avatar.png" alt="nomq">
+  
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">222</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/JediObi" title="GitHub &rarr; https://github.com/JediObi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-prepare-the-runtime-environment"><span class="nav-number">1.</span> <span class="nav-text">1. prepare the runtime environment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-swap-partition"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 swap partition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-close-the-swap"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 close the swap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-create-swap-file"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 create swap file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-make-the-swap-file-become-swap-partition"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 make the swap file become swap partition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-open-swap"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.1.4 open swap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-5-mount-swap-partition-when-startup"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.1.5 mount swap partition when startup</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-install-dependencies"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 install dependencies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-add-user-and-group-for-oracle"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 add user and group for oracle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-change-linux-kernal-config-to-adapt-oracle"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 change linux kernal config to adapt oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-1-change-config"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 change config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-make-the-config-run"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 make the config run</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-limits-hard-ware-usage-of-oracle"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 limits hard ware usage of oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-limits"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.5.1 limits</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-the-limits-depend-on-pam"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.5.2 the limits depend on pam</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-3-other-limits"><span class="nav-number">1.5.3.</span> <span class="nav-text">1.5.3 other limits</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-create-install-direcotry"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 create install direcotry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-create-install-location-describe-file"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 create install location describe file</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-1-create-install-file"><span class="nav-number">1.7.1.</span> <span class="nav-text">1.7.1 create install file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-2-change-user-and-authority-of-the-install-location-describe-file"><span class="nav-number">1.7.2.</span> <span class="nav-text">1.7.2 change user and authority of the install location describe file</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-config-oracle-environment-variables"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 config oracle environment variables</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-1-config-bash-profile"><span class="nav-number">1.8.1.</span> <span class="nav-text">1.8.1 config ~/.bash_profile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-2-make-it-effective"><span class="nav-number">1.8.2.</span> <span class="nav-text">1.8.2 make it effective</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-3-check-the-environment-variables"><span class="nav-number">1.8.3.</span> <span class="nav-text">1.8.3 check the environment variables</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-unzip-install-binary-file"><span class="nav-number">1.9.</span> <span class="nav-text">1.9 unzip install binary file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10-copy-reponse-template"><span class="nav-number">1.10.</span> <span class="nav-text">1.10 copy reponse template</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-11-config-reponse-template"><span class="nav-number">1.11.</span> <span class="nav-text">1.11 config reponse template</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-install-oracle"><span class="nav-number">2.</span> <span class="nav-text">2. install oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-install-oracle"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 install oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-oracle-user"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 oracle user</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-config-oracle-environment-variables"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 config oracle environment variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-config-listening"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 config listening</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-create-database"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 create database</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-config-template"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 config template</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-create"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 create</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-3-get-result"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 get result</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-start-listening"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 start listening</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-using-dbstart-and-dbshut-to-contol-listening"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 using dbstart and dbshut to contol listening</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+
+  
+
+  
+</div>
+<!--
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  
+  
+  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>

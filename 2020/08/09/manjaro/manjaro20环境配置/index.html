@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/koala_avatar.png?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="manjaro20的安装与开发环境搭建。安装过程中比较麻烦的是与win7组双系统的设置问题。">
+<meta name="keywords" content="linux,arch,tensorflow,cuda,win7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="manjaro20环境配置">
+<meta property="og:url" content="https://jediobi.github.io/2020/08/09/manjaro/manjaro20环境配置/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="manjaro20的安装与开发环境搭建。安装过程中比较麻烦的是与win7组双系统的设置问题。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-09T21:47:07.565Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="manjaro20环境配置">
+<meta name="twitter:description" content="manjaro20的安装与开发环境搭建。安装过程中比较麻烦的是与win7组双系统的设置问题。">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://jediobi.github.io/2020/08/09/manjaro/manjaro20环境配置/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>manjaro20环境配置 | nomq</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">nomq</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2020/08/09/manjaro/manjaro20环境配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/koala_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">manjaro20环境配置
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-08-09 03:01:40" itemprop="dateCreated datePublished" datetime="2020-08-09T03:01:40+08:00">2020-08-09</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-08-10 05:47:07" itemprop="dateModified" datetime="2020-08-10T05:47:07+08:00">2020-08-10</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/manjaro/" itemprop="url" rel="index"><span itemprop="name">manjaro</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>manjaro20的安装与开发环境搭建。安装过程中比较麻烦的是与win7组双系统的设置问题。</p>
+<a id="more"></a>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="1-1-独立安装"><a href="#1-1-独立安装" class="headerlink" title="1.1 独立安装"></a>1.1 独立安装</h3><ul>
+<li>u盘制作</li>
+</ul>
+<p><code>utralISO</code>或者<code>rufus</code>，U盘格式化为<code>fat32</code>，使用<code>raw</code>格式写入镜像，成功后U盘的大多数空间会被隐藏，通过磁盘管理工具分配盘符即可使用。</p>
+<ul>
+<li><p>bios模式</p>
+<p>  <code>UEFI</code></p>
+</li>
+<li><p>系统盘分区表</p>
+<p>  GPT或MBR都可以</p>
+</li>
+<li><p>分区</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">分区1:</span></span><br><span class="line">    <span class="string">说明:</span> <span class="string">grub启动分区</span></span><br><span class="line">    <span class="string">容量:</span> <span class="number">1</span><span class="string">GB</span></span><br><span class="line">    <span class="string">格式:</span> <span class="string">fat32</span></span><br><span class="line">    <span class="string">挂载点:</span> <span class="string">无</span></span><br><span class="line"><span class="attr">    Flags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">boot</span></span><br><span class="line"><span class="string">分区2:</span></span><br><span class="line">    <span class="string">说明:</span> <span class="string">交换分区，与内存等量或稍小</span></span><br><span class="line">    <span class="string">容量:</span> <span class="number">8</span><span class="string">GB</span></span><br><span class="line">    <span class="string">格式:</span> <span class="string">linuxswap</span></span><br><span class="line">    <span class="string">挂载点:</span> <span class="string">无</span></span><br><span class="line"><span class="attr">    Flags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">swap</span></span><br><span class="line"><span class="string">分区3:</span></span><br><span class="line">    <span class="string">说明:</span> <span class="string">系统分区</span></span><br><span class="line">    <span class="string">容量:</span> <span class="number">50</span><span class="string">GB</span></span><br><span class="line">    <span class="string">格式:</span> <span class="string">ext4</span></span><br><span class="line">    <span class="string">挂载点:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">    Flags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">无</span></span><br><span class="line"><span class="string">分区4:</span></span><br><span class="line">    <span class="string">说明:</span> <span class="string">home分区目录</span></span><br><span class="line">    <span class="string">容量:</span> <span class="string">一般是系统盘剩余空间</span></span><br><span class="line">    <span class="string">格式:</span> <span class="string">ext4</span></span><br><span class="line">    <span class="string">挂载点:</span> <span class="string">/home</span></span><br><span class="line"><span class="attr">    Flags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">无</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>系统安装到<code>分区1</code></p>
+<h3 id="1-2-双系统安装"><a href="#1-2-双系统安装" class="headerlink" title="1.2 双系统安装"></a>1.2 双系统安装</h3><h4 id="1-2-1-win7-manjaro20"><a href="#1-2-1-win7-manjaro20" class="headerlink" title="1.2.1 win7 + manjaro20"></a>1.2.1 win7 + manjaro20</h4><p>manjaro的系统盘分区表和分区可以参考<code>独立安装</code>的分区，不过<code>分区1grub启动分区要特别注意下</code><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">分区1:</span></span><br><span class="line">    <span class="string">说明:</span> <span class="string">grub启动分区</span></span><br><span class="line">    <span class="string">容量:</span> <span class="number">1</span><span class="string">GB</span></span><br><span class="line">    <span class="string">格式:</span> <span class="string">fat32</span></span><br><span class="line">    <span class="string">挂载点:</span> <span class="string">无</span></span><br><span class="line"><span class="attr">    Flags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">boot</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">legacy-boot</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>win7遇到的问题</p>
+<p>  (1) <code>win7</code>仅支持<code>legacy</code>或<code>uefi+csm</code>的bios。如果uefi主板不支持csm，则uefi模式下安装完win7会导致第一次启动卡在启动界面，此时需要修改bios为legacy模式（或开启旧支持），然后启动win7安装完显卡驱动即可把主板改回uefi(或关闭旧支持)。<br><br></p>
+</li>
+<li><p>启动项改为grub<br>  (1) grub要求bios为uefi模式。</p>
+<p>  (2) 安装完win7后默认的启动项为<code>windows boot manager</code>，很多教程<code>错误</code>的推荐用<code>easyBCD</code>去增加grub启动项，实际上增加的启动项会出现在<code>win boot manager</code>的列表中，该选项实际上无法启动linux，<code>在win boot manager界面选择退出（esc按键退出）会回到grub</code>。虽然可以返回到grub，但很不友好，可以在bios里修改启动顺序把grub改为第一个，<code>注意，由于win7每次启动会修改win boot manager为第一启动项，所以要在bios里禁用win boot manager</code>。</p>
+</li>
+</ul>
+<h4 id="1-2-2-win10-manjaro20"><a href="#1-2-2-win10-manjaro20" class="headerlink" title="1.2.2 win10 + manjaro20"></a>1.2.2 win10 + manjaro20</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bios:</span> <span class="string">uefi</span></span><br><span class="line"><span class="string">manjaro安装:</span> <span class="string">完全按照独立安装的来</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-系统定制"><a href="#2-系统定制" class="headerlink" title="2. 系统定制"></a>2. 系统定制</h2><h3 id="2-1-首先配置镜像"><a href="#2-1-首先配置镜像" class="headerlink" title="2.1 首先配置镜像"></a>2.1 首先配置镜像</h3><p><code>/etc/pacman.d/mirrorlist</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## Country : China</span><br><span class="line">Server = http://mirrors.aliyun.com/manjaro/stable/$repo/$arch</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-2-zsh"><a href="#2-2-zsh" class="headerlink" title="2.2 zsh"></a>2.2 zsh</h3><p>manjaro自带zsh和一些插件，但是没有安装oh-my-zsh，也没有配置p10k主题，所以安装下oh-my-zsh和p10k即可。</p>
+<h4 id="2-2-1-安装oh-my-zsh"><a href="#2-2-1-安装oh-my-zsh" class="headerlink" title="2.2.1 安装oh-my-zsh"></a>2.2.1 安装oh-my-zsh</h4><p>克隆github的oh-my-zsh到你的家目录,重命名为.oh-my-zsh，可以用gitee加速。<br>然后把 .oh-my-zsh/templates/zshrc.zsh-template 复制到家目录/.zshrc 即可</p>
+<h4 id="2-2-2-安装p10k"><a href="#2-2-2-安装p10k" class="headerlink" title="2.2.2 安装p10k"></a>2.2.2 安装p10k</h4><p>克隆该仓库powerlevel10k，可以用gitee加速，到.oh-my-zsh/custom/themes/powerlevel10k。然后在.zshrc总修改主题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZSH_THEME=&quot;powerlevel10k/powerlevel10k&quot;</span><br></pre></td></tr></table></figure>
+<p>p10k配置完之后，首次启动zsh，会引导p10k配置，如果未来想重新配置可用命令：<code>p10k configure</code></p>
+<h4 id="2-2-3-安装其他插件"><a href="#2-2-3-安装其他插件" class="headerlink" title="2.2.3 安装其他插件"></a>2.2.3 安装其他插件</h4><ul>
+<li><p>git插件</p>
+<p>  该插件可以用来提示git分支和分支状态</p>
+</li>
+<li><p>自动提示插件</p>
+<p>  该插件可以根据输入历史自动补齐命令</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git colored-man-pages zsh-autosuggestions)</span><br></pre></td></tr></table></figure>
+<p>其中git和man插件由oh-my-zsh自带，自动补齐插件需要自行下载到.oh-my-zsh/plugins/zsh-autosuggestions</p>
+<h4 id="2-2-4-history时间戳"><a href="#2-2-4-history时间戳" class="headerlink" title="2.2.4 history时间戳"></a>2.2.4 history时间戳</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HIST_STAMPS=&quot;yyyy-mm-dd&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-neovim"><a href="#2-3-neovim" class="headerlink" title="2.3 neovim"></a>2.3 neovim</h3><p>neovim是vim的一个分支，界面更友好，使用异步模块。使用spacevim可以一站式配置vim/neovim的插件和界面。</p>
+<h4 id="2-3-1-安装neovim"><a href="#2-3-1-安装neovim" class="headerlink" title="2.3.1 安装neovim"></a>2.3.1 安装neovim</h4><p>可以使用命令行安装，但是可能安装完之后没有自动生成vim软连接，自行配置下。</p>
+<h4 id="2-3-2-安装spacevim"><a href="#2-3-2-安装spacevim" class="headerlink" title="2.3.2 安装spacevim"></a>2.3.2 安装spacevim</h4><ul>
+<li>安装spacevim<br>这个插件通过一个shell脚本安装，该脚本主要是从github下载spacevim的插件和依赖，spacevim在国内有gitee的库，所以可以把脚本里的仓库地址修改为国内镜像，至于依赖可能没有国内仓库，自行clone。<br><br></li>
+<li><p>配置spacevim<br>spacevim可以配置很多地方，但最常用的是主题，代码补齐，git插件，至于状态栏使用默认的即可。</p>
+<p>主题需要启用主题模块才能在options里修改，代码补齐需要补齐模块，自带的git插件ginna由于有bug所以用fugitive，demo如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#=============================================================================</span><br><span class="line"># dark_powered.toml --- dark powered configuration example for SpaceVim</span><br><span class="line"># Copyright (c) 2016-2017 Wang Shidong &amp; Contributors</span><br><span class="line"># Author: Wang Shidong &lt; wsdjeg at 163.com &gt;</span><br><span class="line"># URL: https://spacevim.org</span><br><span class="line"># License: GPLv3</span><br><span class="line">#=============================================================================</span><br><span class="line"></span><br><span class="line"># All SpaceVim option below [option] section</span><br><span class="line">[options]</span><br><span class="line">    # set spacevim theme. by default colorscheme layer is not loaded,</span><br><span class="line">    # if you want to use more colorscheme, please load the colorscheme</span><br><span class="line">    # layer</span><br><span class="line">    colorscheme = &quot;gruvbox&quot;</span><br><span class="line">    colorscheme_bg = &quot;dark&quot;</span><br><span class="line">    # Disable guicolors in basic mode, many terminal do not support 24bit</span><br><span class="line">    # true colors</span><br><span class="line">    enable_guicolors = true</span><br><span class="line">    # Disable statusline separator, if you want to use other value, please</span><br><span class="line">    # install nerd fonts</span><br><span class="line">    statusline_separator = &quot;arrow&quot;</span><br><span class="line">    statusline_inactive_separator = &quot;arrow&quot;</span><br><span class="line">    buffer_index_type = 4</span><br><span class="line">    enable_tabline_filetype_icon = true</span><br><span class="line">    enable_statusline_mode = false</span><br><span class="line"></span><br><span class="line"># Enable autocomplete layer</span><br><span class="line">[[layers]]</span><br><span class="line">name = &apos;autocomplete&apos;</span><br><span class="line">auto_completion_return_key_behavior = &quot;complete&quot;</span><br><span class="line">auto_completion_tab_key_behavior = &quot;smart&quot;</span><br><span class="line"></span><br><span class="line">[[layers]]</span><br><span class="line">name = &apos;shell&apos;</span><br><span class="line">default_position = &apos;top&apos;</span><br><span class="line">default_height = 30</span><br><span class="line"></span><br><span class="line">[[layers]]</span><br><span class="line">name = &apos;VersionControl&apos;</span><br><span class="line"></span><br><span class="line">[[layers]]</span><br><span class="line">name = &apos;git&apos;</span><br><span class="line">git-plugin = &apos;fugitive&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-3-chrome浏览器"><a href="#2-3-chrome浏览器" class="headerlink" title="2.3 chrome浏览器"></a>2.3 chrome浏览器</h3><h4 id="2-3-1-安装chrome"><a href="#2-3-1-安装chrome" class="headerlink" title="2.3.1 安装chrome"></a>2.3.1 安装chrome</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo pacman -S google-chrome</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-2-安装vim插件"><a href="#2-3-2-安装vim插件" class="headerlink" title="2.3.2 安装vim插件"></a>2.3.2 安装vim插件</h4><p>vimium插件可以从商店获取，但国内无法访问商店，可以从源码编译安装，vimium源码是nodejs项目，所以可以在系统配置了node之后，再来做这一步。</p>
+<p>vimium github地址，可以clone到gitee上加速<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/philc/vimium.git</span><br></pre></td></tr></table></figure></p>
+<p>进入该项目执行build<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:cd vimium</span><br><span class="line">~:./make.js build</span><br></pre></td></tr></table></figure></p>
+<p>然后在chrome 插件界面打开开发模式，然后pack extension，选择vimium文件夹打包即可，会在vimium同级目录生成插件和签名文件，插件拖动到chrome里即会自动安装。</p>
+<h3 id="2-4-搜狗输入法"><a href="#2-4-搜狗输入法" class="headerlink" title="2.4 搜狗输入法"></a>2.4 搜狗输入法</h3><p>在manjaro20的仓库里已经没有了fcitx-sogoupinyin这个包，但是有同学打包了ubuntu-kylin里的企业版到github上项目名称为<code>fcitx-sogouimebs</code>，下载arch的包在本地用pacman安装即可。</p>
+<p>github地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/laomocode/fcitx-sogouimebs.git</span><br></pre></td></tr></table></figure></p>
+<p>本地安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo pacman -U fcitx-sogouimebs.pkg.tar.xz</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-JAVA环境配置"><a href="#3-JAVA环境配置" class="headerlink" title="3. JAVA环境配置"></a>3. JAVA环境配置</h2><p>比较简单由于使用了openjdk14，所以顺便用openj9虚拟机替代hotspot</p>
+<p>主要配置下java和maven的环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=xxx</span><br><span class="line">MAVEN_HOME=xxx</span><br><span class="line">PATH=$&#123;PATH&#125;:$&#123;JAVA_HOME&#125;/bin:$&#123;MAVEN_HOME&#125;/bin</span><br><span class="line">export PATH</span><br></pre></td></tr></table></figure></p>
+<p>顺道配置下maven本地仓库</p>
+<ul>
+<li>在/home/username/.m2/ 下复制 maven_home/conf/settings.xml，指定仓库地址和镜像地址<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>/home/nomq/work/repo<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-JS环境配置"><a href="#4-JS环境配置" class="headerlink" title="4. JS环境配置"></a>4. JS环境配置</h2><h3 id="4-1-nvm和node安装"><a href="#4-1-nvm和node安装" class="headerlink" title="4.1 nvm和node安装"></a>4.1 nvm和node安装</h3><p>使用nvm配置node12的环境，nvm可以方便的管理多版本的node，并且自由切换版本。</p>
+<p>首先下载nvm安装脚本</p>
+<p>然后安装node，配置npm国内镜像</p>
+<h3 id="4-2-此处简单介绍下hexo的配置"><a href="#4-2-此处简单介绍下hexo的配置" class="headerlink" title="4.2 此处简单介绍下hexo的配置"></a>4.2 此处简单介绍下hexo的配置</h3><p>因为之前配置了hexo，next主题，但是没有做任何记录，本次因为配置hexo实际上是next主题的mathjax支持，所以记录下。</p>
+<p>hexo自带的公式渲染工具 hexo-render-marked由于存在一些配置问题，要使用 hexo-render-kramed替换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~:npm un -S hexo-render-marked</span><br><span class="line">~:npm i -S hexo-render-kramed</span><br></pre></td></tr></table></figure></p>
+<p>开启next对mathjax的支持，其中公式引擎默认是mathjax，可以用但是引用的js文件可以改为cloudflare，国内更快。<br>${project_root}/themes/next/_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure></p>
+<p>开启该支持后，文章的头部需要添加<code>mathjax: true</code>才会渲染，当然也可以修改next配置文件默认所有文章渲染。比如以下：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">manjaro20环境配置</span></span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020</span><span class="bullet">-08</span><span class="bullet">-09</span> <span class="number">03</span><span class="string">:01:40</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">manjaro</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">arch</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">linux</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">tensorflow</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">cuda</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">win7</span></span><br></pre></td></tr></table></figure></p>
+<p>接下来是一个行公式展示：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \vec{A}\vec{v} = \lambda\vec{v}
+\end{aligned}</script><h2 id="5-python环境配置"><a href="#5-python环境配置" class="headerlink" title="5. python环境配置"></a>5. python环境配置</h2><p>主要是开发工具和tensorflow以及cuda的配置</p>
+<h3 id="5-1-环境配置"><a href="#5-1-环境配置" class="headerlink" title="5.1 环境配置"></a>5.1 环境配置</h3><p>环境配置主要是指pip，需要配置下pip的国内镜像，在/home/username/.pip/pip.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url=https://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">trusted-host=https://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-2-开发工具"><a href="#5-2-开发工具" class="headerlink" title="5.2 开发工具"></a>5.2 开发工具</h3><p>如果有kite，可以使用vscode就行了，一般早上可能网速好能下载到kite。<br>没有kite就用pycharm。</p>
+<h3 id="5-2-tensorflow"><a href="#5-2-tensorflow" class="headerlink" title="5.2 tensorflow"></a>5.2 tensorflow</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:pip install tensorflow</span><br></pre></td></tr></table></figure>
+<p>tensorflow-2.3.0 支持cuda10.1和cudnn7，在nvidia相关配置里会说明。</p>
+<h3 id="5-3-nvidia驱动和cuda"><a href="#5-3-nvidia驱动和cuda" class="headerlink" title="5.3 nvidia驱动和cuda"></a>5.3 nvidia驱动和cuda</h3><p>manjaro20的软件仓库已经把cuda更新到了10.2，cudnn-8，所以tensorflow无法使用GPU，目前仓库没有降级版本，只能从nvidia官网下载指定版本，速度还很快的。</p>
+<p>cuda <code>https://developer.nvidia.com/cuda-downloads</code> 选择<code>Legacy Releases</code>会跳转到其他版本选择页，选择10.1最新的版本是update2，系统是Linux-Unbuntu-18.04-runfile(local)，这是个run文件，arch也可以使用的。<br>下载完成后，执行<code>sudo sh cuda_10.1.243_418.87.00_linux.run</code>安装，会跳出选择界面，注意cuda10.1需要nvidia驱动418，高于这个版本需要先降级。之后应该会安装成功，但是cuda相关的命令比如nvcc还不能用，按照安装完成的提示，把cuda的bin目录添加到path即可。至于library路径，已经自动添加到/etc/ld.so.conf，后边添加cudnn到cuda时，需要<code>sudo ldconfig</code>来更新下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">cudnn，链接地址 `https://developer.nvidia.com/cudnn`，需要登录之后才能选择下载，在下载页选择`Archived cuDNN Releases`才能展示出旧版本，然后选择for cuda10.1，之后直接选择`cuDNN Library for Linux`，这是个压缩包，需要手动解压和配置。</span><br><span class="line"></span><br><span class="line">解压之后的目录名也叫cuda，把该目录下的头文件和so文件复制到cuda的安装目录即可</span><br></pre></td></tr></table></figure></p>
+<h1 id="cuda-安装目录-usr-local-cuda-10-1"><a href="#cuda-安装目录-usr-local-cuda-10-1" class="headerlink" title="cuda 安装目录 /usr/local/cuda-10.1/"></a>cuda 安装目录 /usr/local/cuda-10.1/</h1><h1 id="cudnn-解压目录-home-username-cuda"><a href="#cudnn-解压目录-home-username-cuda" class="headerlink" title="cudnn 解压目录 /home/username/cuda"></a>cudnn 解压目录 /home/username/cuda</h1><p>~:sudo cp ~/cuda/include/cudnn.h /usr/local/cuda-10.1/include/<br>~:sudo cp ~/cuda/lib/libcudnn* /usr/local/cuda-10.1/lib/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">由于 cudnn的lib目录有软链接，所以在cuda里也要重建下</span><br></pre></td></tr></table></figure></p>
+<p>lrwxrwxrwx 1 user user   13 10月 28  2019 libcudnn.so -&gt; libcudnn.so.7<br>lrwxrwxrwx 1 user user   17 10月 28  2019 libcudnn.so.7 -&gt; libcudnn.so.7.6.5<br>-rwxr-xr-x 1 user user 409M 10月 28  2019 libcudnn.so.7.6.5<br>-rw-r—r— 1 user user 386M 10月 28  2019 libcudnn_static.a<br>```<br>按照这个关系重建即可，附加说明下在cudnn-8里，lib目录多出了两个其他的so文件，也是要重新配置软链接的。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/08/09/manjaro/manjaro20环境配置/">manjaro20环境配置</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 nomq 的个人博客">nomq</a></p>
+  <p><span>发布时间:</span>2020年08月09日 - 03:08</p>
+  <p><span>最后更新:</span>2020年08月10日 - 05:08</p>
+  <p><span>原始链接:</span><a href="/2020/08/09/manjaro/manjaro20环境配置/" title="manjaro20环境配置">https://jediobi.github.io/2020/08/09/manjaro/manjaro20环境配置/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://jediobi.github.io/2020/08/09/manjaro/manjaro20环境配置/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/arch/" rel="tag"># arch</a>
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+            <a href="/tags/cuda/" rel="tag"># cuda</a>
+          
+            <a href="/tags/win7/" rel="tag"># win7</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/02/nodejs/(15) redux与router/" rel="next" title="(15) redux与router">
+                <i class="fa fa-chevron-left"></i> (15) redux与router
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/koala_avatar.png" alt="nomq">
+  
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">222</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/JediObi" title="GitHub &rarr; https://github.com/JediObi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装"><span class="nav-number">1.</span> <span class="nav-text">1. 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-独立安装"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 独立安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-双系统安装"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 双系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-win7-manjaro20"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 win7 + manjaro20</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-win10-manjaro20"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 win10 + manjaro20</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-系统定制"><span class="nav-number">2.</span> <span class="nav-text">2. 系统定制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-首先配置镜像"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 首先配置镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-zsh"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-安装oh-my-zsh"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 安装oh-my-zsh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-安装p10k"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 安装p10k</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-安装其他插件"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 安装其他插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-history时间戳"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.2.4 history时间戳</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-neovim"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 neovim</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-安装neovim"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 安装neovim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-安装spacevim"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 安装spacevim</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-chrome浏览器"><span class="nav-number">2.4.</span> <span class="nav-text">2.3 chrome浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-安装chrome"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.3.1 安装chrome</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-安装vim插件"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.3.2 安装vim插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-搜狗输入法"><span class="nav-number">2.5.</span> <span class="nav-text">2.4 搜狗输入法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-JAVA环境配置"><span class="nav-number">3.</span> <span class="nav-text">3. JAVA环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-JS环境配置"><span class="nav-number">4.</span> <span class="nav-text">4. JS环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-nvm和node安装"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 nvm和node安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-此处简单介绍下hexo的配置"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 此处简单介绍下hexo的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-python环境配置"><span class="nav-number">5.</span> <span class="nav-text">5. python环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-环境配置"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-开发工具"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 开发工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-tensorflow"><span class="nav-number">5.3.</span> <span class="nav-text">5.2 tensorflow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-nvidia驱动和cuda"><span class="nav-number">5.4.</span> <span class="nav-text">5.3 nvidia驱动和cuda</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#cuda-安装目录-usr-local-cuda-10-1"><span class="nav-number"></span> <span class="nav-text">cuda 安装目录 /usr/local/cuda-10.1/</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cudnn-解压目录-home-username-cuda"><span class="nav-number"></span> <span class="nav-text">cudnn 解压目录 /home/username/cuda</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+
+  
+
+  
+</div>
+<!--
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  
+  
+  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>

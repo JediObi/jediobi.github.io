@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/koala_avatar.png?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="创建私链">
+<meta name="keywords" content="bitcoin,数字货币,private chain,私链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(13) Code (2) - private chain">
+<meta property="og:url" content="https://jediobi.github.io/2019/07/24/bitcoin/(13) Code (2) - private chain/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="创建私链">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-08T18:53:53.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(13) Code (2) - private chain">
+<meta name="twitter:description" content="创建私链">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://jediobi.github.io/2019/07/24/bitcoin/(13) Code (2) - private chain/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>(13) Code (2) - private chain | nomq</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">nomq</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/24/bitcoin/(13) Code (2) - private chain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/koala_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(13) Code (2) - private chain
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-24 22:13:07" itemprop="dateCreated datePublished" datetime="2019-07-24T22:13:07+08:00">2019-07-24</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/bitcoin/" itemprop="url" rel="index"><span itemprop="name">bitcoin</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>创建私链</p>
+<a id="more"></a>
+<h2 id="Code-2-private-chain"><a href="#Code-2-private-chain" class="headerlink" title="Code (2) - private chain"></a><strong>Code (2) - private chain</strong></h2><p>The most concise way to create private chain is that change the config parameters of the core code.<br>You can see these config parameters in <code>chainparams.cpp</code>. </p>
+<p>Now we start to create a private chain. </p>
+<h3 id="1-modify-the-genesis-block"><a href="#1-modify-the-genesis-block" class="headerlink" title="1. modify the genesis block"></a><strong>1. modify the genesis block</strong></h3><h4 id="1-1-modify-the-coinbase-info-of-genesis-block"><a href="#1-1-modify-the-coinbase-info-of-genesis-block" class="headerlink" title="1.1 modify the coinbase info of genesis block"></a><strong>1.1 modify the coinbase info of genesis block</strong></h4><ul>
+<li><h4 id="1-1-1-The-original-code"><a href="#1-1-1-The-original-code" class="headerlink" title="1.1.1 The original code"></a>1.1.1 The original code</h4><p>  <code>CreateGenesisBlock</code> to create genesis block. </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount&amp; genesisReward)</span><br><span class="line">&#123;</span><br><span class="line">    const char* pszTimestamp = &quot;The Times 03/Jan/2009 Chancellor on brink of second bailout for banks&quot;;</span><br><span class="line">    const CScript genesisOutputScript = CScript() &lt;&lt; ParseHex(&quot;04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f&quot;) &lt;&lt; OP_CHECKSIG;</span><br><span class="line">    return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="1-1-2-the-places-need-to-modify"><a href="#1-1-2-the-places-need-to-modify" class="headerlink" title="1.1.2 the places need to modify"></a>1.1.2 the places need to modify</h5><ol>
+<li><p>the code of create genesis block</p>
+<p> <code>genesis = CreateGenesisBlock(1231006505, 2083236893, 0x1d00ffff, 1, 50 * COIN);</code><br> 1231006505 nTime, the time of the block </p>
+</li>
+<li><p>set mining difficulty, the lowest difficulty </p>
+<p> <code>consensus.powLimit = uint256S(&quot;00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff&quot;);</code> </p>
+</li>
+<li><p>total amount of coins </p>
+<p> <code>consensus.nSubsidyHalvingInterval = 210000;</code> </p>
+</li>
+<li><p>change the initial reward </p>
+<p> <code>genesis = CreateGenesisBlock(1231006505, 2083236893, 0x1d00ffff, 1, 50 * COIN);</code><br> 50 * COIN is the inital reward. </p>
+</li>
+<li><p>change the time period of difficulty changing </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks to change difficulty</span><br><span class="line">consensus.nPowTargetSpacing = 10 * 60;  // the time interval of per block.</span><br><span class="line">consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-change-network-protocol-magic-number"><a href="#2-change-network-protocol-magic-number" class="headerlink" title="2. change network protocol magic number"></a><strong>2. change network protocol magic number</strong></h3><p>You can change it to any other byte. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pchMessageStart[0] = 0x0b;</span><br><span class="line">pchMessageStart[1] = 0x11;</span><br><span class="line">pchMessageStart[2] = 0x09;</span><br><span class="line">pchMessageStart[3] = 0x07;</span><br></pre></td></tr></table></figure>
+<h3 id="3-change-listen-port"><a href="#3-change-listen-port" class="headerlink" title="3. change listen port"></a><strong>3. change listen port</strong></h3><p><strong>chainparams.cpp</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nDefaultPort = <span class="number">18333</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>chianparamsbase.cpp</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nRPCPort=<span class="number">8332</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="4-change-the-definition-of-seed-connection"><a href="#4-change-the-definition-of-seed-connection" class="headerlink" title="4. change the definition of seed connection"></a><strong>4. change the definition of seed connection</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vSeeds.emplace_back(&quot;seed.bitcoin.sipa.be&quot;); // Pieter Wuille, only supports x1, x5, x9, and xd</span><br><span class="line">vSeeds.emplace_back(&quot;dnsseed.bluematt.me&quot;); // Matt Corallo, only supports x9</span><br><span class="line">vSeeds.emplace_back(&quot;dnsseed.bitcoin.dashjr.org&quot;); // Luke Dashjr</span><br><span class="line">vSeeds.emplace_back(&quot;seed.bitcoinstats.com&quot;); // Christian Decker, supports x1 - xf</span><br><span class="line">vSeeds.emplace_back(&quot;seed.bitcoin.jonasschnelli.ch&quot;); // Jonas Schnelli, only supports x1, x5, x9, and xd</span><br><span class="line">vSeeds.emplace_back(&quot;seed.btc.petertodd.org&quot;); // Peter Todd, only supports x1, x5, x9, and xd</span><br><span class="line">vSeeds.emplace_back(&quot;seed.bitcoin.sprovoost.nl&quot;); // Sjors Provoost</span><br></pre></td></tr></table></figure>
+<h3 id="5-change-the-prefixes-of-bitcoin"><a href="#5-change-the-prefixes-of-bitcoin" class="headerlink" title="5. change the prefixes of bitcoin"></a><strong>5. change the prefixes of bitcoin</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">base58Prefixes[PUBKEY_ADDRESS] = std::vector&lt;unsigned char&gt;(1,0);</span><br><span class="line">base58Prefixes[SCRIPT_ADDRESS] = std::vector&lt;unsigned char&gt;(1,5);</span><br><span class="line">base58Prefixes[SECRET_KEY] =     std::vector&lt;unsigned char&gt;(1,128);</span><br><span class="line">base58Prefixes[EXT_PUBLIC_KEY] = &#123;0x04, 0x88, 0xB2, 0x1E&#125;;</span><br><span class="line">base58Prefixes[EXT_SECRET_KEY] = &#123;0x04, 0x88, 0xAD, 0xE4&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="6-coinbase-maturity-confirmations"><a href="#6-coinbase-maturity-confirmations" class="headerlink" title="6. coinbase maturity confirmations"></a><strong>6. coinbase maturity confirmations</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */</span><br><span class="line">static const int COINBASE_MATURITY = 100;</span><br></pre></td></tr></table></figure>
+<h3 id="7-change-checkpoint"><a href="#7-change-checkpoint" class="headerlink" title="7. change checkpoint"></a><strong>7. change checkpoint</strong></h3><p>You can use the genesis block’s check point. check point is used to prevent forks.<br>You can start bitcoind once and get the genesis from logs. </p>
+<p>checkpointData = {<br>&emsp;&emsp;&emsp;&emsp;{}<br>}<br>the original code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">checkpointData = &#123;</span><br><span class="line">            &#123;</span><br><span class="line">                &#123; 11111, uint256S(&quot;0x0000000069e244f73d78e8fd29ba2fd2ed618bd6fa2ee92559f542fdb26e7c1d&quot;)&#125;,</span><br><span class="line">                &#123; 33333, uint256S(&quot;0x000000002dd5588a74784eaa7ab0507a18ad16a236e7b1ce69f00d7ddfb5d0a6&quot;)&#125;,</span><br><span class="line">                &#123; 74000, uint256S(&quot;0x0000000000573993a3c9e41ce34471c079dcf5f52a0e824a81e7f953b8661a20&quot;)&#125;,</span><br><span class="line">                &#123;105000, uint256S(&quot;0x00000000000291ce28027faea320c8d2b054b2e0fe44a773f3eefb151d6bdc97&quot;)&#125;,</span><br><span class="line">                &#123;134444, uint256S(&quot;0x00000000000005b12ffd4cd315cd34ffd4a594f430ac814c91184a0d42d2b0fe&quot;)&#125;,</span><br><span class="line">                &#123;168000, uint256S(&quot;0x000000000000099e61ea72015e79632f216fe6cb33d7899acb35b75c8303b763&quot;)&#125;,</span><br><span class="line">                &#123;193000, uint256S(&quot;0x000000000000059f452a5f7340de6682a977387c17010ff6e6c3bd83ca8b1317&quot;)&#125;,</span><br><span class="line">                &#123;210000, uint256S(&quot;0x000000000000048b95347e83192f69cf0366076336c639f9b7228e9ba171342e&quot;)&#125;,</span><br><span class="line">                &#123;216116, uint256S(&quot;0x00000000000001b4f4b433e81ee46494af945cf96014816a4e2370f11b23df4e&quot;)&#125;,</span><br><span class="line">                &#123;225430, uint256S(&quot;0x00000000000001c108384350f74090433e7fcf79a606b8e797f065b130575932&quot;)&#125;,</span><br><span class="line">                &#123;250000, uint256S(&quot;0x000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214&quot;)&#125;,</span><br><span class="line">                &#123;279000, uint256S(&quot;0x0000000000000001ae8c72a0b0c301f67e3afca10e819efa9041e458e9bd7e40&quot;)&#125;,</span><br><span class="line">                &#123;295000, uint256S(&quot;0x00000000000000004d9b4ef50f0f9d686fd69db2e03af35a100370c64632a983&quot;)&#125;,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="8-change-the-scriptPubKey"><a href="#8-change-the-scriptPubKey" class="headerlink" title="8. change the scriptPubKey"></a><strong>8. change the scriptPubKey</strong></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CScript genesisOutputScript = CScript() &lt;&lt; ParseHex(<span class="string">"04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f"</span>) &lt;&lt; OP_CHECKSIG;</span><br></pre></td></tr></table></figure>
+<h3 id="9-change-the-mining-algorithm"><a href="#9-change-the-mining-algorithm" class="headerlink" title="9. change the mining algorithm"></a><strong>9. change the mining algorithm</strong></h3><p>Bitcoind’s original mining algorithm is in miner.cpp ScanHash.<br>ScanHash will keep the block info’s first 5 fields (version, prev_block, merkle_root, timestamp, bits), totally 76 bytes, unchanged and via ergodic Nonce and then concat the 5 fields and Nonce to compute hash.<br>If the first K bytes is 0, then the hash is effective, mining susccess. </p>
+<p><strong>mining.cpp</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">UniValue <span class="title">generateBlocks</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;CReserveScript&gt; coinbaseScript, <span class="keyword">int</span> nGenerate, <span class="keyword">uint64_t</span> nMaxTries, <span class="keyword">bool</span> keepScript)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> nInnerLoopCount = <span class="number">0x10000</span>;</span><br><span class="line">    <span class="keyword">int</span> nHeightEnd = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nHeight = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    &#123;   <span class="comment">// Don't keep cs_main locked</span></span><br><span class="line">        LOCK(cs_main);</span><br><span class="line">        nHeight = chainActive.Height();</span><br><span class="line">        nHeightEnd = nHeight+nGenerate;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> nExtraNonce = <span class="number">0</span>;</span><br><span class="line">    <span class="function">UniValue <span class="title">blockHashes</span><span class="params">(UniValue::VARR)</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (nHeight &lt; nHeightEnd &amp;&amp; !ShutdownRequested())</span><br><span class="line">    &#123;</span><br><span class="line">	<span class="comment">//根据之前的参数创建一个没有hash的区块</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;CBlockTemplate&gt; pblocktemplate(BlockAssembler(Params()).CreateNewBlock(coinbaseScript-&gt;reserveScript));</span><br><span class="line">        <span class="keyword">if</span> (!pblocktemplate.get())</span><br><span class="line">            <span class="keyword">throw</span> JSONRPCError(RPC_INTERNAL_ERROR, <span class="string">"Couldn't create new block"</span>);</span><br><span class="line">	<span class="comment">// 把模板创建的区块 赋值给标准的区块</span></span><br><span class="line">        CBlock *pblock = &amp;pblocktemplate-&gt;block;</span><br><span class="line"><span class="comment">//获取Nonce</span></span><br><span class="line">        &#123;</span><br><span class="line">            LOCK(cs_main);</span><br><span class="line">            IncrementExtraNonce(pblock, chainActive.Tip(), nExtraNonce);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//Nonce重复执行，同时验证工作量，通过pblock GetHash()获得当前block的hash值。</span></span><br><span class="line">        <span class="keyword">while</span> (nMaxTries &gt; <span class="number">0</span> &amp;&amp; pblock-&gt;nNonce &lt; nInnerLoopCount &amp;&amp; !CheckProofOfWork(pblock-&gt;GetHash(), pblock-&gt;nBits, Params().GetConsensus())) &#123;</span><br><span class="line">            ++pblock-&gt;nNonce;</span><br><span class="line">            --nMaxTries;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (nMaxTries == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (pblock-&gt;nNonce == nInnerLoopCount) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;<span class="keyword">const</span> CBlock&gt; shared_pblock = <span class="built_in">std</span>::make_shared&lt;<span class="keyword">const</span> CBlock&gt;(*pblock);</span><br><span class="line">        <span class="keyword">if</span> (!ProcessNewBlock(Params(), shared_pblock, <span class="literal">true</span>, <span class="literal">nullptr</span>))</span><br><span class="line">            <span class="keyword">throw</span> JSONRPCError(RPC_INTERNAL_ERROR, <span class="string">"ProcessNewBlock, block not accepted"</span>);</span><br><span class="line">        ++nHeight;</span><br><span class="line">        blockHashes.push_back(pblock-&gt;GetHash().GetHex());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//mark script as important because it was used at least for one coinbase output if the script came from the wallet</span></span><br><span class="line">        <span class="keyword">if</span> (keepScript)</span><br><span class="line">        &#123;</span><br><span class="line">            coinbaseScript-&gt;KeepScript();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> blockHashes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过为CBlock对象各字段赋值，然后调用GetHash()通过底层的CHash256和CSHA256等类来计算hash，然后验证工作量。 </p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/07/24/bitcoin/(13) Code (2) - private chain/">(13) Code (2) - private chain</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 nomq 的个人博客">nomq</a></p>
+  <p><span>发布时间:</span>2019年07月24日 - 22:07</p>
+  <p><span>最后更新:</span>2020年08月09日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2019/07/24/bitcoin/(13) Code (2) - private chain/" title="(13) Code (2) - private chain">https://jediobi.github.io/2019/07/24/bitcoin/(13) Code (2) - private chain/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://jediobi.github.io/2019/07/24/bitcoin/(13) Code (2) - private chain/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/bitcoin/" rel="tag"># bitcoin</a>
+          
+            <a href="/tags/数字货币/" rel="tag"># 数字货币</a>
+          
+            <a href="/tags/private-chain/" rel="tag"># private chain</a>
+          
+            <a href="/tags/私链/" rel="tag"># 私链</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/24/bitcoin/(12) Usage - rpc/" rel="next" title="(12) Usage - rpc">
+                <i class="fa fa-chevron-left"></i> (12) Usage - rpc
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/24/bitcoin/(14) DataStructure - address/" rel="prev" title="(14) DataStructure - address">
+                (14) DataStructure - address <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/koala_avatar.png" alt="nomq">
+  
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">222</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/JediObi" title="GitHub &rarr; https://github.com/JediObi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-2-private-chain"><span class="nav-number">1.</span> <span class="nav-text">Code (2) - private chain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-modify-the-genesis-block"><span class="nav-number">1.1.</span> <span class="nav-text">1. modify the genesis block</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-modify-the-coinbase-info-of-genesis-block"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 modify the coinbase info of genesis block</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-The-original-code"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.1 The original code</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-2-the-places-need-to-modify"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.1.2 the places need to modify</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-change-network-protocol-magic-number"><span class="nav-number">1.2.</span> <span class="nav-text">2. change network protocol magic number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-change-listen-port"><span class="nav-number">1.3.</span> <span class="nav-text">3. change listen port</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-change-the-definition-of-seed-connection"><span class="nav-number">1.4.</span> <span class="nav-text">4. change the definition of seed connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-change-the-prefixes-of-bitcoin"><span class="nav-number">1.5.</span> <span class="nav-text">5. change the prefixes of bitcoin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-coinbase-maturity-confirmations"><span class="nav-number">1.6.</span> <span class="nav-text">6. coinbase maturity confirmations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-change-checkpoint"><span class="nav-number">1.7.</span> <span class="nav-text">7. change checkpoint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-change-the-scriptPubKey"><span class="nav-number">1.8.</span> <span class="nav-text">8. change the scriptPubKey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-change-the-mining-algorithm"><span class="nav-number">1.9.</span> <span class="nav-text">9. change the mining algorithm</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+
+  
+
+  
+</div>
+<!--
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  
+  
+  <script size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>
