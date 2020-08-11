@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="react 快速开始对于webpack来说，html也是资源文件的一种，需要为webpack引入相关插件，webpack才会识别html，并且可以在编译时注入相关的jswebpack4">
@@ -104,6 +104,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -133,11 +134,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -234,7 +262,7 @@
 <p><strong>2.3 code javascript</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// console.log('Hello, this is a test!');</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"hello, this is a test!"</span>);</span><br></pre></td></tr></table></figure></p>
 <h3 id="3-html-config-in-webpack-config-js"><a href="#3-html-config-in-webpack-config-js" class="headerlink" title="3. html config in webpack.config.js"></a><strong>3. html config in webpack.config.js</strong></h3><p>This config will use public/index.html as a template to create build/index.html and inject <code>bundle.js</code> into build/index.html.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:  path.resolve(__dirname,<span class="string">'src/index.js'</span>),</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'build/static/js'</span>),</span><br><span class="line">        filename: <span class="string">'bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            inject: <span class="literal">true</span>, </span><br><span class="line">            template: path.resolve(__dirname, <span class="string">'public/index.html'</span>),</span><br><span class="line">            filename: path.resolve(__dirname,<span class="string">'build/index.html'</span>),</span><br><span class="line">            minify:&#123;</span><br><span class="line">                removeAttributeQuotes: <span class="literal">true</span>,</span><br><span class="line">                collapseWhitespace: <span class="literal">true</span>,</span><br><span class="line">                removeRedundantAttributes: <span class="literal">true</span>,</span><br><span class="line">                useShortDoctype: <span class="literal">true</span>,</span><br><span class="line">                removeEmptyAttributes: <span class="literal">true</span>,</span><br><span class="line">                removeStyleLinkTypeAttributes: <span class="literal">true</span>,</span><br><span class="line">                keepClosingSlash: <span class="literal">true</span>,</span><br><span class="line">                minifyJS: <span class="literal">true</span>,</span><br><span class="line">                minifyCSS: <span class="literal">true</span>,</span><br><span class="line">                minifyURLs: <span class="literal">true</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>inject:<code>true</code> means inject all js at the bottom of the <body><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></p>
+<p>inject:<code>true</code> means inject all js at the bottom of the <body><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":35,"vOffset":-35},"mobile":{"show":true},"react":{"opacity":1}});</script></body></p>
 <h3 id="4-build-project"><a href="#4-build-project" class="headerlink" title="4. build project"></a><strong>4. build project</strong></h3><ul>
 <li><h4 id="4-1-command"><a href="#4-1-command" class="headerlink" title="4.1 command"></a>4.1 command</h4><p>  <code>~:npm run build</code></p>
 </li>
@@ -420,6 +448,7 @@
 
 
 
+  <script src="/js/local-search.js"></script>
 
 
 
@@ -430,12 +459,53 @@
 
 
 
+
+
+  
 
   
 
   
 
-  
+    <script>
+        console.log("this is just a test");
+        document.addEventListener('DOMContentLoaded', () => {
+            var opacitySet = false;
+            window.onscroll = function(){
+                // 当前窗口body的top位置相对于全文高度所处的高度
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var content = document.body;
+                // 窗口高度
+                var viewH = content.clientHeight;
+                // 当前body的全部高度
+                var ch = content.scrollHeight;
+                var opacityH = ch - viewH - scrollTop;
+                var live2dWidget = document.querySelector("#live2d-widget");
+                if(live2dWidget != undefined && live2dWidget != null ){
+                    var bottom = live2dWidget.getBoundingClientRect().bottom;
+                    var bottomHD = bottom - viewH;
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+                    if(bottomHD<=36){
+                        if(opacitySet){
+                            opacitySet = false;
+                           live2dWidget.style.opacity=1; 
+                        }
+                        return;
+                    }
+                    if (opacityH<=200 && !opacitySet){
+                        live2dWidget.style.opacity=0.5;
+                        opacitySet = true;
+                        // console.log("滚动距离" + scrollTop+",视觉高度"+viewH+",内容高度"+ch);
+                    }else if(opacityH>200 && opacitySet){
+                        live2dWidget.style.opacity=1;
+                        opacitySet = false;
+                    }
+                }
+                // console.log("滚动距离" + scrollTop+",视觉高度"+viewH+",内容高度"+ch);
+            }
+        });
+
+    </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":35,"vOffset":-35},"mobile":{"show":true},"react":{"opacity":1}});</script></body>
 </html>
