@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f95b18;
+  background: #b8f1f0;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2671,11 +2671,11 @@ mjx-container + br {
   }
 }
 div.live2d-widget-container {
-  bottom: -35px;
+  right: 40px !important;
 }
 @media (max-width: 991px) {
   div.live2d-widget-container {
-    bottom: -55px !important;
+    right: 35px !important;
   }
 }
 .header-inner {

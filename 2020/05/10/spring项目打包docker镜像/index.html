@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="使用dockerfile maven插件把spring项目打包成docker镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到nexus私服。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-08-08T18:53:53.754Z">
+<meta property="og:updated_time" content="2020-09-12T13:52:47.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring项目打包docker镜像">
 <meta name="twitter:description" content="使用dockerfile maven插件把spring项目打包成docker镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到nexus私服。">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+                <time title="Modified: 2020-09-12 21:52:47" itemprop="dateModified" datetime="2020-09-12T21:52:47+08:00">2020-09-12</time>
               </span>
 
           
@@ -234,11 +234,22 @@
       
         <p>使用dockerfile maven插件把spring项目打包成docker镜像。<br>本文除了打包，还包含加载镜像创建容器，把镜像上传到nexus私服。</p>
 <a id="more"></a>
-<h3 id="1-pom配置"><a href="#1-pom配置" class="headerlink" title="(1) pom配置"></a>(1) pom配置</h3><p>spring项目一般会配置 spring maven插件。<br>本文打包需要 dockerfile maven插件</p>
+<h2 id="1-pom配置"><a href="#1-pom配置" class="headerlink" title="1. pom配置"></a>1. pom配置</h2><p>spring项目一般会配置 spring maven插件。<br>本文打包需要 dockerfile maven插件</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在service文件里修改。默认的这个文件归属于docker用户组和超级用户，所以普通用户需要添加到docker组。</p>
-<p>sudo gpasswd -a user_name docker<br>刷新用户组，只对当前会话有效<br>newgrp docker<br>删除用户<br>sudo gpasswd -d user_name docker</p>
-<p>docker方式也支持tcp监听，本地测试不需要开启。在service里配置，一般开启远程就是指开启tcp监听，如果需要在远程服务器上上传镜像，一般是需要开启这个的。</p>
+<h2 id="2-linux-docker配置"><a href="#2-linux-docker配置" class="headerlink" title="2. linux docker配置"></a>2. linux docker配置</h2><p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在service文件里修改。默认的这个文件归属于docker用户组和超级用户，普通用户组没有权限操作这个文件，所以普通用户需要添加到docker组。</p>
+<p>可能系统默认不开启docker，开启之后会影响性能尤其是安装了k8s之后，所以可能需要手动开启docker进程。</p>
+<ul>
+<li><p>命令：添加到docker用户组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -a user_name docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>权限生效，命令或重启电脑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 刷新用户组，只对当前会话有效</span><br><span class="line">~:newgrp docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令：从docker用户组删除用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -d user_name docker</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>docker也支持tcp监听，本地测试不需要开启。在service里配置，一般开启远程就是指开启tcp监听，如果需要在远程服务器上上传镜像，一般是需要开启这个的。</p>
 
     </div>
 
@@ -319,7 +330,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-pom配置"><span class="nav-text">(1) pom配置</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-pom配置"><span class="nav-text">1. pom配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-linux-docker配置"><span class="nav-text">2. linux docker配置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -435,43 +446,103 @@
   
 
     <script>
-        console.log("this is just a test");
-        document.addEventListener('DOMContentLoaded', () => {
-            var opacitySet = false;
-            window.onscroll = function(){
-                // 当前窗口body的top位置相对于全文高度所处的高度
-                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                var content = document.body;
-                // 窗口高度
-                var viewH = content.clientHeight;
-                // 当前body的全部高度
-                var ch = content.scrollHeight;
-                var opacityH = ch - viewH - scrollTop;
-                var live2dWidget = document.querySelector("#live2d-widget");
-                if(live2dWidget != undefined && live2dWidget != null ){
-                    var bottom = live2dWidget.getBoundingClientRect().bottom;
-                    var bottomHD = bottom - viewH;
+        var isDesktopEnv = true;
+        var isTransparentActive = false;
+        var transparentActiveHeight = 200;
 
-                    if(bottomHD<=36){
-                        if(opacitySet){
-                            opacitySet = false;
-                           live2dWidget.style.opacity=1; 
-                        }
-                        return;
-                    }
-                    if (opacityH<=200 && !opacitySet){
-                        live2dWidget.style.opacity=0.5;
-                        opacitySet = true;
-                        // console.log("滚动距离" + scrollTop+",视觉高度"+viewH+",内容高度"+ch);
-                    }else if(opacityH>200 && opacitySet){
-                        live2dWidget.style.opacity=1;
-                        opacitySet = false;
-                    }
+        /**
+        * 组件加载时
+        * 初始化系统环境变量：桌面 or 移动端
+        * 初始化live2d的透明度
+        * 桌面与移动端切换时修改透明度及live2d bottom
+        **/
+        function initLive2dOpacityAndBottomOnload() {
+            // console.log("初始化");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            if(windowMatch.matches){
+                isDesktopEnv = false;
+            }else{
+                return;
+            }
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                if(!isDesktopEnv){
+                    live2dWidget.style.bottom = "-55px";
+                }else{
+                    live2dWidget.style.bottom = "-35px";
                 }
-                // console.log("滚动距离" + scrollTop+",视觉高度"+viewH+",内容高度"+ch);
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        /**
+        * 页面滚动时修改live2d透明度
+        **/
+        function changeLive2dOpacityAndBottomOnScroll() {
+            // console.log("滑动");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            var isDesktop = !windowMatch.matches;
+
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                // env mobile -> desktop
+                if(!isDesktopEnv && isDesktop){
+                    live2dWidget.style.bottom = "-55px";
+                }else if(isDesktopEnv && !isDesktop){
+                    live2dWidget.style.bottom = "-35px";
+                }
+                // env desktop -> mobile
+                if(isDesktop){
+                    if(isTransparentActive){
+                        isTransparentActive = false;
+                        live2dWidget.style.opacity = 1;
+                    }
+                    return;
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.onload = function () {
+                initLive2dOpacityAndBottomOnload();
+            }
+
+            window.onscroll = function(){
+                changeLive2dOpacityAndBottomOnScroll();
             }
         });
-
     </script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":35,"vOffset":-35},"mobile":{"show":true},"react":{"opacity":1}});</script></body>

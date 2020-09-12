@@ -21,7 +21,7 @@
   </script>
 
   <meta name="description" content="fabric可以通过指定脚本文件运行特定的任务，这样不同的环境就可以执行不同的脚本。 最新版本可能是通过指定文件夹的方式指定运行的脚本目录。在之前的版本里可以直接指定脚本文件。">
-<meta name="keywords" content="python,python3,ssh,fabric">
+<meta name="keywords" content="python3,python,ssh,fabric">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fabric (8) task collection">
 <meta property="og:url" content="https://jediobi.github.io/2019/07/31/python3/fabric-8-task-collection/index.html">
@@ -266,8 +266,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
               <a href="/tags/python3/" rel="tag"># python3</a>
+              <a href="/tags/python/" rel="tag"># python</a>
               <a href="/tags/ssh/" rel="tag"># ssh</a>
               <a href="/tags/fabric/" rel="tag"># fabric</a>
           </div>
@@ -458,43 +458,103 @@
   
 
     <script>
-        console.log("this is just a test");
-        document.addEventListener('DOMContentLoaded', () => {
-            var opacitySet = false;
-            window.onscroll = function(){
-                // 当前窗口body的top位置相对于全文高度所处的高度
-                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                var content = document.body;
-                // 窗口高度
-                var viewH = content.clientHeight;
-                // 当前body的全部高度
-                var ch = content.scrollHeight;
-                var opacityH = ch - viewH - scrollTop;
-                var live2dWidget = document.querySelector("#live2d-widget");
-                if(live2dWidget != undefined && live2dWidget != null ){
-                    var bottom = live2dWidget.getBoundingClientRect().bottom;
-                    var bottomHD = bottom - viewH;
+        var isDesktopEnv = true;
+        var isTransparentActive = false;
+        var transparentActiveHeight = 200;
 
-                    if(bottomHD<=36){
-                        if(opacitySet){
-                            opacitySet = false;
-                           live2dWidget.style.opacity=1; 
-                        }
-                        return;
-                    }
-                    if (opacityH<=200 && !opacitySet){
-                        live2dWidget.style.opacity=0.5;
-                        opacitySet = true;
-                        // console.log("滚动距离" + scrollTop+",视觉高度"+viewH+",内容高度"+ch);
-                    }else if(opacityH>200 && opacitySet){
-                        live2dWidget.style.opacity=1;
-                        opacitySet = false;
-                    }
+        /**
+        * 组件加载时
+        * 初始化系统环境变量：桌面 or 移动端
+        * 初始化live2d的透明度
+        * 桌面与移动端切换时修改透明度及live2d bottom
+        **/
+        function initLive2dOpacityAndBottomOnload() {
+            // console.log("初始化");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            if(windowMatch.matches){
+                isDesktopEnv = false;
+            }else{
+                return;
+            }
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                if(!isDesktopEnv){
+                    live2dWidget.style.bottom = "-55px";
+                }else{
+                    live2dWidget.style.bottom = "-35px";
                 }
-                // console.log("滚动距离" + scrollTop+",视觉高度"+viewH+",内容高度"+ch);
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        /**
+        * 页面滚动时修改live2d透明度
+        **/
+        function changeLive2dOpacityAndBottomOnScroll() {
+            // console.log("滑动");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            var isDesktop = !windowMatch.matches;
+
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                // env mobile -> desktop
+                if(!isDesktopEnv && isDesktop){
+                    live2dWidget.style.bottom = "-55px";
+                }else if(isDesktopEnv && !isDesktop){
+                    live2dWidget.style.bottom = "-35px";
+                }
+                // env desktop -> mobile
+                if(isDesktop){
+                    if(isTransparentActive){
+                        isTransparentActive = false;
+                        live2dWidget.style.opacity = 1;
+                    }
+                    return;
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.onload = function () {
+                initLive2dOpacityAndBottomOnload();
+            }
+
+            window.onscroll = function(){
+                changeLive2dOpacityAndBottomOnScroll();
             }
         });
-
     </script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":35,"vOffset":-35},"mobile":{"show":true},"react":{"opacity":1}});</script></body>
