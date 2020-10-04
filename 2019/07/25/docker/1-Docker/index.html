@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="docker的安装配置。操作，镜像管理。连接实例。终端融合。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-08-08T18:53:53.740Z">
+<meta property="og:updated_time" content="2020-09-20T14:58:02.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(1) Docker">
 <meta name="twitter:description" content="docker的安装配置。操作，镜像管理。连接实例。终端融合。">
@@ -219,7 +219,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+                <time title="Modified: 2020-09-20 22:58:02" itemprop="dateModified" datetime="2020-09-20T22:58:02+08:00">2020-09-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -310,7 +310,22 @@
 <p>  <code>docker network inspect bridge</code></p>
 </li>
 </ul>
-<h3 id="9-注意"><a href="#9-注意" class="headerlink" title="9. 注意"></a><strong>9. 注意</strong></h3><p>禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</p>
+<h3 id="9-注意"><a href="#9-注意" class="headerlink" title="9. 注意"></a><strong>9. 注意</strong></h3><h4 id="9-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind"><a href="#9-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind" class="headerlink" title="9.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind"></a>9.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</h4><h4 id="9-2-权限设置"><a href="#9-2-权限设置" class="headerlink" title="9.2 权限设置"></a>9.2 权限设置</h4><p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在service文件里修改。默认的这个文件归属于docker用户组和超级用户，普通用户组没有权限操作这个文件，所以普通用户需要添加到docker组。</p>
+<p>可能系统默认不开启docker，开启之后会影响性能尤其是安装了k8s之后，所以可能需要手动开启docker进程。</p>
+<ul>
+<li><p>命令：添加到docker用户组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -a user_name docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>权限生效，命令或重启电脑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 刷新用户组，只对当前会话有效</span><br><span class="line">~:newgrp docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令：从docker用户组删除用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -d user_name docker</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>docker也支持tcp监听，本地测试不需要开启。在service里配置，一般开启远程就是指开启tcp监听，如果需要在远程服务器上上传镜像，一般是需要开启这个的。</p>
+<h4 id="9-3-linux上的用户界面-cockpit"><a href="#9-3-linux上的用户界面-cockpit" class="headerlink" title="9.3 linux上的用户界面 cockpit"></a>9.3 linux上的用户界面 cockpit</h4><p>manajro 安装cockpit，然后在启动<code>systemctl start cockpit</code>。</p>
+<p>然后打开浏览器<code>https://localhost:9090</code>，用户名与密码就是当前系统的用户名和密码，可以方便的管理容器。</p>
 
     </div>
 
@@ -394,7 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-install-docker"><span class="nav-text">1. install docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-docker-mirrors"><span class="nav-text">2. docker mirrors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-etc-docker-daemon-json"><span class="nav-text">2.1 /etc/docker/daemon.json</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-docker-command"><span class="nav-text">3. docker command</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-run"><span class="nav-text">3.1 run</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-ps"><span class="nav-text">3.2 ps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-logs"><span class="nav-text">3.3 logs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-stop"><span class="nav-text">3.4 stop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-—help"><span class="nav-text">3.5 —help</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-pull"><span class="nav-text">3.6 pull</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-images"><span class="nav-text">3.7 images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-port"><span class="nav-text">3.8 port</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-rm"><span class="nav-text">3.9 rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10-search"><span class="nav-text">3.10 search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-11-commit"><span class="nav-text">3.11 commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-12-tag"><span class="nav-text">3.12 tag</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-docker-run命令补充"><span class="nav-text">4. docker run命令补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-attach-the-same-docker-terminal"><span class="nav-text">5. attach the same docker terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-exec-execute-another-terminal"><span class="nav-text">6. exec execute another terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-轻量级linux镜像-alpine"><span class="nav-text">7. 轻量级linux镜像 alpine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-其他命令"><span class="nav-text">8. 其他命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-注意"><span class="nav-text">9. 注意</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-install-docker"><span class="nav-text">1. install docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-docker-mirrors"><span class="nav-text">2. docker mirrors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-etc-docker-daemon-json"><span class="nav-text">2.1 /etc/docker/daemon.json</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-docker-command"><span class="nav-text">3. docker command</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-run"><span class="nav-text">3.1 run</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-ps"><span class="nav-text">3.2 ps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-logs"><span class="nav-text">3.3 logs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-stop"><span class="nav-text">3.4 stop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-—help"><span class="nav-text">3.5 —help</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-pull"><span class="nav-text">3.6 pull</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-images"><span class="nav-text">3.7 images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-port"><span class="nav-text">3.8 port</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-rm"><span class="nav-text">3.9 rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10-search"><span class="nav-text">3.10 search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-11-commit"><span class="nav-text">3.11 commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-12-tag"><span class="nav-text">3.12 tag</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-docker-run命令补充"><span class="nav-text">4. docker run命令补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-attach-the-same-docker-terminal"><span class="nav-text">5. attach the same docker terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-exec-execute-another-terminal"><span class="nav-text">6. exec execute another terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-轻量级linux镜像-alpine"><span class="nav-text">7. 轻量级linux镜像 alpine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-其他命令"><span class="nav-text">8. 其他命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-注意"><span class="nav-text">9. 注意</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind"><span class="nav-text">9.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-权限设置"><span class="nav-text">9.2 权限设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-linux上的用户界面-cockpit"><span class="nav-text">9.3 linux上的用户界面 cockpit</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
