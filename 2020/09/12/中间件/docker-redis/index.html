@@ -21,18 +21,19 @@
   </script>
 
   <meta name="description" content="本文使用基于alpine的redis镜像。简单的配置一个redis集群。">
+<meta name="keywords" content="docker,redis,中间件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-redis">
-<meta property="og:url" content="https://jediobi.github.io/2020/09/12/docker-redis/index.html">
+<meta property="og:url" content="https://jediobi.github.io/2020/09/12/中间件/docker-redis/index.html">
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="本文使用基于alpine的redis镜像。简单的配置一个redis集群。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-09-20T14:57:13.121Z">
+<meta property="og:updated_time" content="2020-11-02T15:11:41.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-redis">
 <meta name="twitter:description" content="本文使用基于alpine的redis镜像。简单的配置一个redis集群。">
 
-<link rel="canonical" href="https://jediobi.github.io/2020/09/12/docker-redis/">
+<link rel="canonical" href="https://jediobi.github.io/2020/09/12/中间件/docker-redis/">
 
 
 <script id="page-configurations">
@@ -188,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2020/09/12/docker-redis/">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2020/09/12/中间件/docker-redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/koala_avatar.png">
@@ -218,8 +219,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-20 22:57:13" itemprop="dateModified" datetime="2020-09-20T22:57:13+08:00">2020-09-20</time>
+                <time title="Modified: 2020-11-02 23:11:41" itemprop="dateModified" datetime="2020-11-02T23:11:41+08:00">2020-11-02</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+                </span>
+            </span>
 
           
 
@@ -237,6 +247,7 @@
 <h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="1-1-镜像下载"><a href="#1-1-镜像下载" class="headerlink" title="1.1 镜像下载"></a>1.1 镜像下载</h3><p>可以去dockerhub上搜索redis镜像的各种tag，文章发布时使用的版本<code>redis:alpine3.12</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker pull redis:alpine3.12</span><br></pre></td></tr></table></figure>
 <h3 id="1-2-运行单实例"><a href="#1-2-运行单实例" class="headerlink" title="1.2 运行单实例"></a>1.2 运行单实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker run --name redis-test -p 6379:6379 -v /etc/localtime:/etc/localtime:ro -itd redis:alpine3.12</span><br></pre></td></tr></table></figure>
+<p>带密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name redis-test -p 6379:6379 -v /etc/localtime:/etc/localtime:ro redis:alpine3.12 --requirepass &quot;123456&quot;</span><br></pre></td></tr></table></figure></p>
 <h3 id="1-3-运行集群"><a href="#1-3-运行集群" class="headerlink" title="1.3 运行集群"></a>1.3 运行集群</h3><h4 id="1-3-1-创建redis管理的集群"><a href="#1-3-1-创建redis管理的集群" class="headerlink" title="1.3.1 创建redis管理的集群"></a>1.3.1 创建redis管理的集群</h4><h4 id="1-3-2-创建k8s管理的集群"><a href="#1-3-2-创建k8s管理的集群" class="headerlink" title="1.3.2 创建k8s管理的集群"></a>1.3.2 创建k8s管理的集群</h4>
     </div>
 
@@ -245,6 +256,11 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+              <a href="/tags/redis/" rel="tag"># redis</a>
+              <a href="/tags/中间件/" rel="tag"># 中间件</a>
+          </div>
 
         
 
@@ -256,7 +272,7 @@
       <i class="fa fa-chevron-left"></i> manjaro20环境配置
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/09/12/docker-rocketmq/" rel="next" title="docker-rocketmq">
+    <a href="/2020/09/12/中间件/docker-rocketmq/" rel="next" title="docker-rocketmq">
       docker-rocketmq <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -333,7 +349,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">229</span>
+          <span class="site-state-item-count">230</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -346,7 +362,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">190</span>
+        <span class="site-state-item-count">192</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
