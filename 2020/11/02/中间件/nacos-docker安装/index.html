@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="使用nacos的docker容器配置测试环境">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-11-02T15:11:17.762Z">
+<meta property="og:updated_time" content="2020-11-03T15:33:34.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nacos-docker安装">
 <meta name="twitter:description" content="使用nacos的docker容器配置测试环境">
@@ -211,10 +211,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-02 22:49:16 / Modified: 23:11:17" itemprop="dateCreated datePublished" datetime="2020-11-02T22:49:16+08:00">2020-11-02</time>
+              <time title="Created: 2020-11-02 22:49:16" itemprop="dateCreated datePublished" datetime="2020-11-02T22:49:16+08:00">2020-11-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-03 23:33:34" itemprop="dateModified" datetime="2020-11-03T23:33:34+08:00">2020-11-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -244,7 +250,156 @@
 <h2 id="2-创建nacos容器"><a href="#2-创建nacos容器" class="headerlink" title="2. 创建nacos容器"></a>2. 创建nacos容器</h2><p>镜像： nacos/nacos-server</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name nacos-test -p 8848:8848 \ </span><br><span class="line">-v /home/username/work/docker/nacos/logs:/home/nacos/logs \ </span><br><span class="line">-e MODE=standalone \ </span><br><span class="line">-e SPRING_DATASOURCE_PLATFORM=mysql \</span><br><span class="line">-e MYSQL_SERVICE_HOST=172.17.0.2 \</span><br><span class="line">-e MSYQL_SERVICE_USER=root \</span><br><span class="line">-e MYSQL_SERVICE_PASSWORD=123456 \</span><br><span class="line">-e MYSQL_SERVICE_DB_NAME=nacos \</span><br><span class="line">nacos/nacos-server</span><br></pre></td></tr></table></figure>
 <p>以上配置使用默认的8848端口</p>
-<p>env参数及默认值如下<br>|参数名|介绍|默认值|<br>|——|——|——|<br>|MODE|    cluster/standalone    |cluster/standalone default cluster<br>|NACOS_SERVERS|    nacos cluster address|    eg. ip1:port1 ip2:port2 ip3:port3<br>|PREFER_HOST_MODE|    Whether hostname are supported|    hostname/ip default ip|<br>|NACOS_APPLICATION_PORT|    nacos server port|    default 8848<br>|NACOS_SERVER_IP|    custom nacos server ip when network was mutil-network|<br>|SPRING_DATASOURCE_PLATFORM|    standalone support mysql|    mysql / empty default empty|<br>|MYSQL_SERVICE_HOST|    mysql host|<br>|MYSQL_SERVICE_PORT|    mysql database port|    default : 3306|<br>|MYSQL_SERVICE_DB_NAME|    mysql database name||<br>|MYSQL_SERVICE_USER|    username of database|    |<br>|MYSQL_SERVICE_PASSWORD|    password of database||<br>|MYSQL_DATABASE_NUM|    It indicates the number of database|    default :1||<br>|MYSQL_SERVICE_DB_PARAM|    Database url parameter|    default : characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true|<br>|JVM_XMS|    -Xms|    default :2g|<br>|JVM_XMX|    -Xmx|    default :2g|<br>|JVM_XMN|    -Xmn|    default :1g|<br>|JVM_MS|    -XX:MetaspaceSize|    default :128m|<br>|JVM_MMS|    -XX:MaxMetaspaceSize|    default :320m|<br>|NACOS_DEBUG|    enable remote debug|    y/n default :n|<br>|TOMCAT_ACCESSLOG_ENABLED|    server.tomcat.accesslog.enabled    |default :false|<br>|NACOS_AUTH_SYSTEM_TYPE|    The auth system to use, currently only ‘nacos’ is supported|    default :nacos|<br>|NACOS_AUTH_ENABLE|    If turn on auth system|    default :false|<br>|NACOS_AUTH_TOKEN_EXPIRE_SECONDS|    The token expiration in seconds|    default :18000|<br>|NACOS_AUTH_TOKEN|    The default token|    default :SecretKey012345678901234567890123456789012345678901234567890123456789|<br>|NACOS_AUTH_CACHE_ENABLE|    Turn on/off caching of auth information. By turning on this switch, the update of auth information would have a 15 seconds delay.|    default : false|<br>|MEMBER_LIST|    Set the cluster list with a configuration file or command-line argument|    eg:192.168.16.101:8847?raft_port=8807,192.168.16.101?raft_port=8808,192.168.16.101:8849?raft_port=8809|<br>|EMBEDDED_STORAGE|    Use embedded storage in cluster mode without mysql    embedded| default : none|</p>
+<p>env参数及默认值如下</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>介绍</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MODE</td>
+<td>cluster/standalone</td>
+<td>cluster/standalone default cluster</td>
+</tr>
+<tr>
+<td>NACOS_SERVERS</td>
+<td>nacos cluster address</td>
+<td>eg. ip1:port1 ip2:port2 ip3:port3</td>
+</tr>
+<tr>
+<td>PREFER_HOST_MODE</td>
+<td>Whether hostname are supported</td>
+<td>hostname/ip default ip</td>
+</tr>
+<tr>
+<td>NACOS_APPLICATION_PORT</td>
+<td>nacos server port</td>
+<td>default 8848</td>
+</tr>
+<tr>
+<td>NACOS_SERVER_IP</td>
+<td>custom nacos server ip when network was mutil-network</td>
+<td></td>
+</tr>
+<tr>
+<td>SPRING_DATASOURCE_PLATFORM</td>
+<td>standalone support mysql</td>
+<td>mysql / empty default empty</td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_HOST</td>
+<td>mysql host</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_PORT</td>
+<td>mysql database port</td>
+<td>default : 3306</td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_DB_NAME</td>
+<td>mysql database name</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_USER</td>
+<td>username of database</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_PASSWORD</td>
+<td>password of database</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_DATABASE_NUM</td>
+<td>It indicates the number of database</td>
+<td>default :1</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_DB_PARAM</td>
+<td>Database url parameter</td>
+<td>default : characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true</td>
+</tr>
+<tr>
+<td>JVM_XMS</td>
+<td>-Xms</td>
+<td>default :2g</td>
+</tr>
+<tr>
+<td>JVM_XMX</td>
+<td>-Xmx</td>
+<td>default :2g</td>
+</tr>
+<tr>
+<td>JVM_XMN</td>
+<td>-Xmn</td>
+<td>default :1g</td>
+</tr>
+<tr>
+<td>JVM_MS</td>
+<td>-XX:MetaspaceSize</td>
+<td>default :128m</td>
+</tr>
+<tr>
+<td>JVM_MMS</td>
+<td>-XX:MaxMetaspaceSize</td>
+<td>default :320m</td>
+</tr>
+<tr>
+<td>NACOS_DEBUG</td>
+<td>enable remote debug</td>
+<td>y/n default :n</td>
+</tr>
+<tr>
+<td>TOMCAT_ACCESSLOG_ENABLED</td>
+<td>server.tomcat.accesslog.enabled</td>
+<td>default :false</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_SYSTEM_TYPE</td>
+<td>The auth system to use, currently only ‘nacos’ is supported</td>
+<td>default :nacos</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_ENABLE</td>
+<td>If turn on auth system</td>
+<td>default :false</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_TOKEN_EXPIRE_SECONDS</td>
+<td>The token expiration in seconds</td>
+<td>default :18000</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_TOKEN</td>
+<td>The default token</td>
+<td>default :SecretKey012345678901234567890123456789012345678901234567890123456789</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_CACHE_ENABLE</td>
+<td>Turn on/off caching of auth information. By turning on this switch, the update of auth information would have a 15 seconds delay.</td>
+<td>default : false</td>
+</tr>
+<tr>
+<td>MEMBER_LIST</td>
+<td>Set the cluster list with a configuration file or command-line argument</td>
+<td>eg:192.168.16.101:8847?raft_port=8807,192.168.16.101?raft_port=8808,192.168.16.101:8849?raft_port=8809</td>
+</tr>
+<tr>
+<td>EMBEDDED_STORAGE</td>
+<td>Use embedded storage in cluster mode without mysql    embedded</td>
+<td>default : none</td>
+</tr>
+</tbody>
+</table>
+</div>
 
     </div>
 
@@ -268,7 +423,10 @@
     <a href="/2020/11/02/中间件/elasticsearch-1-docker安装/" rel="prev" title="elasticsearch-1-docker安装">
       <i class="fa fa-chevron-left"></i> elasticsearch-1-docker安装
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/03/sentinel-docker安装/" rel="next" title="sentinel-docker安装">
+      sentinel-docker安装 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -343,7 +501,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">230</span>
+          <span class="site-state-item-count">232</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
