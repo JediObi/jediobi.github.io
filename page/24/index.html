@@ -183,6 +183,601 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(9) quick start (9) a project of react/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/23/nodejs/(9) quick start (9) a project of react/" class="post-title-link" itemprop="url">(9) quick start (9) a project of react</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-23 22:09:07" itemprop="dateCreated datePublished" datetime="2019-07-23T22:09:07+08:00">2019-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一个完整的 react demo</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/23/nodejs/(9) quick start (9) a project of react/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(8) quick start (8) loaders and hash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/23/nodejs/(8) quick start (8) loaders and hash/" class="post-title-link" itemprop="url">(8) quick start (8) loaders and hash</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-23 22:08:07" itemprop="dateCreated datePublished" datetime="2019-07-23T22:08:07+08:00">2019-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>react 快速开始<br>webpack默认只能处理js文件，其他如css/图片/文件等资源文件，webpack需要引入相关插件才能处理。<br>由于浏览器缓存存在，所以为打包后的文件名加入hash，以确保浏览器加载最新的资源文件。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/23/nodejs/(8) quick start (8) loaders and hash/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(7) quick start (7) images and url loader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/23/nodejs/(7) quick start (7) images and url loader/" class="post-title-link" itemprop="url">(7) quick start (7) images and url loader</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-23 22:07:07" itemprop="dateCreated datePublished" datetime="2019-07-23T22:07:07+08:00">2019-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>react 快速开始<br>webpack引入url插件处理图片资源文件。<br>图片url可能需要特殊处理，本地调试和生产打包用到的服务器路径都不相同，用url插件可以根据环境替换图片资源url域名。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/23/nodejs/(7) quick start (7) images and url loader/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(6) quick start (6) react/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/23/nodejs/(6) quick start (6) react/" class="post-title-link" itemprop="url">(6) quick start (6) react</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-23 22:06:07" itemprop="dateCreated datePublished" datetime="2019-07-23T22:06:07+08:00">2019-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>react 快速开始<br>webpack引入css插件处理css文件，webpack要处理的所有文件都是资源文件包括css，webpack要引入相应的插件才能正确处理不同类型的资源文件。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/23/nodejs/(6) quick start (6) react/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(5) quick start (5) css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/23/nodejs/(5) quick start (5) css/" class="post-title-link" itemprop="url">(5) quick start (5) css</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-23 22:05:07" itemprop="dateCreated datePublished" datetime="2019-07-23T22:05:07+08:00">2019-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>react 快速开始<br>webpack引入css插件处理css文件，webpack要处理的所有文件都是资源文件包括css，webpack要引入相应的插件才能正确处理不同类型的资源文件。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/23/nodejs/(5) quick start (5) css/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(4) quick start (4) webpack-dev-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/23/nodejs/(4) quick start (4) webpack-dev-server/" class="post-title-link" itemprop="url">(4) quick start (4) webpack-dev-server</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-23 22:04:07" itemprop="dateCreated datePublished" datetime="2019-07-23T22:04:07+08:00">2019-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>react 快速开始<br>使用webpack启动本地调试服务。在没有webpack这类工具之前，需要集成单独的服务器中间件部署静态资源，比如tomcat或者其他的node的服务器中间件。<br>webpack4</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/23/nodejs/(4) quick start (4) webpack-dev-server/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(3) quick start (3) html pages with javascript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/23/nodejs/(3) quick start (3) html pages with javascript/" class="post-title-link" itemprop="url">(3) quick start (3) html pages with javascript</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-23 22:03:07" itemprop="dateCreated datePublished" datetime="2019-07-23T22:03:07+08:00">2019-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-09 02:53:53" itemprop="dateModified" datetime="2020-08-09T02:53:53+08:00">2020-08-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>react 快速开始<br>对于webpack来说，html也是资源文件的一种，需要为webpack引入相关插件，webpack才会识别html，并且可以在编译时注入相关的js<br>webpack4</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/23/nodejs/(3) quick start (3) html pages with javascript/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2019/07/23/nodejs/(2) quick start (2) webpack config to compile javascript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -420,14 +1015,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">232</span>
+          <span class="site-state-item-count">239</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -465,7 +1060,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

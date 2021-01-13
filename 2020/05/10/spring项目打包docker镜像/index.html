@@ -20,17 +20,17 @@
     var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="使用dockerfile maven插件把spring项目打包成docker镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到nexus私服。">
+  <meta name="description" content="使用 dockerfile maven 插件把 spring 项目打包成 docker 镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到 nexus 私服。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring项目打包docker镜像">
 <meta property="og:url" content="https://jediobi.github.io/2020/05/10/spring项目打包docker镜像/index.html">
 <meta property="og:site_name" content="nomq">
-<meta property="og:description" content="使用dockerfile maven插件把spring项目打包成docker镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到nexus私服。">
+<meta property="og:description" content="使用 dockerfile maven 插件把 spring 项目打包成 docker 镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到 nexus 私服。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-09-12T13:52:47.882Z">
+<meta property="og:updated_time" content="2021-01-13T14:42:27.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring项目打包docker镜像">
-<meta name="twitter:description" content="使用dockerfile maven插件把spring项目打包成docker镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到nexus私服。">
+<meta name="twitter:description" content="使用 dockerfile maven 插件把 spring 项目打包成 docker 镜像。本文除了打包，还包含加载镜像创建容器，把镜像上传到 nexus 私服。">
 
 <link rel="canonical" href="https://jediobi.github.io/2020/05/10/spring项目打包docker镜像/">
 
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-12 21:52:47" itemprop="dateModified" datetime="2020-09-12T21:52:47+08:00">2020-09-12</time>
+                <time title="Modified: 2021-01-13 22:42:27" itemprop="dateModified" datetime="2021-01-13T22:42:27+08:00">2021-01-13</time>
               </span>
 
           
@@ -232,24 +232,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>使用dockerfile maven插件把spring项目打包成docker镜像。<br>本文除了打包，还包含加载镜像创建容器，把镜像上传到nexus私服。</p>
+        <p>使用 dockerfile maven 插件把 spring 项目打包成 docker 镜像。<br>本文除了打包，还包含加载镜像创建容器，把镜像上传到 nexus 私服。</p>
 <a id="more"></a>
-<h2 id="1-pom配置"><a href="#1-pom配置" class="headerlink" title="1. pom配置"></a>1. pom配置</h2><p>spring项目一般会配置 spring maven插件。<br>本文打包需要 dockerfile maven插件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="2-linux-docker配置"><a href="#2-linux-docker配置" class="headerlink" title="2. linux docker配置"></a>2. linux docker配置</h2><p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在service文件里修改。默认的这个文件归属于docker用户组和超级用户，普通用户组没有权限操作这个文件，所以普通用户需要添加到docker组。</p>
-<p>可能系统默认不开启docker，开启之后会影响性能尤其是安装了k8s之后，所以可能需要手动开启docker进程。</p>
+<h2 id="1-pom-配置"><a href="#1-pom-配置" class="headerlink" title="1. pom 配置"></a>1. pom 配置</h2><p>spring 项目一般会配置 spring maven 插件。<br>本文打包需要 dockerfile maven 插件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dockerfile-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>default<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>build<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 镜像的仓库名 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span>jakku/commonlogin<span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 镜像版本 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tag</span>&gt;</span>$&#123;project.version&#125;<span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 打包的dockerfile位置 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dockerfile</span>&gt;</span>Dockerfile<span class="tag">&lt;/<span class="name">dockerfile</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 运行插件时的上下文路径 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">contextDirectory</span>&gt;</span>$&#123;project.basedir&#125;<span class="tag">&lt;/<span class="name">contextDirectory</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- dockerfile变量声明 这样就可以在dockerfile里使用变量--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">buildArgs</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 声明一个 JAR_FILE变量，表示生成的jar路径（包含上下文路径） --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">JAR_FILE</span>&gt;</span>target/$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">JAR_FILE</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">buildArgs</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ARG</span> JAR_FILE</span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-alpine</span><br><span class="line"><span class="keyword">ADD</span> $&#123;JAR_FILE&#125; app.jar</span><br><span class="line"><span class="keyword">ENTRYPOINT</span> ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar"]</span><br><span class="line"><span class="keyword">expose</span> <span class="number">38081</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-linux-docker-配置"><a href="#2-linux-docker-配置" class="headerlink" title="2. linux docker 配置"></a>2. linux docker 配置</h2><p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在 service 文件里修改。默认的这个文件归属于 docker 用户组和超级用户，普通用户组没有权限操作这个文件，所以普通用户需要添加到 docker 组。</p>
+<p>可能系统默认不开启 docker，开启之后会影响性能尤其是安装了 k8s 之后，所以可能需要手动开启 docker 进程。</p>
 <ul>
-<li><p>命令：添加到docker用户组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -a user_name docker</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>权限生效，命令或重启电脑</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 刷新用户组，只对当前会话有效</span><br><span class="line">~:newgrp docker</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>命令：从docker用户组删除用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -d user_name docker</span><br></pre></td></tr></table></figure>
-</li>
+<li>命令：添加到 docker 用户组</li>
 </ul>
-<p>docker也支持tcp监听，本地测试不需要开启。在service里配置，一般开启远程就是指开启tcp监听，如果需要在远程服务器上上传镜像，一般是需要开启这个的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -a user_name docker</span><br></pre></td></tr></table></figure>
+<ul>
+<li>权限生效，命令或重启电脑</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 刷新用户组，只对当前会话有效</span><br><span class="line">~:newgrp docker</span><br></pre></td></tr></table></figure>
+<ul>
+<li>命令：从 docker 用户组删除用户</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -d user_name docker</span><br></pre></td></tr></table></figure>
+<p>docker 也支持 tcp 监听，本地测试不需要开启。在 service 里配置，一般开启远程就是指开启 tcp 监听，如果需要在远程服务器上上传镜像，一般是需要开启这个的。</p>
 
     </div>
 
@@ -330,7 +332,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-pom配置"><span class="nav-text">1. pom配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-linux-docker配置"><span class="nav-text">2. linux docker配置</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-pom-配置"><span class="nav-text">1. pom 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-linux-docker-配置"><span class="nav-text">2. linux docker 配置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -346,14 +348,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">232</span>
+          <span class="site-state-item-count">239</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -391,7 +393,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
