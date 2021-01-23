@@ -20,20 +20,19 @@
     var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="docker容器是无状态的，所有的写入如果不做持久化，容器删除时，写入的数据也会删除。本文容器数据持久化常用的两种方式，volume方式和bind mount方式。">
-<meta name="keywords" content="docker,mysql">
+  <meta name="description" content="文章简介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker数据持久化">
-<meta property="og:url" content="https://jediobi.github.io/2020/06/17/docker数据持久化/index.html">
+<meta property="og:title" content="docker -nginx">
+<meta property="og:url" content="https://jediobi.github.io/2021/01/16/docker/docker-nginx/index.html">
 <meta property="og:site_name" content="nomq">
-<meta property="og:description" content="docker容器是无状态的，所有的写入如果不做持久化，容器删除时，写入的数据也会删除。本文容器数据持久化常用的两种方式，volume方式和bind mount方式。">
+<meta property="og:description" content="文章简介">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-08-08T19:10:59.693Z">
+<meta property="og:updated_time" content="2021-01-23T11:52:18.500Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker数据持久化">
-<meta name="twitter:description" content="docker容器是无状态的，所有的写入如果不做持久化，容器删除时，写入的数据也会删除。本文容器数据持久化常用的两种方式，volume方式和bind mount方式。">
+<meta name="twitter:title" content="docker -nginx">
+<meta name="twitter:description" content="文章简介">
 
-<link rel="canonical" href="https://jediobi.github.io/2020/06/17/docker数据持久化/">
+<link rel="canonical" href="https://jediobi.github.io/2021/01/16/docker/docker-nginx/">
 
 
 <script id="page-configurations">
@@ -46,7 +45,7 @@
   };
 </script>
 
-  <title>docker数据持久化 | nomq</title>
+  <title>docker -nginx | nomq</title>
   
 
 
@@ -189,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2020/06/17/docker数据持久化/">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2021/01/16/docker/docker-nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/koala_avatar.png">
@@ -202,7 +201,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          docker数据持久化
+          docker -nginx
         </h1>
 
         <div class="post-meta">
@@ -212,24 +211,15 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-06-17 06:38:51" itemprop="dateCreated datePublished" datetime="2020-06-17T06:38:51+08:00">2020-06-17</time>
+              <time title="Created: 2021-01-16 21:42:12" itemprop="dateCreated datePublished" datetime="2021-01-16T21:42:12+08:00">2021-01-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-09 03:10:59" itemprop="dateModified" datetime="2020-08-09T03:10:59+08:00">2020-08-09</time>
+                <time title="Modified: 2021-01-23 19:52:18" itemprop="dateModified" datetime="2021-01-23T19:52:18+08:00">2021-01-23</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
-                </span>
-            </span>
 
           
 
@@ -242,22 +232,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>docker容器是无状态的，所有的写入如果不做持久化，容器删除时，写入的数据也会删除。<br>本文容器数据持久化常用的两种方式，volume方式和bind mount方式。</p>
+        <p>文章简介</p>
 <a id="more"></a>
-<p>容器的数据持久化实际是通过挂载宿主机目录到容器目录上实现的。<br>在dockerfile的或者run命令参数可以实现目录挂载。但挂载分为两种方式，volume和bind mount。</p>
-<p>volume是最常用的方式，它类似于一个容器但只提供存储功能，所以它是由docker管理的，可以在dockerfile里创建，或volume命令创建，也可以在run命令里通过-v参数或mount参数创建或绑定已有的volume。</p>
-<p>由于volume是docker管理的，更适合移植，所以可以在dockerfile里创建。</p>
-<p>通过run命令创建并绑定一个volume，假设名字是 test-volume且之前不存在</p>
-<p>docker run mysql:5.7 -v test-volume:/usr/lib/mysql … -&gt; 这会创建一个名为test-volume的volume，并且会使用容器里的/usr/lib/mysql数据做覆盖</p>
-<p>最新的docker更推荐使用mount参数 —mount source=test-volume target=/usr/lib/mysql</p>
-<p>通过run命令绑定一个已存在的volume</p>
-<p>通过volume创建一个volume</p>
-<p>dockerfile里创建volume</p>
-<p>bind mount 是挂载宿主机物理路径的方式，适用于测试环境，配置简单，但由于绑定了真实路径导致无法移植，不能在dockerfile里用这种方式。</p>
-<p>在 run命令里 使用绝对路径表示挂载卷就是以bind mount的方式绑定了宿主机上的真实路径。</p>
-<p>druid log4j 日志开关<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 上面的druid的配置 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"log-filter"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.druid.filter.logging.Log4j2Filter"</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 所有连接相关的日志 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connectionLogEnabled"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 所有Statement相关的日志 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"statementLogEnabled"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 是否显示结果集 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"resultSetLogEnabled"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 是否显示SQL语句 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"statementExecutableSqlLogEnable"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><code>web-stat-filter</code> 用于采集数据web接口关联的jdbc监控数据</p>
-<p><code>stat-view-servlet</code> 用于展示监控数据的servlet提供ui界面。</p>
+<p>正文<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker run -itd --name nginx-test -p 8080:8080 -v /etc/localtime:/etc/localtime:ro nginx:latest</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>react项目包配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">upstream apiServer &#123;   </span><br><span class="line">      server 192.168.0.2:8080; # api接口服务器的地址</span><br><span class="line">    &#125;</span><br><span class="line">server &#123;</span><br><span class="line">        listen       8080;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        location /api&#123;</span><br><span class="line">            proxy_paas http://apiServer;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>websocket配置</p>
+</li>
+</ol>
 
     </div>
 
@@ -266,10 +250,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/docker/" rel="tag"># docker</a>
-              <a href="/tags/mysql/" rel="tag"># mysql</a>
-          </div>
 
         
 
@@ -277,12 +257,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/10/spring项目打包docker镜像/" rel="prev" title="spring项目打包docker镜像">
-      <i class="fa fa-chevron-left"></i> spring项目打包docker镜像
+    <a href="/2020/12/05/manjaro-黑屏问题/" rel="prev" title="manjaro-黑屏问题">
+      <i class="fa fa-chevron-left"></i> manjaro-黑屏问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/29/docker/docker-mariadb/" rel="next" title="docker-mariadb">
-      docker-mariadb <i class="fa fa-chevron-right"></i>
+    <a href="/2021/01/23/docker/docker-使用问题归档/" rel="next" title="docker-使用问题归档">
+      docker-使用问题归档 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -357,7 +337,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">239</span>
+          <span class="site-state-item-count">243</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
