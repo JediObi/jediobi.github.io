@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png">
+  <link rel="mask-icon" href="/images/koala_avatar.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文介绍kdenlive常用的功能">
+<meta name="keywords" content="kdenlive,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kdenlive使用说明">
+<meta property="og:url" content="https://jediobi.github.io/2021/02/16/kdenlive使用说明/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="本文介绍kdenlive常用的功能">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-02-16T14:36:23.672Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kdenlive使用说明">
+<meta name="twitter:description" content="本文介绍kdenlive常用的功能">
+
+<link rel="canonical" href="https://jediobi.github.io/2021/02/16/kdenlive使用说明/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>kdenlive使用说明 | nomq</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">nomq</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2021/02/16/kdenlive使用说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kdenlive使用说明
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-16 21:40:48 / Modified: 22:36:23" itemprop="dateCreated datePublished" datetime="2021-02-16T21:40:48+08:00">2021-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kdenlive/" itemprop="url" rel="index"><span itemprop="name">kdenlive</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文介绍kdenlive常用的功能</p>
+<a id="more"></a>
+<h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a>1. 基本操作</h2><h3 id="1-1-导入素材"><a href="#1-1-导入素材" class="headerlink" title="1.1 导入素材"></a>1.1 导入素材</h3><p>一般是双击素材窗口，或拖动文件到素材窗口。</p>
+<h3 id="1-2-导出视频"><a href="#1-2-导出视频" class="headerlink" title="1.2 导出视频"></a>1.2 导出视频</h3><p>入口：菜单栏 - 工程 - 渲染（导出）</p>
+<p>选择好导出路径（包含文件名），然后选择格式，点击导出文件即可。</p>
+<h3 id="1-3-合并分组-分割分组"><a href="#1-3-合并分组-分割分组" class="headerlink" title="1.3 合并分组/分割分组"></a>1.3 合并分组/分割分组</h3><p>对一个分组的操作会在分组内所有轨道生效，一般导入视频会包含音轨，初次导入音轨与视频轨道是绑定在一起的，无法单独删除，分割分组后可以单独删除音轨。</p>
+<p>合并分组：批量选择任意轨道 鼠标右键有合并选项(group clips)，<br>分割分组：反向操作(ungroup clips)</p>
+<h3 id="1-3-视频截取和分段"><a href="#1-3-视频截取和分段" class="headerlink" title="1.3 视频截取和分段"></a>1.3 视频截取和分段</h3><h4 id="1-3-1-预览区截取"><a href="#1-3-1-预览区截取" class="headerlink" title="1.3.1 预览区截取"></a>1.3.1 预览区截取</h4><p>在素材窗口单机素材，素材预览窗口就可以播放素材，你可以点击播放控制台上的 zoom in/ zoom out ， 这两个操作会标记素材的某两个帧，然后你拖动到轨道上的素材就是这两个帧中间的内容。一般是用于初步筛选素材内容。</p>
+<h4 id="1-3-2-轨道分段"><a href="#1-3-2-轨道分段" class="headerlink" title="1.3.2 轨道分段"></a>1.3.2 轨道分段</h4><p>一般是选择见到工具(Razor tool，快捷键 x)，然后鼠标点击对应的轨道上的帧就可以了，ctrl+鼠标滑轮可以放大轨道试图，这样可以更精确的选帧。 </p>
+<p>我们一般会在关键的时间点暂停播放，并在此处分段，那么可以使用快捷键 shift+r</p>
+<h2 id="2-特效"><a href="#2-特效" class="headerlink" title="2. 特效"></a>2. 特效</h2><p>一般用到的特效有冻结，位置和缩放，播放速度修改，马赛克，画中画，运动追踪等</p>
+<h3 id="2-1-冻结"><a href="#2-1-冻结" class="headerlink" title="2.1 冻结"></a>2.1 冻结</h3><p>入口： 视频特效-运动-冻结</p>
+<p>用于保持某一帧的画面，在视频中某一帧的画面可能很短暂一闪而过，但实际播放时可能要稍作停留（比如要讲解下），这个时候可以用冻结功能，它可以冻结某一帧前边或后边的内容，这样你在拖动边缘时，新增的内容会保持指定帧的画面不变。</p>
+<h3 id="2-2-位置和缩放"><a href="#2-2-位置和缩放" class="headerlink" title="2.2 位置和缩放"></a>2.2 位置和缩放</h3><p>入口：视频特效-transform-位置和缩放</p>
+<p>位置，用于调整画面坐标。<br>缩放，缩放用于调整画面大小。</p>
+<p>基本操作： 在该特效的编辑窗口可以选择关键帧，点击关键帧就可以设置位置和缩放的细节。<br>常用于放大画面某处，凸显细节。比如要放大画面的左下角，放大之后由于坐标原点在左上角，所以要调整原点坐标，保证左下角能出现在屏幕中。</p>
+<h3 id="2-3-播放速度"><a href="#2-3-播放速度" class="headerlink" title="2.3 播放速度"></a>2.3 播放速度</h3><p>现在这个特效位于鼠标右键中，正值为加速，负值为减速。</p>
+<h3 id="2-4-马赛克"><a href="#2-4-马赛克" class="headerlink" title="2.4 马赛克"></a>2.4 马赛克</h3><p>入口：特效-模糊与隐藏-马赛克遮盖</p>
+<p>后续更新</p>
+<h3 id="2-5-画中画"><a href="#2-5-画中画" class="headerlink" title="2.5 画中画"></a>2.5 画中画</h3><p>其实是转场的功能，擦除选择合成，合成窗口可以调整某个轨道的大小。</p>
+<h3 id="2-6-动态追踪"><a href="#2-6-动态追踪" class="headerlink" title="2.6 动态追踪"></a>2.6 动态追踪</h3><p>入口：特效-基本(misc)-运动追踪器(motion tracker)</p>
+<p>在项目预览区可以拖动追踪区域，然后点击分析按钮(analyse)，然后会自动播放视频并分析目标轨迹，结束后会生成目标的轨迹信息，该信息可以复制，用于添加动态效果。 默认提供的追踪图案有方框，椭圆。</p>
+<p>以打标人物名称为例，添加一个透明背景的字幕素材，为该素材添加位置和缩放，然后在特效编辑窗口选择菜单 从剪贴板导入关键帧(就是刚才复制的轨迹信息)，就会自动生成。</p>
+<p>如果添加了自定义追踪图案，可能还需要去掉追踪特效自带的追踪图案，在原轨道找到追踪特效，把边框设置为0即可。</p>
+<h2 id="3-转场-擦除"><a href="#3-转场-擦除" class="headerlink" title="3. 转场(擦除)"></a>3. 转场(擦除)</h2><p>从一个画面切换到另一个画面的转场方式，也叫擦除(估计是擦除掉前一个画面的意思)</p>
+<p>转场方式有很多种，两个视频的重叠部分可以设置擦除，鼠标悬浮(hover)后一个视频轨道的左下角，出现紫色点，拖动到前一个视频轨道上就会出现擦除区域，通过拖动可以设置擦除位置和时间长度，在设置窗口可以设置擦除的细节，比如擦除方式。</p>
+<h2 id="4-其他功能"><a href="#4-其他功能" class="headerlink" title="4. 其他功能"></a>4. 其他功能</h2><h3 id="4-1-音频对轨"><a href="#4-1-音频对轨" class="headerlink" title="4.1 音频对轨"></a>4.1 音频对轨</h3><p>自动对齐相似波形图的音轨。原视频自带的音轨质量可能较低，引入高质量音轨，手动对齐会比较麻烦，这时可以用音频对轨。</p>
+<p>首先右击原音轨，选择 设置音频参考(set audio reference)，在后边的对齐操作中就会参考这个音轨的波形图做对齐。</p>
+<p>然后可以批量选择新的音轨，右击 选择 对齐音频到参考(align audio to reference)。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/kdenlive/" rel="tag"># kdenlive</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/23/nginx-接口认证/" rel="prev" title="nginx-接口认证">
+      <i class="fa fa-chevron-left"></i> nginx-接口认证
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/16/linux录音说明/" rel="next" title="linux录音说明">
+      linux录音说明 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本操作"><span class="nav-text">1. 基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-导入素材"><span class="nav-text">1.1 导入素材</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-导出视频"><span class="nav-text">1.2 导出视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-合并分组-分割分组"><span class="nav-text">1.3 合并分组/分割分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-视频截取和分段"><span class="nav-text">1.3 视频截取和分段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-预览区截取"><span class="nav-text">1.3.1 预览区截取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-轨道分段"><span class="nav-text">1.3.2 轨道分段</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-特效"><span class="nav-text">2. 特效</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-冻结"><span class="nav-text">2.1 冻结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-位置和缩放"><span class="nav-text">2.2 位置和缩放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-播放速度"><span class="nav-text">2.3 播放速度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-马赛克"><span class="nav-text">2.4 马赛克</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-画中画"><span class="nav-text">2.5 画中画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-动态追踪"><span class="nav-text">2.6 动态追踪</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-转场-擦除"><span class="nav-text">3. 转场(擦除)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-其他功能"><span class="nav-text">4. 其他功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-音频对轨"><span class="nav-text">4.1 音频对轨</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nomq"
+      src="/images/koala_avatar.png">
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">245</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">196</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jediobi" title="GitHub → https://github.com/jediobi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+    <script>
+        var isDesktopEnv = true;
+        var isTransparentActive = false;
+        var transparentActiveHeight = 200;
+
+        /**
+        * 组件加载时
+        * 初始化系统环境变量：桌面 or 移动端
+        * 初始化live2d的透明度
+        * 桌面与移动端切换时修改透明度及live2d bottom
+        **/
+        function initLive2dOpacityAndBottomOnload() {
+            // console.log("初始化");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            if(windowMatch.matches){
+                isDesktopEnv = false;
+            }else{
+                return;
+            }
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                if(!isDesktopEnv){
+                    live2dWidget.style.bottom = "-55px";
+                }else{
+                    live2dWidget.style.bottom = "-35px";
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        /**
+        * 页面滚动时修改live2d透明度
+        **/
+        function changeLive2dOpacityAndBottomOnScroll() {
+            // console.log("滑动");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            var isDesktop = !windowMatch.matches;
+
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                // env mobile -> desktop
+                if(!isDesktopEnv && isDesktop){
+                    live2dWidget.style.bottom = "-55px";
+                }else if(isDesktopEnv && !isDesktop){
+                    live2dWidget.style.bottom = "-35px";
+                }
+                // env desktop -> mobile
+                if(isDesktop){
+                    if(isTransparentActive){
+                        isTransparentActive = false;
+                        live2dWidget.style.opacity = 1;
+                    }
+                    return;
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.onload = function () {
+                initLive2dOpacityAndBottomOnload();
+            }
+
+            window.onscroll = function(){
+                changeLive2dOpacityAndBottomOnScroll();
+            }
+        });
+    </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":35,"vOffset":-35},"mobile":{"show":true},"react":{"opacity":1}});</script></body>
+</html>
