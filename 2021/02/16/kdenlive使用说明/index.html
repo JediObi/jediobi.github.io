@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="本文介绍kdenlive常用的功能">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-02-16T14:36:23.672Z">
+<meta property="og:updated_time" content="2021-02-17T05:33:18.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kdenlive使用说明">
 <meta name="twitter:description" content="本文介绍kdenlive常用的功能">
@@ -211,10 +211,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-02-16 21:40:48 / Modified: 22:36:23" itemprop="dateCreated datePublished" datetime="2021-02-16T21:40:48+08:00">2021-02-16</time>
+              <time title="Created: 2021-02-16 21:40:48" itemprop="dateCreated datePublished" datetime="2021-02-16T21:40:48+08:00">2021-02-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-17 13:33:18" itemprop="dateModified" datetime="2021-02-17T13:33:18+08:00">2021-02-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -249,6 +255,7 @@
 <h2 id="2-特效"><a href="#2-特效" class="headerlink" title="2. 特效"></a>2. 特效</h2><p>一般用到的特效有冻结，位置和缩放，播放速度修改，马赛克，画中画，运动追踪等</p>
 <h3 id="2-1-冻结"><a href="#2-1-冻结" class="headerlink" title="2.1 冻结"></a>2.1 冻结</h3><p>入口： 视频特效-运动-冻结</p>
 <p>用于保持某一帧的画面，在视频中某一帧的画面可能很短暂一闪而过，但实际播放时可能要稍作停留（比如要讲解下），这个时候可以用冻结功能，它可以冻结某一帧前边或后边的内容，这样你在拖动边缘时，新增的内容会保持指定帧的画面不变。</p>
+<p>需要注意，<code>冻结的位置是相对于当前片段的</code>，而不是相对于整个时间轴。比如，某个片段的起点位于整个时间轴的 1秒01分， 如果要在该片段的第10帧(也就是相对于整个时间轴的 1秒11分)处设置冻结，那么冻结的位置应该是 0秒10分，而不是1秒11分。 </p>
 <h3 id="2-2-位置和缩放"><a href="#2-2-位置和缩放" class="headerlink" title="2.2 位置和缩放"></a>2.2 位置和缩放</h3><p>入口：视频特效-transform-位置和缩放</p>
 <p>位置，用于调整画面坐标。<br>缩放，缩放用于调整画面大小。</p>
 <p>基本操作： 在该特效的编辑窗口可以选择关键帧，点击关键帧就可以设置位置和缩放的细节。<br>常用于放大画面某处，凸显细节。比如要放大画面的左下角，放大之后由于坐标原点在左上角，所以要调整原点坐标，保证左下角能出现在屏幕中。</p>
