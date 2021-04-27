@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="本文介绍vscode开发java的常用配置">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-04-27T14:53:14.291Z">
+<meta property="og:updated_time" content="2021-04-27T15:08:12.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vscode-java">
 <meta name="twitter:description" content="本文介绍vscode开发java的常用配置">
@@ -213,7 +213,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-04-27 22:46:13 / Modified: 22:53:14" itemprop="dateCreated datePublished" datetime="2021-04-27T22:46:13+08:00">2021-04-27</time>
+              <time title="Created: 2021-04-27 22:46:13 / Modified: 23:08:12" itemprop="dateCreated datePublished" datetime="2021-04-27T22:46:13+08:00">2021-04-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,6 +267,8 @@
 <h3 id="13-serialVersionUID"><a href="#13-serialVersionUID" class="headerlink" title="13. serialVersionUID"></a>13. serialVersionUID</h3><p>目前还没有插件提供这个功能，所以只能借助 quick fix, 不过 quick fix 也不稳定，所以要自定义代码片段来做，或者自定义插件来做。</p>
 <h3 id="14-json-格式化"><a href="#14-json-格式化" class="headerlink" title="14. json 格式化"></a>14. json 格式化</h3><p>Pretty Json 和 Prettier 都不能格式化，只能用 vscode 自带 vscode.json-language-features</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"[json]": &#123;</span><br><span class="line">    "editor.defaultFormatter": "vscode.json-language-features"</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="15-git插件"><a href="#15-git插件" class="headerlink" title="15. git插件"></a>15. git插件</h3><p>git history 编辑器中右键可以查看文件的history</p>
+<p>gitlens git栏会有更多细分的子栏目，代码里也会显示当前行最后的修改记录</p>
 
     </div>
 
@@ -349,7 +351,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-插件配置要求"><span class="nav-text">1. 插件配置要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-vim插件共享系统剪贴板"><span class="nav-text">2. vim插件共享系统剪贴板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-git-commit-搜索"><span class="nav-text">3. git commit 搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-junit-testng-main-方法运行"><span class="nav-text">4. junit/testng/main 方法运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-创建-java-类"><span class="nav-text">5. 创建 java 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-断点"><span class="nav-text">6. 断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-import-优化"><span class="nav-text">7. import 优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-代码提示"><span class="nav-text">8. 代码提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-格式化代码"><span class="nav-text">9. 格式化代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-代码模板"><span class="nav-text">10. 代码模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-文件头"><span class="nav-text">11. 文件头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-代码生成"><span class="nav-text">12. 代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-serialVersionUID"><span class="nav-text">13. serialVersionUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-json-格式化"><span class="nav-text">14. json 格式化</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-插件配置要求"><span class="nav-text">1. 插件配置要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-vim插件共享系统剪贴板"><span class="nav-text">2. vim插件共享系统剪贴板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-git-commit-搜索"><span class="nav-text">3. git commit 搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-junit-testng-main-方法运行"><span class="nav-text">4. junit/testng/main 方法运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-创建-java-类"><span class="nav-text">5. 创建 java 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-断点"><span class="nav-text">6. 断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-import-优化"><span class="nav-text">7. import 优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-代码提示"><span class="nav-text">8. 代码提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-格式化代码"><span class="nav-text">9. 格式化代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-代码模板"><span class="nav-text">10. 代码模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-文件头"><span class="nav-text">11. 文件头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-代码生成"><span class="nav-text">12. 代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-serialVersionUID"><span class="nav-text">13. serialVersionUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-json-格式化"><span class="nav-text">14. json 格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-git插件"><span class="nav-text">15. git插件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
