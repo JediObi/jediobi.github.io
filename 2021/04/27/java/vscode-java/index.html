@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png">
+  <link rel="mask-icon" href="/images/koala_avatar.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文介绍vscode开发java的常用配置">
+<meta name="keywords" content="java,vscode,ide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode-java">
+<meta property="og:url" content="https://jediobi.github.io/2021/04/27/java/vscode-java/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="本文介绍vscode开发java的常用配置">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-04-27T14:53:14.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vscode-java">
+<meta name="twitter:description" content="本文介绍vscode开发java的常用配置">
+
+<link rel="canonical" href="https://jediobi.github.io/2021/04/27/java/vscode-java/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>vscode-java | nomq</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">nomq</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2021/04/27/java/vscode-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vscode-java
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-27 22:46:13 / Modified: 22:53:14" itemprop="dateCreated datePublished" datetime="2021-04-27T22:46:13+08:00">2021-04-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文介绍vscode开发java的常用配置</p>
+<a id="more"></a>
+<h3 id="1-插件配置要求"><a href="#1-插件配置要求" class="headerlink" title="1. 插件配置要求"></a>1. 插件配置要求</h3><p>language-server 要求 jdk11+, 而项目运行一般是 jdk8<br>所以要单独为 language-server 配置高版本 jdk, 在 user-settings 中增加如下配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">"java.configuration.runtimes": [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"JavaSE-1.8"</span>,</span><br><span class="line">    <span class="attr">"path"</span>: <span class="string">"jdk路径"</span>,</span><br><span class="line">    <span class="attr">"default"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"JavaSE-11"</span>,</span><br><span class="line">    <span class="attr">"path"</span>: <span class="string">"jdk路径"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="2-vim插件共享系统剪贴板"><a href="#2-vim插件共享系统剪贴板" class="headerlink" title="2. vim插件共享系统剪贴板"></a>2. vim插件共享系统剪贴板</h3><p>vim 剪贴板是独立的，如果需要同步系统剪贴板，需要做如下配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"vim.useSystemClipboard": true</span><br></pre></td></tr></table></figure>
+<h3 id="3-git-commit-搜索"><a href="#3-git-commit-搜索" class="headerlink" title="3. git commit 搜索"></a>3. git commit 搜索</h3><p>在 git 面板，点击更多，有搜索相关的功能</p>
+<h3 id="4-junit-testng-main-方法运行"><a href="#4-junit-testng-main-方法运行" class="headerlink" title="4. junit/testng/main 方法运行"></a>4. junit/testng/main 方法运行</h3><p>redhat-ls 服务会在第一次打开java文件时启动，启动完成后就会在可运行的代码上方加载run/debug按钮</p>
+<h3 id="5-创建-java-类"><a href="#5-创建-java-类" class="headerlink" title="5. 创建 java 类"></a>5. 创建 java 类</h3><p>创建文件以 <code>.java</code> 后缀结束，就会按照文件名创建公共的 java 类代码</p>
+<h3 id="6-断点"><a href="#6-断点" class="headerlink" title="6. 断点"></a>6. 断点</h3><p>普通断点 在行号前左键点击即可</p>
+<h3 id="7-import-优化"><a href="#7-import-优化" class="headerlink" title="7. import 优化"></a>7. import 优化</h3><p>删除多余的引入 快捷键 Organize Import -&gt; Shift+Alt+O</p>
+<h3 id="8-代码提示"><a href="#8-代码提示" class="headerlink" title="8. 代码提示"></a>8. 代码提示</h3><p>Trigger Suggest 快捷键可能与系统冲突，一般可以修改成 alt+/</p>
+<h3 id="9-格式化代码"><a href="#9-格式化代码" class="headerlink" title="9. 格式化代码"></a>9. 格式化代码</h3><p>java 代码默认没有配置格式化 formatter</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"[java]": &#123;</span><br><span class="line">"editor.defaultFormatter": "redhat.java"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="10-代码模板"><a href="#10-代码模板" class="headerlink" title="10. 代码模板"></a>10. 代码模板</h3><p>生成指定格式的注释</p>
+<p>设置 - user snippets, 会让你选择文件类型，然后设置模板</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"name":&#123;</span><br><span class="line">  "prefix": "afh",</span><br><span class="line">  "body": [</span><br><span class="line">    <span class="string">"test"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>name 就是模板名称，prefix 是触发内容, body 是文本内容支持 $0,$1…用来定义指针位置,$0 是最后一个指针，还支持一些预置变量。<br>比较简单，就不说了。</p>
+<h3 id="11-文件头"><a href="#11-文件头" class="headerlink" title="11. 文件头"></a>11. 文件头</h3><p>java 的文件头主要是两处，权限声明， 类型说明。而 redhat.ls 插件提供了该功能，在 user-settings 里配置即可。<br>java.templates.fileHeader 就是权限声明，位于文本开始处。<br>java.templates.typeComment 是类型说明，位于 class 上方</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"java.templates.fileHeader"</span>: [</span><br><span class="line">    <span class="string">"/**"</span>,</span><br><span class="line">    <span class="string">"* Alipay.com Inc."</span>,</span><br><span class="line">    <span class="string">"* Copyright (c) 2004-$&#123;year&#125; All Rights Reserved."</span>,</span><br><span class="line">    <span class="string">"*/\n"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"java.templates.typeComment"</span>: [</span><br><span class="line">    <span class="string">"/**"</span>,</span><br><span class="line">    <span class="string">"* @author $&#123;user&#125;"</span>,</span><br><span class="line">    <span class="string">"* @version $Id: $&#123;file_name&#125;, v 0.1 $&#123;year&#125;年$&#123;month&#125;月$&#123;day&#125;日 $&#123;hour&#125;:$&#123;minute&#125; $&#123;user&#125; Exp $"</span>,</span><br><span class="line">    <span class="string">"*/"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="12-代码生成"><a href="#12-代码生成" class="headerlink" title="12. 代码生成"></a>12. 代码生成</h3><p>redhat.ls带有代码生成功能，不过比较麻烦，我们直接看 Java code generators, 它带有 generator gui 工具，可以在快捷键里设置一般快捷键是 alt+insert</p>
+<ul>
+<li>source action 入口<br>右键或者命令栏(ctrl+p+&gt;, 或者ctrl+shift+p) -&gt; source action<br><code>注意：目前自带的注释还不能修改</code></li>
+</ul>
+<p>getter/setter</p>
+<p>constructor</p>
+<p>override</p>
+<p>seriliaztion</p>
+<h3 id="13-serialVersionUID"><a href="#13-serialVersionUID" class="headerlink" title="13. serialVersionUID"></a>13. serialVersionUID</h3><p>目前还没有插件提供这个功能，所以只能借助 quick fix, 不过 quick fix 也不稳定，所以要自定义代码片段来做，或者自定义插件来做。</p>
+<h3 id="14-json-格式化"><a href="#14-json-格式化" class="headerlink" title="14. json 格式化"></a>14. json 格式化</h3><p>Pretty Json 和 Prettier 都不能格式化，只能用 vscode 自带 vscode.json-language-features</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"[json]": &#123;</span><br><span class="line">    "editor.defaultFormatter": "vscode.json-language-features"</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/vscode/" rel="tag"># vscode</a>
+              <a href="/tags/ide/" rel="tag"># ide</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/16/linux录音说明/" rel="prev" title="linux录音说明">
+      <i class="fa fa-chevron-left"></i> linux录音说明
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-插件配置要求"><span class="nav-text">1. 插件配置要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-vim插件共享系统剪贴板"><span class="nav-text">2. vim插件共享系统剪贴板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-git-commit-搜索"><span class="nav-text">3. git commit 搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-junit-testng-main-方法运行"><span class="nav-text">4. junit/testng/main 方法运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-创建-java-类"><span class="nav-text">5. 创建 java 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-断点"><span class="nav-text">6. 断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-import-优化"><span class="nav-text">7. import 优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-代码提示"><span class="nav-text">8. 代码提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-格式化代码"><span class="nav-text">9. 格式化代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-代码模板"><span class="nav-text">10. 代码模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-文件头"><span class="nav-text">11. 文件头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-代码生成"><span class="nav-text">12. 代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-serialVersionUID"><span class="nav-text">13. serialVersionUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-json-格式化"><span class="nav-text">14. json 格式化</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nomq"
+      src="/images/koala_avatar.png">
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">246</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">199</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jediobi" title="GitHub → https://github.com/jediobi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+    <script>
+        var isDesktopEnv = true;
+        var isTransparentActive = false;
+        var transparentActiveHeight = 200;
+
+        /**
+        * 组件加载时
+        * 初始化系统环境变量：桌面 or 移动端
+        * 初始化live2d的透明度
+        * 桌面与移动端切换时修改透明度及live2d bottom
+        **/
+        function initLive2dOpacityAndBottomOnload() {
+            // console.log("初始化");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            if(windowMatch.matches){
+                isDesktopEnv = false;
+            }else{
+                return;
+            }
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                if(!isDesktopEnv){
+                    live2dWidget.style.bottom = "-55px";
+                }else{
+                    live2dWidget.style.bottom = "-35px";
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        /**
+        * 页面滚动时修改live2d透明度
+        **/
+        function changeLive2dOpacityAndBottomOnScroll() {
+            // console.log("滑动");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            var isDesktop = !windowMatch.matches;
+
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                // env mobile -> desktop
+                if(!isDesktopEnv && isDesktop){
+                    live2dWidget.style.bottom = "-55px";
+                }else if(isDesktopEnv && !isDesktop){
+                    live2dWidget.style.bottom = "-35px";
+                }
+                // env desktop -> mobile
+                if(isDesktop){
+                    if(isTransparentActive){
+                        isTransparentActive = false;
+                        live2dWidget.style.opacity = 1;
+                    }
+                    return;
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.onload = function () {
+                initLive2dOpacityAndBottomOnload();
+            }
+
+            window.onscroll = function(){
+                changeLive2dOpacityAndBottomOnScroll();
+            }
+        });
+    </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":35,"vOffset":-35},"mobile":{"show":true},"react":{"opacity":1}});</script></body>
+</html>

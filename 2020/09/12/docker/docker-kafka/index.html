@@ -20,17 +20,18 @@
     var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="文章简介">
+  <meta name="description" content="通过docker-compose部署kafka的开发环境">
+<meta name="keywords" content="docker,docker-compose,kafka,zookeeper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-kafka">
 <meta property="og:url" content="https://jediobi.github.io/2020/09/12/docker/docker-kafka/index.html">
 <meta property="og:site_name" content="nomq">
-<meta property="og:description" content="文章简介">
+<meta property="og:description" content="通过docker-compose部署kafka的开发环境">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-23T10:59:11.987Z">
+<meta property="og:updated_time" content="2021-03-18T14:14:41.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-kafka">
-<meta name="twitter:description" content="文章简介">
+<meta name="twitter:description" content="通过docker-compose部署kafka的开发环境">
 
 <link rel="canonical" href="https://jediobi.github.io/2020/09/12/docker/docker-kafka/">
 
@@ -218,8 +219,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-23 18:59:11" itemprop="dateModified" datetime="2021-01-23T18:59:11+08:00">2021-01-23</time>
+                <time title="Modified: 2021-03-18 22:14:41" itemprop="dateModified" datetime="2021-03-18T22:14:41+08:00">2021-03-18</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
 
           
 
@@ -232,9 +242,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>文章简介</p>
+        <p>通过docker-compose部署kafka的开发环境</p>
 <a id="more"></a>
-<h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置</h2><h3 id="1-1-下载镜像"><a href="#1-1-下载镜像" class="headerlink" title="1.1 下载镜像"></a>1.1 下载镜像</h3><h3 id="1-2-运行单实例"><a href="#1-2-运行单实例" class="headerlink" title="1.2 运行单实例"></a>1.2 运行单实例</h3><h3 id="1-3-运行集群"><a href="#1-3-运行集群" class="headerlink" title="1.3 运行集群"></a>1.3 运行集群</h3><h4 id="1-3-1-创建zookeeper管理的集群"><a href="#1-3-1-创建zookeeper管理的集群" class="headerlink" title="1.3.1 创建zookeeper管理的集群"></a>1.3.1 创建zookeeper管理的集群</h4><h4 id="1-3-2-创建k8s管理的集群"><a href="#1-3-2-创建k8s管理的集群" class="headerlink" title="1.3.2 创建k8s管理的集群"></a>1.3.2 创建k8s管理的集群</h4>
+<h2 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置</h2><p>开发环境需要安装 <code>docker-compose</code>，它是个管理本地容器的工具，类似于k8s的单机版，它的配置文件是<code>docker-compose.yml</code>。<br>kafka默认端口9092，它用zookeeper管理集群。</p>
+<h3 id="1-1-下载镜像"><a href="#1-1-下载镜像" class="headerlink" title="1.1 下载镜像"></a>1.1 下载镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wurstmeister/zookeeper</span><br><span class="line">wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-运行一个broker"><a href="#1-2-运行一个broker" class="headerlink" title="1.2 运行一个broker"></a>1.2 运行一个broker</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  zoo1:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">wurstmeister/zookeeper</span></span><br><span class="line">    <span class="comment">#restart: unless-stopped</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">zoo1</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2181:2181"</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">zookeeper</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  kafka1:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">wurstmeister/kafka</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"9092:9092"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      KAFKA_ADVERTISED_HOST_NAME:</span> <span class="string">localhost</span></span><br><span class="line"><span class="attr">      KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">"zoo1:2181"</span></span><br><span class="line"><span class="attr">      KAFKA_BROKER_ID:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      KAFKA_CREATE_TOPICS:</span> <span class="string">"stream-in:1:1, stream-out:1:1"</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">zoo1</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">kafka</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-3-运行多broker"><a href="#1-3-运行多broker" class="headerlink" title="1.3 运行多broker"></a>1.3 运行多broker</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  zoo1:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">wurstmeister/zookeeper</span></span><br><span class="line">    <span class="comment">#restart: unless-stopped</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">zoo1</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2181:2181"</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">zookeeper</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  kafka1:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">wurstmeister/kafka</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"9092:9092"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      KAFKA_ADVERTISED_HOST_NAME:</span> <span class="string">localhost</span></span><br><span class="line"><span class="attr">      KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">"zoo1:2181"</span></span><br><span class="line"><span class="attr">      KAFKA_BROKER_ID:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">      KAFKA_CREATE_TOPICS:</span> <span class="string">"stream-in:1:1, stream-out:1:1"</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">zoo1</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">kafka1</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  kafka2:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">wurstmeister/kafka</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"9093:9092"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      KAFKA_ADVERTISED_HOST_NAME:</span> <span class="string">&#123;ipconfig</span> <span class="string">getifaddr</span> <span class="string">en0指令的结果&#125;</span></span><br><span class="line"><span class="attr">      KAFKA_ADVERTISED_PORT:</span> <span class="number">9093</span></span><br><span class="line"><span class="attr">      KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">"zoo1:2181"</span></span><br><span class="line"><span class="attr">      KAFKA_BROKER_ID:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">zoo1</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">kafka2</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-4-docker-compose-用法"><a href="#1-4-docker-compose-用法" class="headerlink" title="1.4 docker-compose 用法"></a>1.4 docker-compose 用法</h3><h3 id="1-5-kafka-命令行交互"><a href="#1-5-kafka-命令行交互" class="headerlink" title="1.5 kafka 命令行交互"></a>1.5 kafka 命令行交互</h3><h3 id="1-6-kafka-springboot"><a href="#1-6-kafka-springboot" class="headerlink" title="1.6 kafka springboot"></a>1.6 kafka springboot</h3><h3 id="1-4-使用k8s管理集群"><a href="#1-4-使用k8s管理集群" class="headerlink" title="1.4 使用k8s管理集群"></a>1.4 使用k8s管理集群</h3>
     </div>
 
     
@@ -242,6 +256,12 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+              <a href="/tags/docker-compose/" rel="tag"># docker-compose</a>
+              <a href="/tags/kafka/" rel="tag"># kafka</a>
+              <a href="/tags/zookeeper/" rel="tag"># zookeeper</a>
+          </div>
 
         
 
@@ -314,7 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-配置"><span class="nav-text">1. 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-下载镜像"><span class="nav-text">1.1 下载镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-运行单实例"><span class="nav-text">1.2 运行单实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-运行集群"><span class="nav-text">1.3 运行集群</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-创建zookeeper管理的集群"><span class="nav-text">1.3.1 创建zookeeper管理的集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-创建k8s管理的集群"><span class="nav-text">1.3.2 创建k8s管理的集群</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-配置"><span class="nav-text">1. 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-下载镜像"><span class="nav-text">1.1 下载镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-运行一个broker"><span class="nav-text">1.2 运行一个broker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-运行多broker"><span class="nav-text">1.3 运行多broker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-docker-compose-用法"><span class="nav-text">1.4 docker-compose 用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-kafka-命令行交互"><span class="nav-text">1.5 kafka 命令行交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-kafka-springboot"><span class="nav-text">1.6 kafka springboot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-使用k8s管理集群"><span class="nav-text">1.4 使用k8s管理集群</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -330,7 +350,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">245</span>
+          <span class="site-state-item-count">246</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -343,7 +363,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">196</span>
+        <span class="site-state-item-count">199</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
