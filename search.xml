@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>react-demo</title>
+      <link href="/2021/05/09/react-demo/"/>
+      <url>/2021/05/09/react-demo/</url>
+      
+        <content type="html"><![CDATA[<p>本文从零开始创建一个包含路由，redux, 异步的 react demo。</p><a id="more"></a><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>本文从零开始搭建一个 js 版本的 react-demo</p><p>==&gt; 首先是最基础的 webpack+react+router</p><p>==&gt; 然后引入 redux</p><p>==&gt; 接着引入异步框架 saga</p><h2 id="2-基础搭建"><a href="#2-基础搭建" class="headerlink" title="2. 基础搭建"></a>2. 基础搭建</h2><p>webpack+react+router</p><h4 id="2-2-3-工程结构"><a href="#2-2-3-工程结构" class="headerlink" title="2.2.3 工程结构"></a>2.2.3 工程结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── config</span><br><span class="line">│   ├── build.js</span><br><span class="line">│   ├── paths.js</span><br><span class="line">│   ├── webpack.config.common.js</span><br><span class="line">│   ├── webpack.config.dev.js</span><br><span class="line">│   └── webpack.config.prod.js</span><br><span class="line">├── package.json</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── public</span><br><span class="line">│   ├── images</span><br><span class="line">│   │   ├── password.png</span><br><span class="line">│   │   └── user.png</span><br><span class="line">│   └── index.html</span><br><span class="line">├── README.MD</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.css</span><br><span class="line">│   ├── App.js</span><br><span class="line">│   ├── components</span><br><span class="line">│   │   ├── login</span><br><span class="line">│   │   │   ├── Login.css</span><br><span class="line">│   │   │   └── Login.js</span><br><span class="line">│   │   └── verify</span><br><span class="line">│   │       ├── Verify.css</span><br><span class="line">│   │       └── Verify.js</span><br><span class="line">│   ├── index.js</span><br><span class="line">│   └── utils</span><br><span class="line">│       └── api.js</span><br><span class="line">└── webpack.config.js</span><br></pre></td></tr></table></figure><p>注意的点</p><h2 id="3-引入-redux"><a href="#3-引入-redux" class="headerlink" title="3. 引入 redux"></a>3. 引入 redux</h2><h2 id="4-引入异步框架-saga"><a href="#4-引入异步框架-saga" class="headerlink" title="4. 引入异步框架-saga"></a>4. 引入异步框架-saga</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> react </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> react </tag>
+            
+            <tag> node </tag>
+            
+            <tag> saga </tag>
+            
+            <tag> redux </tag>
+            
+            <tag> router </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vscode-java</title>
       <link href="/2021/04/27/java/vscode-java/"/>
       <url>/2021/04/27/java/vscode-java/</url>
@@ -892,11 +925,11 @@
             
             <tag> react </tag>
             
+            <tag> saga </tag>
+            
             <tag> redux </tag>
             
             <tag> router </tag>
-            
-            <tag> saga </tag>
             
         </tags>
       
@@ -2815,11 +2848,11 @@
       
         <tags>
             
+            <tag> react </tag>
+            
             <tag> ant design </tag>
             
             <tag> nodejs </tag>
-            
-            <tag> react </tag>
             
         </tags>
       
@@ -2844,11 +2877,11 @@
       
         <tags>
             
+            <tag> react </tag>
+            
             <tag> ant design </tag>
             
             <tag> nodejs </tag>
-            
-            <tag> react </tag>
             
         </tags>
       
@@ -4610,9 +4643,9 @@
       
         <tags>
             
-            <tag> spring </tag>
-            
             <tag> node </tag>
+            
+            <tag> spring </tag>
             
             <tag> fetch </tag>
             
@@ -5200,7 +5233,7 @@
       <link href="/2019/07/25/docker/1-Docker/"/>
       <url>/2019/07/25/docker/1-Docker/</url>
       
-        <content type="html"><![CDATA[<p>docker的安装配置。<br>镜像管理和容器管理。</p><a id="more"></a><h3 id="1-docker-安装"><a href="#1-docker-安装" class="headerlink" title="1. docker 安装"></a><strong>1. docker 安装</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~:wget -qO- https://get.docker.com/ | sh</span><br><span class="line">~:sudo usermod -aG docker user_group</span><br><span class="line">~:reboot</span><br><span class="line">~:sudo service docker start</span><br><span class="line">~:docker run hello-world</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 帮助</span><br><span class="line">~:docker [command] --help</span><br></pre></td></tr></table></figure><h3 id="2-docker-镜像管理"><a href="#2-docker-镜像管理" class="headerlink" title="2. docker 镜像管理"></a><strong>2. docker 镜像管理</strong></h3><ul><li><h4 id="2-1-镜像加速-etc-docker-daemon-json"><a href="#2-1-镜像加速-etc-docker-daemon-json" class="headerlink" title="2.1 镜像加速 /etc/docker/daemon.json"></a>2.1 镜像加速 /etc/docker/daemon.json</h4> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"registry-mirrors"</span>: [<span class="string">"http://hub-mirror.c.163.com"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><ul><li><h4 id="2-2-下载镜像-pull"><a href="#2-2-下载镜像-pull" class="headerlink" title="2.2 下载镜像 pull"></a>2.2 下载镜像 pull</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker pull [repository]</span><br></pre></td></tr></table></figure><p>  pull a repository image.</p></li><li><h4 id="2-3-列出本地镜像-images"><a href="#2-3-列出本地镜像-images" class="headerlink" title="2.3 列出本地镜像 images"></a>2.3 列出本地镜像 images</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker images</span><br></pre></td></tr></table></figure><p>  list the images in this computer.</p></li></ul><ul><li><h4 id="2-4-搜索远程仓库镜像-search"><a href="#2-4-搜索远程仓库镜像-search" class="headerlink" title="2.4 搜索远程仓库镜像 search"></a>2.4 搜索远程仓库镜像 search</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker search [string]</span><br></pre></td></tr></table></figure><p>  search specified content such like tomcat or mysql in image repository.</p></li><li><h4 id="2-5-镜像重命名-tag"><a href="#2-5-镜像重命名-tag" class="headerlink" title="2.5 镜像重命名 tag"></a>2.5 镜像重命名 tag</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker tag [repo[:tag]] [repository_name:tag]</span><br></pre></td></tr></table></figure><p>  使用已有镜像创建一个自定义镜像，一般是使用别人的镜像 tag 出一个自己的初始镜像，然后改造。<br>  比如 k8s，基础组件包含好几个镜像，但是google的镜像下载速度太慢了，我们就下载国内的镜像，但是国内镜像的名称和原版不同，而k8s组件镜像之间互相依赖，名称必须是google定的那几个名字，所以国内镜像下完之后用tag重命名下。</p></li><li><h4 id="2-6-以当前容器为模板创建镜像-commit"><a href="#2-6-以当前容器为模板创建镜像-commit" class="headerlink" title="2.6 以当前容器为模板创建镜像 commit"></a>2.6 以当前容器为模板创建镜像 commit</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker commit -m=&quot;commit info&quot; -a=&quot;author name&quot; [container_id] [target repository name like &apos;repository_name:tag&apos;]</span><br></pre></td></tr></table></figure><p>  save your changes in this container by create a new container.<br>  一般用于自定义镜像，以当前容器为模板创建一个镜像。</p></li><li><h4 id="2-7-检查镜像"><a href="#2-7-检查镜像" class="headerlink" title="2.7 检查镜像"></a>2.7 检查镜像</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker inspect image_name</span><br></pre></td></tr></table></figure><p>  用于查看镜像的配置内容，大致可以看出dockerfile的配置</p></li><li><h4 id="2-8-删除镜像"><a href="#2-8-删除镜像" class="headerlink" title="2.8 删除镜像"></a>2.8 删除镜像</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker rmi [image_id or image_gor]</span><br></pre></td></tr></table></figure><p>  按照id或坐标(name:tag)删除镜像。</p></li></ul><h3 id="3-docker-容器管理"><a href="#3-docker-容器管理" class="headerlink" title="3. docker 容器管理"></a><strong>3. docker 容器管理</strong></h3><ul><li><h4 id="3-1-创建容器-run-命令"><a href="#3-1-创建容器-run-命令" class="headerlink" title="3.1 创建容器 run 命令"></a>3.1 创建容器 run 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker run -itd --name ubuntu-test -v /etc/localtime:/etc/localtime:ro ubuntu:15.10 /bin/echo &quot;Hello world&quot;</span><br></pre></td></tr></table></figure><p>  run <code>ubuntu:15.10</code> and use <code>/bin/echo</code> to print “Hello world”.</p><p>  命令格式：docker run [OPTIONS] IMAGE [COMMAND] [ARG…]</p><p>  run 命令使用镜像创建容器实例并启动，COMMAND ARGS… 表示任务和任务参数， run命令必须指定任务，但是任务可以在 dockerfile的 Cmd节点配置，所以命令行里是一个可选参数。</p><p>  <code>docker inspect name</code> 可以查看 dockerfile。</p><p>  ps:<br>  任务中的前台任务决定了容器的运行时间。docker的机制是如果没有任何前台任务，则认为容器空闲，容器会自动exit。所以对于一些service类型的任务可能需要改到前台执行。</p><p>  自定义容器时，一般用一个空的Linux镜像，没有指定任务，为了保持容器运行，一般会指定 /bin/bash, 然后使用 -t 创建一个终端使之在前台运行，但是终端的exit命令会退出终端导致前台任务结束，容器也就停止了。所以要增加一个 -d 守护进程，退出或在后台可以继续保持前台任务执行。 -i 参数可以连接到容器的标准输入，标准输入也是一个前台任务(使用ctrl+c会退出stdin)，一般不单独用。</p></li><li><h4 id="3-2-容器进程管理-ps-命令"><a href="#3-2-容器进程管理-ps-命令" class="headerlink" title="3.2 容器进程管理 ps 命令"></a>3.2 容器进程管理 ps 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker ps</span><br></pre></td></tr></table></figure><p>  列出正在运行容器</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker ps -a</span><br></pre></td></tr></table></figure><p>  列出所有所有容器</p></li><li><h4 id="3-3-查看容器日志-logs-命令"><a href="#3-3-查看容器日志-logs-命令" class="headerlink" title="3.3 查看容器日志 logs 命令"></a>3.3 查看容器日志 logs 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 打印容器日志</span><br><span class="line">~:docker logs &#123;name[or container_id]&#125;</span><br></pre></td></tr></table></figure>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 动态打印容器日志，就像 tail -f</span><br><span class="line">~:docker logs -f &#123;&#125;</span><br></pre></td></tr></table></figure></li><li><h4 id="3-4-停止容器-stop-命令"><a href="#3-4-停止容器-stop-命令" class="headerlink" title="3.4 停止容器 stop 命令"></a>3.4 停止容器 stop 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker stop &#123;name[or container_id]&#125;</span><br></pre></td></tr></table></figure></li><li><h4 id="3-5-打印容器端口映射关系-port"><a href="#3-5-打印容器端口映射关系-port" class="headerlink" title="3.5 打印容器端口映射关系 port"></a>3.5 打印容器端口映射关系 port</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker port &#123;[name] or [container_id]&#125; &#123;[null] or [container port]&#125;</span><br></pre></td></tr></table></figure><p>  print the port mapping of a container.</p></li><li><h4 id="3-6-删除容器-rm"><a href="#3-6-删除容器-rm" class="headerlink" title="3.6 删除容器 rm"></a>3.6 删除容器 rm</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker rm &#123;[name] or [container_id]&#125;</span><br></pre></td></tr></table></figure><p>  rm a container.</p></li><li><h4 id="3-7-连接容器的输出终端-attach"><a href="#3-7-连接容器的输出终端-attach" class="headerlink" title="3.7 连接容器的输出终端 attach"></a>3.7 连接容器的输出终端 attach</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker attach &lt;container_id&gt;</span><br></pre></td></tr></table></figure><p>  这个用于连接创建容器时打开的终端</p></li><li><h4 id="3-8-连接容器并新建终端-exec-execute-another-terminal"><a href="#3-8-连接容器并新建终端-exec-execute-another-terminal" class="headerlink" title="3.8 连接容器并新建终端 exec execute another terminal"></a>3.8 连接容器并新建终端 <code>exec</code> execute another terminal</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker exec -it &lt;container_id&gt; bash</span><br></pre></td></tr></table></figure><p>  open a new terminal of a docker container.</p></li><li><h4 id="3-9-检查容器-inspect"><a href="#3-9-检查容器-inspect" class="headerlink" title="3.9 检查容器 inspect"></a>3.9 检查容器 inspect</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker inspect [container_id or container_name]</span><br></pre></td></tr></table></figure><p>  用于查看容器的一些属性，比如创建(run)时的一些参数(比如mysql的密码)，比如容器的网络地址等。</p></li></ul><h3 id="4-网卡管理"><a href="#4-网卡管理" class="headerlink" title="4. 网卡管理"></a><strong>4. 网卡管理</strong></h3><ul><li><h4 id="4-1-查看所有网卡"><a href="#4-1-查看所有网卡" class="headerlink" title="4.1 查看所有网卡"></a>4.1 查看所有网卡</h4><p>  <code>docker network ls</code></p></li><li><h4 id="4-2-查看网卡配置，比如bridge"><a href="#4-2-查看网卡配置，比如bridge" class="headerlink" title="4.2 查看网卡配置，比如bridge"></a>4.2 查看网卡配置，比如bridge</h4><p>  <code>docker network inspect bridge</code></p></li></ul><h3 id="5-轻量级linux镜像-alpine"><a href="#5-轻量级linux镜像-alpine" class="headerlink" title="5. 轻量级linux镜像 alpine"></a><strong>5. 轻量级linux镜像 alpine</strong></h3><h3 id="6-注意"><a href="#6-注意" class="headerlink" title="6. 注意"></a><strong>6. 注意</strong></h3><h4 id="6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind"><a href="#6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind" class="headerlink" title="6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind"></a>6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</h4><h4 id="6-2-权限设置"><a href="#6-2-权限设置" class="headerlink" title="6.2 权限设置"></a>6.2 权限设置</h4><p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在service文件里修改。默认的这个文件归属于docker用户组和超级用户，普通用户组没有权限操作这个文件，所以普通用户需要添加到docker组。</p><p>可能系统默认不开启docker，开启之后会影响性能尤其是安装了k8s之后，所以可能需要手动开启docker进程。</p><ul><li><p>命令：添加到docker用户组</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -a user_name docker</span><br></pre></td></tr></table></figure></li><li><p>权限生效，命令或重启电脑</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 刷新用户组，只对当前会话有效</span><br><span class="line">~:newgrp docker</span><br></pre></td></tr></table></figure></li><li><p>命令：从docker用户组删除用户</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -d user_name docker</span><br></pre></td></tr></table></figure></li></ul><p>docker也支持tcp监听，本地测试不需要开启。在service里配置，一般开启远程就是指开启tcp监听，如果需要在远程服务器上上传镜像，一般是需要开启这个的。</p><h4 id="6-3-linux上的用户界面-cockpit"><a href="#6-3-linux上的用户界面-cockpit" class="headerlink" title="6.3 linux上的用户界面 cockpit"></a>6.3 linux上的用户界面 cockpit</h4><p>manajro 安装cockpit，然后在启动<code>systemctl start cockpit</code>。</p><p>然后打开浏览器<code>https://localhost:9090</code>，用户名与密码就是当前系统的用户名和密码，可以方便的管理容器。</p>]]></content>
+        <content type="html"><![CDATA[<p>docker的安装配置。<br>镜像管理和容器管理。</p><a id="more"></a><h3 id="1-docker-安装"><a href="#1-docker-安装" class="headerlink" title="1. docker 安装"></a><strong>1. docker 安装</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~:wget -qO- https://get.docker.com/ | sh</span><br><span class="line">~:sudo usermod -aG docker user_group</span><br><span class="line">~:reboot</span><br><span class="line">~:sudo service docker start</span><br><span class="line">~:docker run hello-world</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 帮助</span><br><span class="line">~:docker [command] --help</span><br></pre></td></tr></table></figure><h3 id="2-docker-镜像管理"><a href="#2-docker-镜像管理" class="headerlink" title="2. docker 镜像管理"></a><strong>2. docker 镜像管理</strong></h3><ul><li><h4 id="2-1-镜像加速-etc-docker-daemon-json"><a href="#2-1-镜像加速-etc-docker-daemon-json" class="headerlink" title="2.1 镜像加速 /etc/docker/daemon.json"></a>2.1 镜像加速 /etc/docker/daemon.json</h4> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"registry-mirrors"</span>: [<span class="string">"http://hub-mirror.c.163.com"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><ul><li><h4 id="2-2-下载镜像-pull"><a href="#2-2-下载镜像-pull" class="headerlink" title="2.2 下载镜像 pull"></a>2.2 下载镜像 pull</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker pull [repository]</span><br></pre></td></tr></table></figure><p>  pull a repository image.</p></li><li><h4 id="2-3-列出本地镜像-images"><a href="#2-3-列出本地镜像-images" class="headerlink" title="2.3 列出本地镜像 images"></a>2.3 列出本地镜像 images</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker images</span><br></pre></td></tr></table></figure><p>  list the images in this computer.</p></li></ul><ul><li><h4 id="2-4-搜索远程仓库镜像-search"><a href="#2-4-搜索远程仓库镜像-search" class="headerlink" title="2.4 搜索远程仓库镜像 search"></a>2.4 搜索远程仓库镜像 search</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker search [string]</span><br></pre></td></tr></table></figure><p>  search specified content such like tomcat or mysql in image repository.</p></li><li><h4 id="2-5-镜像重命名-tag"><a href="#2-5-镜像重命名-tag" class="headerlink" title="2.5 镜像重命名 tag"></a>2.5 镜像重命名 tag</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker tag [repo[:tag]] [repository_name:tag]</span><br></pre></td></tr></table></figure><p>  使用已有镜像创建一个自定义镜像，一般是使用别人的镜像 tag 出一个自己的初始镜像，然后改造。<br>  比如 k8s，基础组件包含好几个镜像，但是google的镜像下载速度太慢了，我们就下载国内的镜像，但是国内镜像的名称和原版不同，而k8s组件镜像之间互相依赖，名称必须是google定的那几个名字，所以国内镜像下完之后用tag重命名下。</p></li><li><h4 id="2-6-以当前容器为模板创建镜像-commit"><a href="#2-6-以当前容器为模板创建镜像-commit" class="headerlink" title="2.6 以当前容器为模板创建镜像 commit"></a>2.6 以当前容器为模板创建镜像 commit</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker commit -m=&quot;commit info&quot; -a=&quot;author name&quot; [container_id] [target repository name like &apos;repository_name:tag&apos;]</span><br></pre></td></tr></table></figure><p>  save your changes in this container by create a new container.<br>  一般用于自定义镜像，以当前容器为模板创建一个镜像。</p></li><li><h4 id="2-7-检查镜像"><a href="#2-7-检查镜像" class="headerlink" title="2.7 检查镜像"></a>2.7 检查镜像</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker inspect image_name</span><br></pre></td></tr></table></figure><p>  用于查看镜像的配置内容，大致可以看出dockerfile的配置</p></li><li><h4 id="2-8-删除镜像"><a href="#2-8-删除镜像" class="headerlink" title="2.8 删除镜像"></a>2.8 删除镜像</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker rmi [image_id or image_gor]</span><br></pre></td></tr></table></figure><p>  按照id或坐标(name:tag)删除镜像。</p></li></ul><h3 id="3-docker-容器管理"><a href="#3-docker-容器管理" class="headerlink" title="3. docker 容器管理"></a><strong>3. docker 容器管理</strong></h3><ul><li><h4 id="3-1-创建容器-run-命令"><a href="#3-1-创建容器-run-命令" class="headerlink" title="3.1 创建容器 run 命令"></a>3.1 创建容器 run 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker run -itd --name ubuntu-test -v /etc/localtime:/etc/localtime:ro ubuntu:15.10 /bin/echo &quot;Hello world&quot;</span><br></pre></td></tr></table></figure><p>  run <code>ubuntu:15.10</code> and use <code>/bin/echo</code> to print “Hello world”.</p><p>  命令格式：docker run [OPTIONS] IMAGE [COMMAND] [ARG…]</p><p>  run 命令使用镜像创建容器实例并启动，COMMAND ARGS… 表示任务和任务参数， run命令必须指定任务，但是任务可以在 dockerfile的 Cmd节点配置，所以命令行里是一个可选参数。</p><p>  <code>docker inspect name</code> 可以查看 dockerfile。</p><p>  ps:<br>  任务中的前台任务决定了容器的运行时间。docker的机制是如果没有任何前台任务，则认为容器空闲，容器会自动exit。所以对于一些service类型的任务可能需要改到前台执行。</p><p>  自定义容器时，一般用一个空的Linux镜像，没有指定任务，为了保持容器运行，一般会指定 /bin/bash, 然后使用 -t 创建一个终端使之在前台运行，但是终端的exit命令会退出终端导致前台任务结束，容器也就停止了。所以要增加一个 -d 守护进程，退出或在后台可以继续保持前台任务执行。 -i 参数可以连接到容器的标准输入，标准输入也是一个前台任务(使用ctrl+c会退出stdin)，一般不单独用。</p><ul><li><p>指定网络</p><p>run … —network=网络名称</p></li><li><p>指定ip<br>在网络限定的ip段内指定</p><p>run … —ip 172.17.0.3</p></li></ul></li><li><h4 id="3-2-容器进程管理-ps-命令"><a href="#3-2-容器进程管理-ps-命令" class="headerlink" title="3.2 容器进程管理 ps 命令"></a>3.2 容器进程管理 ps 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker ps</span><br></pre></td></tr></table></figure><p>  列出正在运行容器</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker ps -a</span><br></pre></td></tr></table></figure><p>  列出所有所有容器</p></li><li><h4 id="3-3-查看容器日志-logs-命令"><a href="#3-3-查看容器日志-logs-命令" class="headerlink" title="3.3 查看容器日志 logs 命令"></a>3.3 查看容器日志 logs 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 打印容器日志</span><br><span class="line">~:docker logs &#123;name[or container_id]&#125;</span><br></pre></td></tr></table></figure>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 动态打印容器日志，就像 tail -f</span><br><span class="line">~:docker logs -f &#123;&#125;</span><br></pre></td></tr></table></figure></li><li><h4 id="3-4-停止容器-stop-命令"><a href="#3-4-停止容器-stop-命令" class="headerlink" title="3.4 停止容器 stop 命令"></a>3.4 停止容器 stop 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker stop &#123;name[or container_id]&#125;</span><br></pre></td></tr></table></figure></li><li><h4 id="3-5-打印容器端口映射关系-port"><a href="#3-5-打印容器端口映射关系-port" class="headerlink" title="3.5 打印容器端口映射关系 port"></a>3.5 打印容器端口映射关系 port</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker port &#123;[name] or [container_id]&#125; &#123;[null] or [container port]&#125;</span><br></pre></td></tr></table></figure><p>  print the port mapping of a container.</p></li><li><h4 id="3-6-删除容器-rm"><a href="#3-6-删除容器-rm" class="headerlink" title="3.6 删除容器 rm"></a>3.6 删除容器 rm</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker rm &#123;[name] or [container_id]&#125;</span><br></pre></td></tr></table></figure><p>  rm a container.</p></li><li><h4 id="3-7-连接容器的输出终端-attach"><a href="#3-7-连接容器的输出终端-attach" class="headerlink" title="3.7 连接容器的输出终端 attach"></a>3.7 连接容器的输出终端 attach</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker attach &lt;container_id&gt;</span><br></pre></td></tr></table></figure><p>  这个用于连接创建容器时打开的终端</p></li><li><h4 id="3-8-连接容器并新建终端-exec-execute-another-terminal"><a href="#3-8-连接容器并新建终端-exec-execute-another-terminal" class="headerlink" title="3.8 连接容器并新建终端 exec execute another terminal"></a>3.8 连接容器并新建终端 <code>exec</code> execute another terminal</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker exec -it &lt;container_id&gt; bash</span><br></pre></td></tr></table></figure><p>  open a new terminal of a docker container.</p></li><li><h4 id="3-9-检查容器-inspect"><a href="#3-9-检查容器-inspect" class="headerlink" title="3.9 检查容器 inspect"></a>3.9 检查容器 inspect</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker inspect [container_id or container_name]</span><br></pre></td></tr></table></figure><p>  用于查看容器的一些属性，比如创建(run)时的一些参数(比如mysql的密码)，比如容器的网络地址等。</p></li></ul><h3 id="4-网络管理"><a href="#4-网络管理" class="headerlink" title="4. 网络管理"></a><strong>4. 网络管理</strong></h3><ul><li><h4 id="4-1-查看所有网卡"><a href="#4-1-查看所有网卡" class="headerlink" title="4.1 查看所有网卡"></a>4.1 查看所有网卡</h4><p>  <code>docker network ls</code></p></li><li><h4 id="4-2-查看网卡配置，比如bridge"><a href="#4-2-查看网卡配置，比如bridge" class="headerlink" title="4.2 查看网卡配置，比如bridge"></a>4.2 查看网卡配置，比如bridge</h4><p>  <code>docker network inspect bridge</code></p><p>  docker有四中网络模式(driver)</p><p>  host模式, run —net=host, 容器与宿主机共享网络，你看到的将是宿主机的网络配置</p><p>  container, run —net=容器id, 使用另一个宿主机的网卡配置</p><p>  none, run —net=none, 容器自有配置，没用过</p><p>  bridge, run —net=bridge, 默认的，桥接模式</p><p>  这四个模式(driver)是默认存在的，docker默认创建了四中模式同名的network。我们自行创建的网络也是要以这四个driver的一个作为driver。</p></li></ul><ul><li><h4 id="4-3-创建网络"><a href="#4-3-创建网络" class="headerlink" title="4.3 创建网络"></a>4.3 创建网络</h4></li></ul><p><code>docker network create --driver bridge --subnet=172.18.0.0/16 --gateway=172.18.0.1 mynet</code></p><p>创建一个bridge模式的网络<br>    网络模式在上一节介绍过<br>网络名称mynet<br>子网段 172.18.0.0/16<br>    要指定网段和掩码<br>网关 172.18.0.1</p><h3 id="5-轻量级linux镜像-alpine"><a href="#5-轻量级linux镜像-alpine" class="headerlink" title="5. 轻量级linux镜像 alpine"></a><strong>5. 轻量级linux镜像 alpine</strong></h3><h3 id="6-注意"><a href="#6-注意" class="headerlink" title="6. 注意"></a><strong>6. 注意</strong></h3><h4 id="6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind"><a href="#6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind" class="headerlink" title="6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind"></a>6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</h4><h4 id="6-2-权限设置"><a href="#6-2-权限设置" class="headerlink" title="6.2 权限设置"></a>6.2 权限设置</h4><p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在service文件里修改。默认的这个文件归属于docker用户组和超级用户，普通用户组没有权限操作这个文件，所以普通用户需要添加到docker组。</p><p>可能系统默认不开启docker，开启之后会影响性能尤其是安装了k8s之后，所以可能需要手动开启docker进程。</p><ul><li><p>命令：添加到docker用户组</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -a user_name docker</span><br></pre></td></tr></table></figure></li><li><p>权限生效，命令或重启电脑</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 刷新用户组，只对当前会话有效</span><br><span class="line">~:newgrp docker</span><br></pre></td></tr></table></figure></li><li><p>命令：从docker用户组删除用户</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:sudo gpasswd -d user_name docker</span><br></pre></td></tr></table></figure></li></ul><p>docker也支持tcp监听，本地测试不需要开启。在service里配置，一般开启远程就是指开启tcp监听，如果需要在远程服务器上上传镜像，一般是需要开启这个的。</p><h4 id="6-3-linux上的用户界面-cockpit"><a href="#6-3-linux上的用户界面-cockpit" class="headerlink" title="6.3 linux上的用户界面 cockpit"></a>6.3 linux上的用户界面 cockpit</h4><p>manajro 安装cockpit，然后在启动<code>systemctl start cockpit</code>。</p><p>然后打开浏览器<code>https://localhost:9090</code>，用户名与密码就是当前系统的用户名和密码，可以方便的管理容器。</p>]]></content>
       
       
       <categories>
@@ -5603,15 +5636,15 @@
             
             <tag> 数字货币 </tag>
             
-            <tag> ECC </tag>
-            
-            <tag> 椭圆曲线 </tag>
-            
             <tag> 算法 </tag>
             
             <tag> 加密 </tag>
             
             <tag> 非对称加密 </tag>
+            
+            <tag> ECC </tag>
+            
+            <tag> 椭圆曲线 </tag>
             
             <tag> DSA </tag>
             
@@ -5644,17 +5677,17 @@
             
             <tag> 数字货币 </tag>
             
-            <tag> ECDH </tag>
-            
-            <tag> ECC </tag>
-            
-            <tag> 椭圆曲线 </tag>
-            
             <tag> 算法 </tag>
             
             <tag> 加密 </tag>
             
             <tag> 非对称加密 </tag>
+            
+            <tag> ECC </tag>
+            
+            <tag> 椭圆曲线 </tag>
+            
+            <tag> ECDH </tag>
             
         </tags>
       
@@ -5683,15 +5716,15 @@
             
             <tag> 数字货币 </tag>
             
-            <tag> ECC </tag>
-            
-            <tag> 椭圆曲线 </tag>
-            
             <tag> 算法 </tag>
             
             <tag> 加密 </tag>
             
             <tag> 非对称加密 </tag>
+            
+            <tag> ECC </tag>
+            
+            <tag> 椭圆曲线 </tag>
             
         </tags>
       
@@ -5755,13 +5788,13 @@
             
             <tag> 数字货币 </tag>
             
+            <tag> DH </tag>
+            
             <tag> 算法 </tag>
             
             <tag> 加密 </tag>
             
             <tag> 非对称加密 </tag>
-            
-            <tag> DH </tag>
             
         </tags>
       

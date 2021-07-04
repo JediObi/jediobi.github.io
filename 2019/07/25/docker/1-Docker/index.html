@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="docker的安装配置。镜像管理和容器管理。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-23T11:50:06.276Z">
+<meta property="og:updated_time" content="2021-07-04T13:40:58.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(1) Docker">
 <meta name="twitter:description" content="docker的安装配置。镜像管理和容器管理。">
@@ -219,7 +219,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-23 19:50:06" itemprop="dateModified" datetime="2021-01-23T19:50:06+08:00">2021-01-23</time>
+                <time title="Modified: 2021-07-04 21:40:58" itemprop="dateModified" datetime="2021-07-04T21:40:58+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -283,6 +283,14 @@
 <p>  <code>docker inspect name</code> 可以查看 dockerfile。</p>
 <p>  ps:<br>  任务中的前台任务决定了容器的运行时间。docker的机制是如果没有任何前台任务，则认为容器空闲，容器会自动exit。所以对于一些service类型的任务可能需要改到前台执行。</p>
 <p>  自定义容器时，一般用一个空的Linux镜像，没有指定任务，为了保持容器运行，一般会指定 /bin/bash, 然后使用 -t 创建一个终端使之在前台运行，但是终端的exit命令会退出终端导致前台任务结束，容器也就停止了。所以要增加一个 -d 守护进程，退出或在后台可以继续保持前台任务执行。 -i 参数可以连接到容器的标准输入，标准输入也是一个前台任务(使用ctrl+c会退出stdin)，一般不单独用。</p>
+<ul>
+<li><p>指定网络</p>
+<p>run … —network=网络名称</p>
+</li>
+<li><p>指定ip<br>在网络限定的ip段内指定</p>
+<p>run … —ip 172.17.0.3</p>
+</li>
+</ul>
 </li>
 <li><h4 id="3-2-容器进程管理-ps-命令"><a href="#3-2-容器进程管理-ps-命令" class="headerlink" title="3.2 容器进程管理 ps 命令"></a>3.2 容器进程管理 ps 命令</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~:docker ps</span><br></pre></td></tr></table></figure>
 <p>  列出正在运行容器</p>
@@ -310,12 +318,23 @@
 <p>  用于查看容器的一些属性，比如创建(run)时的一些参数(比如mysql的密码)，比如容器的网络地址等。</p>
 </li>
 </ul>
-<h3 id="4-网卡管理"><a href="#4-网卡管理" class="headerlink" title="4. 网卡管理"></a><strong>4. 网卡管理</strong></h3><ul>
+<h3 id="4-网络管理"><a href="#4-网络管理" class="headerlink" title="4. 网络管理"></a><strong>4. 网络管理</strong></h3><ul>
 <li><h4 id="4-1-查看所有网卡"><a href="#4-1-查看所有网卡" class="headerlink" title="4.1 查看所有网卡"></a>4.1 查看所有网卡</h4><p>  <code>docker network ls</code></p>
 </li>
 <li><h4 id="4-2-查看网卡配置，比如bridge"><a href="#4-2-查看网卡配置，比如bridge" class="headerlink" title="4.2 查看网卡配置，比如bridge"></a>4.2 查看网卡配置，比如bridge</h4><p>  <code>docker network inspect bridge</code></p>
+<p>  docker有四中网络模式(driver)</p>
+<p>  host模式, run —net=host, 容器与宿主机共享网络，你看到的将是宿主机的网络配置</p>
+<p>  container, run —net=容器id, 使用另一个宿主机的网卡配置</p>
+<p>  none, run —net=none, 容器自有配置，没用过</p>
+<p>  bridge, run —net=bridge, 默认的，桥接模式</p>
+<p>  这四个模式(driver)是默认存在的，docker默认创建了四中模式同名的network。我们自行创建的网络也是要以这四个driver的一个作为driver。</p>
 </li>
 </ul>
+<ul>
+<li><h4 id="4-3-创建网络"><a href="#4-3-创建网络" class="headerlink" title="4.3 创建网络"></a>4.3 创建网络</h4></li>
+</ul>
+<p><code>docker network create --driver bridge --subnet=172.18.0.0/16 --gateway=172.18.0.1 mynet</code></p>
+<p>创建一个bridge模式的网络<br>    网络模式在上一节介绍过<br>网络名称mynet<br>子网段 172.18.0.0/16<br>    要指定网段和掩码<br>网关 172.18.0.1</p>
 <h3 id="5-轻量级linux镜像-alpine"><a href="#5-轻量级linux镜像-alpine" class="headerlink" title="5. 轻量级linux镜像 alpine"></a><strong>5. 轻量级linux镜像 alpine</strong></h3><h3 id="6-注意"><a href="#6-注意" class="headerlink" title="6. 注意"></a><strong>6. 注意</strong></h3><h4 id="6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind"><a href="#6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind" class="headerlink" title="6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind"></a>6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</h4><h4 id="6-2-权限设置"><a href="#6-2-权限设置" class="headerlink" title="6.2 权限设置"></a>6.2 权限设置</h4><p>docker 守护进程默认只开启了 unix socket 监听，对应的进程文件为 /var/run/docker.sock，当然你也可以在service文件里修改。默认的这个文件归属于docker用户组和超级用户，普通用户组没有权限操作这个文件，所以普通用户需要添加到docker组。</p>
 <p>可能系统默认不开启docker，开启之后会影响性能尤其是安装了k8s之后，所以可能需要手动开启docker进程。</p>
 <ul>
@@ -415,7 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-docker-安装"><span class="nav-text">1. docker 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-docker-镜像管理"><span class="nav-text">2. docker 镜像管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-镜像加速-etc-docker-daemon-json"><span class="nav-text">2.1 镜像加速 /etc/docker/daemon.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-下载镜像-pull"><span class="nav-text">2.2 下载镜像 pull</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-列出本地镜像-images"><span class="nav-text">2.3 列出本地镜像 images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-搜索远程仓库镜像-search"><span class="nav-text">2.4 搜索远程仓库镜像 search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-镜像重命名-tag"><span class="nav-text">2.5 镜像重命名 tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-以当前容器为模板创建镜像-commit"><span class="nav-text">2.6 以当前容器为模板创建镜像 commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-检查镜像"><span class="nav-text">2.7 检查镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-删除镜像"><span class="nav-text">2.8 删除镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-docker-容器管理"><span class="nav-text">3. docker 容器管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-创建容器-run-命令"><span class="nav-text">3.1 创建容器 run 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-容器进程管理-ps-命令"><span class="nav-text">3.2 容器进程管理 ps 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-查看容器日志-logs-命令"><span class="nav-text">3.3 查看容器日志 logs 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-停止容器-stop-命令"><span class="nav-text">3.4 停止容器 stop 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-打印容器端口映射关系-port"><span class="nav-text">3.5 打印容器端口映射关系 port</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-删除容器-rm"><span class="nav-text">3.6 删除容器 rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-连接容器的输出终端-attach"><span class="nav-text">3.7 连接容器的输出终端 attach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-连接容器并新建终端-exec-execute-another-terminal"><span class="nav-text">3.8 连接容器并新建终端 exec execute another terminal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-检查容器-inspect"><span class="nav-text">3.9 检查容器 inspect</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-网卡管理"><span class="nav-text">4. 网卡管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-查看所有网卡"><span class="nav-text">4.1 查看所有网卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-查看网卡配置，比如bridge"><span class="nav-text">4.2 查看网卡配置，比如bridge</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-轻量级linux镜像-alpine"><span class="nav-text">5. 轻量级linux镜像 alpine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-注意"><span class="nav-text">6. 注意</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind"><span class="nav-text">6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-权限设置"><span class="nav-text">6.2 权限设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-linux上的用户界面-cockpit"><span class="nav-text">6.3 linux上的用户界面 cockpit</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-docker-安装"><span class="nav-text">1. docker 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-docker-镜像管理"><span class="nav-text">2. docker 镜像管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-镜像加速-etc-docker-daemon-json"><span class="nav-text">2.1 镜像加速 /etc/docker/daemon.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-下载镜像-pull"><span class="nav-text">2.2 下载镜像 pull</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-列出本地镜像-images"><span class="nav-text">2.3 列出本地镜像 images</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-搜索远程仓库镜像-search"><span class="nav-text">2.4 搜索远程仓库镜像 search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-镜像重命名-tag"><span class="nav-text">2.5 镜像重命名 tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-以当前容器为模板创建镜像-commit"><span class="nav-text">2.6 以当前容器为模板创建镜像 commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-检查镜像"><span class="nav-text">2.7 检查镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-删除镜像"><span class="nav-text">2.8 删除镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-docker-容器管理"><span class="nav-text">3. docker 容器管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-创建容器-run-命令"><span class="nav-text">3.1 创建容器 run 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-容器进程管理-ps-命令"><span class="nav-text">3.2 容器进程管理 ps 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-查看容器日志-logs-命令"><span class="nav-text">3.3 查看容器日志 logs 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-停止容器-stop-命令"><span class="nav-text">3.4 停止容器 stop 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-打印容器端口映射关系-port"><span class="nav-text">3.5 打印容器端口映射关系 port</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-删除容器-rm"><span class="nav-text">3.6 删除容器 rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-连接容器的输出终端-attach"><span class="nav-text">3.7 连接容器的输出终端 attach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-连接容器并新建终端-exec-execute-another-terminal"><span class="nav-text">3.8 连接容器并新建终端 exec execute another terminal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-检查容器-inspect"><span class="nav-text">3.9 检查容器 inspect</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-网络管理"><span class="nav-text">4. 网络管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-查看所有网卡"><span class="nav-text">4.1 查看所有网卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-查看网卡配置，比如bridge"><span class="nav-text">4.2 查看网卡配置，比如bridge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-创建网络"><span class="nav-text">4.3 创建网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-轻量级linux镜像-alpine"><span class="nav-text">5. 轻量级linux镜像 alpine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-注意"><span class="nav-text">6. 注意</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用-docker-in-docker-镜像，对应的仓库是-docker-dind"><span class="nav-text">6.1 禁止套娃：容器不能二次虚拟化，所以在容器中无法再次启动docker容器。如果有这种特殊的需求，可以使用 docker in docker 镜像，对应的仓库是 docker-dind</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-权限设置"><span class="nav-text">6.2 权限设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-linux上的用户界面-cockpit"><span class="nav-text">6.3 linux上的用户界面 cockpit</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -431,7 +450,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">246</span>
+          <span class="site-state-item-count">247</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
