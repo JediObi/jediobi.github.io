@@ -99,16 +99,16 @@
       </tags>
   </entry>
   <entry>
-    <title>nacos</title>
-    <url>/2020/11/07/nacos/</url>
+    <title>manjaro-黑屏问题</title>
+    <url>/2020/12/05/manjaro-%E9%BB%91%E5%B1%8F%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>文章简介</p>
 <a id="more"></a>
 <p>正文</p>
 ]]></content>
   </entry>
   <entry>
-    <title>manjaro-黑屏问题</title>
-    <url>/2020/12/05/manjaro-%E9%BB%91%E5%B1%8F%E9%97%AE%E9%A2%98/</url>
+    <title>nacos</title>
+    <url>/2020/11/07/nacos/</url>
     <content><![CDATA[<p>文章简介</p>
 <a id="more"></a>
 <p>正文</p>
@@ -219,14 +219,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>tensorflow-3-燃烧效率回归分析</title>
-    <url>/2019/08/08/tensorflow-3-%E7%87%83%E7%83%A7%E6%95%88%E7%8E%87%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>文章简介</p>
-<a id="more"></a>
-<p>正文</p>
-]]></content>
-  </entry>
-  <entry>
     <title>tensorflow-2-影评正负分类</title>
     <url>/2019/08/08/tensorflow-2-%E5%BD%B1%E8%AF%84%E6%AD%A3%E8%B4%9F%E5%88%86%E7%B1%BB/</url>
     <content><![CDATA[<p>文章简介</p>
@@ -235,16 +227,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>tf.keras卷积神经网络</title>
-    <url>/2019/08/15/tf-keras%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    <title>tensorflow-3-燃烧效率回归分析</title>
+    <url>/2019/08/08/tensorflow-3-%E7%87%83%E7%83%A7%E6%95%88%E7%8E%87%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>文章简介</p>
 <a id="more"></a>
 <p>正文</p>
 ]]></content>
   </entry>
   <entry>
-    <title>反向传播</title>
-    <url>/2019/08/08/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
+    <title>tf.keras卷积神经网络</title>
+    <url>/2019/08/15/tf-keras%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<p>文章简介</p>
 <a id="more"></a>
 <p>正文</p>
@@ -264,6 +256,14 @@
 <p>比如： 输入-&gt;[卷积-&gt;激活]-&gt;[卷积-&gt;激活]-&gt;[卷积-&gt;激活-&gt;池化]-&gt;[卷积-&gt;激活-&gt;池化]-&gt;全连接网络</p>
 <p>图像的特征是，相邻像素高度相关，而传统的全连接网络会把距离较远的像素做相关处理，学习到无用的特征，容易过拟合。</p>
 <p>一个卷积核可能是10<em>10矩阵，但是对于一个1000</em>1000的图片来说，卷积核可以作用于全图。参数数量减少很多。而下采样再次降低参数数量。在反向传播时，卷积核仍然是卷积操作，而下采样可以把采样值作为1，未采样的置0.对于平均采样来说，可以是平均值。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>反向传播</title>
+    <url>/2019/08/08/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/</url>
+    <content><![CDATA[<p>文章简介</p>
+<a id="more"></a>
+<p>正文</p>
 ]]></content>
   </entry>
   <entry>
@@ -307,27 +307,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>概率论与线代基础</title>
-    <url>/2019/08/08/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>文章简介</p>
-<a id="more"></a>
-<h3 id="2-常用的数学名词"><a href="#2-常用的数学名词" class="headerlink" title="(2) 常用的数学名词"></a>(2) 常用的数学名词</h3><ul>
-<li><ol>
-<li>转置</li>
-</ol>
-</li>
-<li><ol>
-<li>逆</li>
-</ol>
-</li>
-<li><ol>
-<li>稀疏矩阵</li>
-</ol>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>梯度下降-数学</title>
     <url>/2019/08/08/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-%E6%95%B0%E5%AD%A6/</url>
     <content><![CDATA[<p>文章简介</p>
@@ -347,6 +326,27 @@
 </li>
 <li><ol>
 <li>下降</li>
+</ol>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>概率论与线代基础</title>
+    <url>/2019/08/08/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>文章简介</p>
+<a id="more"></a>
+<h3 id="2-常用的数学名词"><a href="#2-常用的数学名词" class="headerlink" title="(2) 常用的数学名词"></a>(2) 常用的数学名词</h3><ul>
+<li><ol>
+<li>转置</li>
+</ol>
+</li>
+<li><ol>
+<li>逆</li>
+</ol>
+</li>
+<li><ol>
+<li>稀疏矩阵</li>
 </ol>
 </li>
 </ul>
@@ -388,20 +388,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>1 - gradle intall</title>
-    <url>/2019/07/26/android-native/1-gradle-intall/</url>
-    <content><![CDATA[<p>gradle编译工具的安装和环境变量配置。</p>
-<a id="more"></a>
-<h3 id="1-download-binary"><a href="#1-download-binary" class="headerlink" title="1. download binary"></a><strong>1. download binary</strong></h3><h3 id="2-unzip"><a href="#2-unzip" class="headerlink" title="2. unzip"></a><strong>2. unzip</strong></h3><h3 id="3-etc-profile"><a href="#3-etc-profile" class="headerlink" title="3. /etc/profile"></a><strong>3. /etc/profile</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GRADLE_HOME=...</span><br><span class="line">PATH=$PATH:$&#123;GRADLE_HOME&#125;</span><br><span class="line">export PATH</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Android native</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>gradle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>(1) android studio cmake</title>
     <url>/2019/07/26/android-native/1-android-studio-cmake/</url>
     <content><![CDATA[<p>android studio jni调用native的cmake脚本和代码示例。</p>
@@ -422,6 +408,20 @@
         <tag>native</tag>
         <tag>jni</tag>
         <tag>cmake</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1 - gradle intall</title>
+    <url>/2019/07/26/android-native/1-gradle-intall/</url>
+    <content><![CDATA[<p>gradle编译工具的安装和环境变量配置。</p>
+<a id="more"></a>
+<h3 id="1-download-binary"><a href="#1-download-binary" class="headerlink" title="1. download binary"></a><strong>1. download binary</strong></h3><h3 id="2-unzip"><a href="#2-unzip" class="headerlink" title="2. unzip"></a><strong>2. unzip</strong></h3><h3 id="3-etc-profile"><a href="#3-etc-profile" class="headerlink" title="3. /etc/profile"></a><strong>3. /etc/profile</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GRADLE_HOME=...</span><br><span class="line">PATH=$PATH:$&#123;GRADLE_HOME&#125;</span><br><span class="line">export PATH</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Android native</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>gradle</tag>
       </tags>
   </entry>
   <entry>
@@ -461,31 +461,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2 - gradle usage</title>
-    <url>/2019/07/26/android-native/2-gradle-usage/</url>
-    <content><![CDATA[<p>gradle 简单使用</p>
-<a id="more"></a>
-<h3 id="1-project-amp-task"><a href="#1-project-amp-task" class="headerlink" title="1. project &amp; task"></a><strong>1. project &amp; task</strong></h3><ul>
-<li><h4 id="1-1-build-gradle"><a href="#1-1-build-gradle" class="headerlink" title="1.1 build.gradle"></a>1.1 build.gradle</h4>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task hello &#123;</span><br><span class="line">doLast &#123;</span><br><span class="line">    println &quot;hello&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:gradle -q hello</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="1-2-task-with-doLast"><a href="#1-2-task-with-doLast" class="headerlink" title="1.2 task with doLast"></a>1.2 task with doLast</h4><p>  (&lt;&lt; deprecated)</p>
-<ul>
-<li>包含doLast的任务只有在依赖或直接运行时才会执行</li>
-<li>不包含doLast的任务每次执行gradle命令都会执行</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-编译android-project"><a href="#3-编译android-project" class="headerlink" title="3. 编译android project"></a><strong>3. 编译android project</strong></h3>]]></content>
-      <categories>
-        <category>Android native</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>gradle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>4 - gradle error</title>
     <url>/2019/07/26/android-native/4-gradle-error/</url>
     <content><![CDATA[<p>gradle常见错误和解决办法。</p>
@@ -522,6 +497,29 @@
       </tags>
   </entry>
   <entry>
+    <title>6 - hello-jni in termial</title>
+    <url>/2019/07/26/android-native/6-hello-jni-in-termial/</url>
+    <content><![CDATA[<p>shell编译hello-jni官方demo</p>
+<a id="more"></a>
+<h3 id="1-c-c-代码的编译可以使用make或cmake"><a href="#1-c-c-代码的编译可以使用make或cmake" class="headerlink" title="1. c/c++代码的编译可以使用make或cmake"></a><strong>1. c/c++代码的编译可以使用make或cmake</strong></h3><p>基于make的ndk-build+Android.mk是一种较原始的方式<br>而cmake就是当前版本支持的跨平台方式<br>gradle通过配置集成其中一个，使gradle可以编译c/c++代码</p>
+<h3 id="2-build-gradle配置"><a href="#2-build-gradle配置" class="headerlink" title="2. build.gradle配置"></a><strong>2. build.gradle配置</strong></h3><p>gradle集成cmake配置免去了直接用cmake命令编译的过程</p>
+<p>模块的gradle配置</p>
+<ul>
+<li><h4 id="2-1-default配置-可以指定cmake的指令集和其他参数"><a href="#2-1-default配置-可以指定cmake的指令集和其他参数" class="headerlink" title="2.1 default配置 可以指定cmake的指令集和其他参数"></a>2.1 default配置 可以指定cmake的指令集和其他参数</h4>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">        ...</span><br><span class="line">        externalNativeBuild &#123;</span><br><span class="line">            cmake &#123;</span><br><span class="line">                abiFiters &apos;x86&apos;</span><br><span class="line">                cppFlags &apos;&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="2-2-nativeBuild配置-指定cmake-的配置文件位置-CMakeLists-txt"><a href="#2-2-nativeBuild配置-指定cmake-的配置文件位置-CMakeLists-txt" class="headerlink" title="2.2 nativeBuild配置 指定cmake 的配置文件位置 CMakeLists.txt"></a>2.2 nativeBuild配置 指定cmake 的配置文件位置 CMakeLists.txt</h4>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">externalNativeBuild &#123;</span><br><span class="line">cmake &#123;</span><br><span class="line">            version &apos;3.10.2&apos;</span><br><span class="line">            path &quot;src/main/cpp/CMakeLists.txt&quot;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-使用cmake命令编译"><a href="#3-使用cmake命令编译" class="headerlink" title="3. 使用cmake命令编译"></a><strong>3. 使用cmake命令编译</strong></h3>]]></content>
+      <categories>
+        <category>Android native</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>jni</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>7 - gradle repository mirror</title>
     <url>/2019/07/26/android-native/7-gradle-repository-mirror/</url>
     <content><![CDATA[<p>gradle配置maven源。</p>
@@ -533,6 +531,31 @@
 <h3 id="2-全局gradle"><a href="#2-全局gradle" class="headerlink" title="2. 全局gradle"></a><strong>2. 全局gradle</strong></h3><p><strong>~/.gradle/init.gradle</strong></p>
 <pre><code><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">allprojects</span>&#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        <span class="keyword">def</span> REPOSITORY_URL = <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span></span><br><span class="line">        all &#123; ArtifactRepository repo -&gt;</span><br><span class="line">            <span class="keyword">if</span>(repo <span class="keyword">instanceof</span> MavenArtifactRepository)&#123;</span><br><span class="line">                <span class="keyword">def</span> url = repo.url.toString()</span><br><span class="line">                <span class="keyword">if</span> (url.startsWith(<span class="string">'https://repo1.maven.org/maven2'</span>) || url.startsWith(<span class="string">'https://jcenter.bintray.com/'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">project</span>.logger.lifecycle <span class="string">"Repository $&#123;repo.url&#125; replaced by $REPOSITORY_URL."</span></span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url REPOSITORY_URL</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre>]]></content>
+      <categories>
+        <category>Android native</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>gradle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2 - gradle usage</title>
+    <url>/2019/07/26/android-native/2-gradle-usage/</url>
+    <content><![CDATA[<p>gradle 简单使用</p>
+<a id="more"></a>
+<h3 id="1-project-amp-task"><a href="#1-project-amp-task" class="headerlink" title="1. project &amp; task"></a><strong>1. project &amp; task</strong></h3><ul>
+<li><h4 id="1-1-build-gradle"><a href="#1-1-build-gradle" class="headerlink" title="1.1 build.gradle"></a>1.1 build.gradle</h4>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">task hello &#123;</span><br><span class="line">doLast &#123;</span><br><span class="line">    println &quot;hello&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:gradle -q hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="1-2-task-with-doLast"><a href="#1-2-task-with-doLast" class="headerlink" title="1.2 task with doLast"></a>1.2 task with doLast</h4><p>  (&lt;&lt; deprecated)</p>
+<ul>
+<li>包含doLast的任务只有在依赖或直接运行时才会执行</li>
+<li>不包含doLast的任务每次执行gradle命令都会执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-编译android-project"><a href="#3-编译android-project" class="headerlink" title="3. 编译android project"></a><strong>3. 编译android project</strong></h3>]]></content>
       <categories>
         <category>Android native</category>
       </categories>
@@ -613,29 +636,6 @@
         <tag>react</tag>
         <tag>ant design</tag>
         <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>6 - hello-jni in termial</title>
-    <url>/2019/07/26/android-native/6-hello-jni-in-termial/</url>
-    <content><![CDATA[<p>shell编译hello-jni官方demo</p>
-<a id="more"></a>
-<h3 id="1-c-c-代码的编译可以使用make或cmake"><a href="#1-c-c-代码的编译可以使用make或cmake" class="headerlink" title="1. c/c++代码的编译可以使用make或cmake"></a><strong>1. c/c++代码的编译可以使用make或cmake</strong></h3><p>基于make的ndk-build+Android.mk是一种较原始的方式<br>而cmake就是当前版本支持的跨平台方式<br>gradle通过配置集成其中一个，使gradle可以编译c/c++代码</p>
-<h3 id="2-build-gradle配置"><a href="#2-build-gradle配置" class="headerlink" title="2. build.gradle配置"></a><strong>2. build.gradle配置</strong></h3><p>gradle集成cmake配置免去了直接用cmake命令编译的过程</p>
-<p>模块的gradle配置</p>
-<ul>
-<li><h4 id="2-1-default配置-可以指定cmake的指令集和其他参数"><a href="#2-1-default配置-可以指定cmake的指令集和其他参数" class="headerlink" title="2.1 default配置 可以指定cmake的指令集和其他参数"></a>2.1 default配置 可以指定cmake的指令集和其他参数</h4>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">        ...</span><br><span class="line">        externalNativeBuild &#123;</span><br><span class="line">            cmake &#123;</span><br><span class="line">                abiFiters &apos;x86&apos;</span><br><span class="line">                cppFlags &apos;&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><h4 id="2-2-nativeBuild配置-指定cmake-的配置文件位置-CMakeLists-txt"><a href="#2-2-nativeBuild配置-指定cmake-的配置文件位置-CMakeLists-txt" class="headerlink" title="2.2 nativeBuild配置 指定cmake 的配置文件位置 CMakeLists.txt"></a>2.2 nativeBuild配置 指定cmake 的配置文件位置 CMakeLists.txt</h4>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">externalNativeBuild &#123;</span><br><span class="line">cmake &#123;</span><br><span class="line">            version &apos;3.10.2&apos;</span><br><span class="line">            path &quot;src/main/cpp/CMakeLists.txt&quot;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-使用cmake命令编译"><a href="#3-使用cmake命令编译" class="headerlink" title="3. 使用cmake命令编译"></a><strong>3. 使用cmake命令编译</strong></h3>]]></content>
-      <categories>
-        <category>Android native</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>jni</tag>
       </tags>
   </entry>
   <entry>
@@ -1083,6 +1083,23 @@
       </tags>
   </entry>
   <entry>
+    <title>(3) Json RPC</title>
+    <url>/2019/07/24/bitcoin/(3)%20json-rpc/</url>
+    <content><![CDATA[<p>使用 JSON RPC 调用比特币区块链开放接口</p>
+<a id="more"></a>
+<h2 id="Json-RPC"><a href="#Json-RPC" class="headerlink" title="Json RPC"></a><strong>Json RPC</strong></h2><p>If a server runs with json-rpc.<br>Anyone may send request to this server in json format.<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"jsonrpc"</span> : <span class="number">2.0</span>,</span><br><span class="line">    <span class="attr">"method"</span> : <span class="string">"sayHello"</span>, </span><br><span class="line">    <span class="attr">"params"</span> : [<span class="string">"Hello JSON-RPC"</span>], </span><br><span class="line">    <span class="attr">"id"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Just like an url <code>http://localhost:8080/test_project/rpc</code> with body<code>{&quot;method&quot;:&quot;sayHello&quot;,&quot;params&quot;:[],&quot;id&quot;:1234}</code>.<br>A json-rpc calling is just like a traditional http request.<br>Because we use json or key-value format to transform our message in http server.</p>
+]]></content>
+      <categories>
+        <category>bitcoin</category>
+      </categories>
+      <tags>
+        <tag>bitcoin</tag>
+        <tag>数字货币</tag>
+        <tag>RPC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>(4) OP_CHECKSIG 交易验签</title>
     <url>/2019/07/24/bitcoin/(4)%20OP_CHECKSIG%20%E4%BA%A4%E6%98%93%E9%AA%8C%E7%AD%BE/</url>
     <content><![CDATA[<p>比特币区块链交易验签流程</p>
@@ -1179,23 +1196,6 @@
       </tags>
   </entry>
   <entry>
-    <title>(3) Json RPC</title>
-    <url>/2019/07/24/bitcoin/(3)%20json-rpc/</url>
-    <content><![CDATA[<p>使用 JSON RPC 调用比特币区块链开放接口</p>
-<a id="more"></a>
-<h2 id="Json-RPC"><a href="#Json-RPC" class="headerlink" title="Json RPC"></a><strong>Json RPC</strong></h2><p>If a server runs with json-rpc.<br>Anyone may send request to this server in json format.<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"jsonrpc"</span> : <span class="number">2.0</span>,</span><br><span class="line">    <span class="attr">"method"</span> : <span class="string">"sayHello"</span>, </span><br><span class="line">    <span class="attr">"params"</span> : [<span class="string">"Hello JSON-RPC"</span>], </span><br><span class="line">    <span class="attr">"id"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Just like an url <code>http://localhost:8080/test_project/rpc</code> with body<code>{&quot;method&quot;:&quot;sayHello&quot;,&quot;params&quot;:[],&quot;id&quot;:1234}</code>.<br>A json-rpc calling is just like a traditional http request.<br>Because we use json or key-value format to transform our message in http server.</p>
-]]></content>
-      <categories>
-        <category>bitcoin</category>
-      </categories>
-      <tags>
-        <tag>bitcoin</tag>
-        <tag>数字货币</tag>
-        <tag>RPC</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>(8) P2PKH - Basical transaction</title>
     <url>/2019/07/24/bitcoin/(8)%20P2PKH%20-%20Basical%20transaction/</url>
     <content><![CDATA[<p>比特币基本交易模式-比特币转账</p>
@@ -1262,6 +1262,26 @@
       <tags>
         <tag>bitcoin</tag>
         <tag>数字货币</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ant</title>
+    <url>/2019/07/26/build-tools/ant/</url>
+    <content><![CDATA[<p>Ant的安装配置和使用。</p>
+<a id="more"></a>
+<h3 id="1-install"><a href="#1-install" class="headerlink" title="1. install"></a><strong>1. install</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:tar xzvf apache-ant-1.10.1-bin.tar.gz -C /usr/local/bin</span><br></pre></td></tr></table></figure>
+<h3 id="2-enviroment"><a href="#2-enviroment" class="headerlink" title="2. enviroment"></a><strong>2. enviroment</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># apache ant</span><br><span class="line">ANT_HOME=/usr/local/bin/apache-ant-1.10.1</span><br><span class="line">PATH=$PATH:$ANT_HOME/bin/</span><br><span class="line">export PATH</span><br></pre></td></tr></table></figure>
+<h3 id="3-usage"><a href="#3-usage" class="headerlink" title="3. usage"></a><strong>3. usage</strong></h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">Build file for Time Expression application from </span></span><br><span class="line"><span class="comment">Rapid Java Development book.</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">name</span>=<span class="string">"My_project"</span> <span class="attr">basedir</span>=<span class="string">"."</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"appname"</span> <span class="attr">value</span>=<span class="string">"$&#123;ant.project.name&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"env"</span> <span class="attr">value</span>=<span class="string">"local"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"java.home"</span> <span class="attr">value</span>=<span class="string">"$&#123;env.JAVA_HOME&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ant.home"</span> <span class="attr">value</span>=<span class="string">"$&#123;env.ANT_HOME&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="comment">&lt;!-- load properties file --&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">file</span>=<span class="string">"local.properties"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"lib.dir"</span> <span class="attr">value</span>=<span class="string">"lib"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"master-classpath"</span> <span class="attr">description</span>=<span class="string">"Master CLASSPATH for this script"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;lib.dir&#125;"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"*.jar"</span>/&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">path</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"clean"</span> <span class="attr">description</span>=<span class="string">"Deletes files from WAR directory"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">failonerror</span>=<span class="string">"false"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;war.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">failonerror</span>=<span class="string">"false"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;java.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.scc"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">failonerror</span>=<span class="string">"false"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;dist.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;class.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"init"</span> <span class="attr">description</span>=<span class="string">"Setup for build script"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">mkdir</span> <span class="attr">dir</span>=<span class="string">"$&#123;conf.dir&#125;"</span>/&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mkdir</span> <span class="attr">dir</span>=<span class="string">"$&#123;web.dir&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"compile"</span> <span class="attr">depends</span>=<span class="string">"init"</span> <span class="attr">description</span>=<span class="string">"Compiles .java files to WAR directory"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">javac</span> <span class="attr">encoding</span>=<span class="string">"GBK"</span> <span class="attr">destdir</span>=<span class="string">"$&#123;class.dir&#125;"</span> <span class="attr">debug</span>=<span class="string">"true"</span> <span class="attr">failonerror</span>=<span class="string">"true"</span> <span class="attr">fork</span>=<span class="string">"true"</span> <span class="attr">memoryInitialSize</span>=<span class="string">"256m"</span> <span class="attr">memoryMaximumSize</span>=<span class="string">"1068m"</span> <span class="attr">includeantruntime</span>=<span class="string">"on"</span> <span class="attr">classpathref</span>=<span class="string">"master-classpath"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">src</span> <span class="attr">path</span>=<span class="string">"$&#123;java.dir&#125;"</span>/&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">src</span> <span class="attr">path</span>=<span class="string">"$&#123;java_other.dir&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">javac</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"jar"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">echo</span>&gt;</span>Archiving the base classes<span class="tag">&lt;/<span class="name">echo</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">tstamp</span> <span class="attr">prefix</span>=<span class="string">"update."</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">format</span> <span class="attr">property</span>=<span class="string">"TimeSign"</span> <span class="attr">pattern</span>=<span class="string">"yyyy-MM-dd HH.mm.ss"</span>/&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">tstamp</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">jar</span> <span class="attr">jarfile</span>=<span class="string">"$&#123;lib.dir&#125;/1.jar"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;class.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.class"</span>/&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">name</span>=<span class="string">"**/*.scc"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">jar</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"dist"</span> <span class="attr">depends</span>=<span class="string">"init"</span> <span class="attr">description</span>=<span class="string">"Copies web related files to WAR directory"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">copy</span> <span class="attr">includeEmptyDirs</span>=<span class="string">"false"</span> <span class="attr">todir</span>=<span class="string">"$&#123;dist.dir&#125;"</span> <span class="attr">encoding</span>=<span class="string">"utf-8"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;web.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">copy</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">copy</span> <span class="attr">encoding</span>=<span class="string">"utf-8"</span> <span class="attr">includeEmptyDirs</span>=<span class="string">"false"</span> <span class="attr">todir</span>=<span class="string">"$&#123;dist.dir&#125;"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;build.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">copy</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"junitswing"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">java</span> <span class="attr">fork</span>=<span class="string">"true"</span> <span class="attr">classpathref</span>=<span class="string">"master-classpath"</span> <span class="attr">classname</span>=<span class="string">"junit.swingui.TestRunner"</span>/&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-command"><a href="#4-command" class="headerlink" title="4. command"></a><strong>4. command</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ant clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ant clean compile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ant -f build2.xml clean</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>构建工具</category>
+      </categories>
+      <tags>
+        <tag>构建工具</tag>
+        <tag>Ant</tag>
       </tags>
   </entry>
   <entry>
@@ -1437,26 +1457,6 @@
         <tag>c++</tag>
         <tag>vim</tag>
         <tag>g++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ant</title>
-    <url>/2019/07/26/build-tools/ant/</url>
-    <content><![CDATA[<p>Ant的安装配置和使用。</p>
-<a id="more"></a>
-<h3 id="1-install"><a href="#1-install" class="headerlink" title="1. install"></a><strong>1. install</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:tar xzvf apache-ant-1.10.1-bin.tar.gz -C /usr/local/bin</span><br></pre></td></tr></table></figure>
-<h3 id="2-enviroment"><a href="#2-enviroment" class="headerlink" title="2. enviroment"></a><strong>2. enviroment</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># apache ant</span><br><span class="line">ANT_HOME=/usr/local/bin/apache-ant-1.10.1</span><br><span class="line">PATH=$PATH:$ANT_HOME/bin/</span><br><span class="line">export PATH</span><br></pre></td></tr></table></figure>
-<h3 id="3-usage"><a href="#3-usage" class="headerlink" title="3. usage"></a><strong>3. usage</strong></h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">Build file for Time Expression application from </span></span><br><span class="line"><span class="comment">Rapid Java Development book.</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">name</span>=<span class="string">"My_project"</span> <span class="attr">basedir</span>=<span class="string">"."</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"appname"</span> <span class="attr">value</span>=<span class="string">"$&#123;ant.project.name&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"env"</span> <span class="attr">value</span>=<span class="string">"local"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"java.home"</span> <span class="attr">value</span>=<span class="string">"$&#123;env.JAVA_HOME&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ant.home"</span> <span class="attr">value</span>=<span class="string">"$&#123;env.ANT_HOME&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="comment">&lt;!-- load properties file --&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">file</span>=<span class="string">"local.properties"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"lib.dir"</span> <span class="attr">value</span>=<span class="string">"lib"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">path</span> <span class="attr">id</span>=<span class="string">"master-classpath"</span> <span class="attr">description</span>=<span class="string">"Master CLASSPATH for this script"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;lib.dir&#125;"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"*.jar"</span>/&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">path</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"clean"</span> <span class="attr">description</span>=<span class="string">"Deletes files from WAR directory"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">failonerror</span>=<span class="string">"false"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;war.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">failonerror</span>=<span class="string">"false"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;java.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.scc"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">failonerror</span>=<span class="string">"false"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;dist.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;class.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">delete</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"init"</span> <span class="attr">description</span>=<span class="string">"Setup for build script"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">mkdir</span> <span class="attr">dir</span>=<span class="string">"$&#123;conf.dir&#125;"</span>/&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mkdir</span> <span class="attr">dir</span>=<span class="string">"$&#123;web.dir&#125;"</span>/&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"compile"</span> <span class="attr">depends</span>=<span class="string">"init"</span> <span class="attr">description</span>=<span class="string">"Compiles .java files to WAR directory"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">javac</span> <span class="attr">encoding</span>=<span class="string">"GBK"</span> <span class="attr">destdir</span>=<span class="string">"$&#123;class.dir&#125;"</span> <span class="attr">debug</span>=<span class="string">"true"</span> <span class="attr">failonerror</span>=<span class="string">"true"</span> <span class="attr">fork</span>=<span class="string">"true"</span> <span class="attr">memoryInitialSize</span>=<span class="string">"256m"</span> <span class="attr">memoryMaximumSize</span>=<span class="string">"1068m"</span> <span class="attr">includeantruntime</span>=<span class="string">"on"</span> <span class="attr">classpathref</span>=<span class="string">"master-classpath"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">src</span> <span class="attr">path</span>=<span class="string">"$&#123;java.dir&#125;"</span>/&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">src</span> <span class="attr">path</span>=<span class="string">"$&#123;java_other.dir&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">javac</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"jar"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">echo</span>&gt;</span>Archiving the base classes<span class="tag">&lt;/<span class="name">echo</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">tstamp</span> <span class="attr">prefix</span>=<span class="string">"update."</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">format</span> <span class="attr">property</span>=<span class="string">"TimeSign"</span> <span class="attr">pattern</span>=<span class="string">"yyyy-MM-dd HH.mm.ss"</span>/&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">tstamp</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">jar</span> <span class="attr">jarfile</span>=<span class="string">"$&#123;lib.dir&#125;/1.jar"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;class.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.class"</span>/&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">name</span>=<span class="string">"**/*.scc"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">jar</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"dist"</span> <span class="attr">depends</span>=<span class="string">"init"</span> <span class="attr">description</span>=<span class="string">"Copies web related files to WAR directory"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">copy</span> <span class="attr">includeEmptyDirs</span>=<span class="string">"false"</span> <span class="attr">todir</span>=<span class="string">"$&#123;dist.dir&#125;"</span> <span class="attr">encoding</span>=<span class="string">"utf-8"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;web.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">copy</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">copy</span> <span class="attr">encoding</span>=<span class="string">"utf-8"</span> <span class="attr">includeEmptyDirs</span>=<span class="string">"false"</span> <span class="attr">todir</span>=<span class="string">"$&#123;dist.dir&#125;"</span>&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"$&#123;build.dir&#125;"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*"</span>/&gt;</span> </span><br><span class="line">      <span class="tag">&lt;/<span class="name">fileset</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">copy</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"junitswing"</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">java</span> <span class="attr">fork</span>=<span class="string">"true"</span> <span class="attr">classpathref</span>=<span class="string">"master-classpath"</span> <span class="attr">classname</span>=<span class="string">"junit.swingui.TestRunner"</span>/&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">target</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-command"><a href="#4-command" class="headerlink" title="4. command"></a><strong>4. command</strong></h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ant clean</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ant clean compile</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ant -f build2.xml clean</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>构建工具</category>
-      </categories>
-      <tags>
-        <tag>构建工具</tag>
-        <tag>Ant</tag>
       </tags>
   </entry>
   <entry>
@@ -2168,6 +2168,50 @@
       </tags>
   </entry>
   <entry>
+    <title>gradle6+springboot多模块构建</title>
+    <url>/2019/12/16/gradle/gradle6+springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E6%9E%84%E5%BB%BA/</url>
+    <content><![CDATA[<p>gradle 6.0.1<br>springboot 2.2.2<br>构建多模块应用</p>
+<a id="more"></a>
+<p>(1) 应用结构</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── biz</span><br><span class="line">│   ├── build.gradle</span><br><span class="line">│   └── src</span><br><span class="line">│       └── main</span><br><span class="line">├── build.gradle</span><br><span class="line">├── common</span><br><span class="line">│   ├── dao</span><br><span class="line">│   │   ├── build.gradle</span><br><span class="line">│   │   └── src</span><br><span class="line">│   └── utils</span><br><span class="line">│       ├── build.gradle</span><br><span class="line">│       └── src</span><br><span class="line">├── settings.gradle</span><br><span class="line">└── web</span><br><span class="line">    ├── build.gradle</span><br><span class="line">    └── src</span><br></pre></td></tr></table></figure>
+<p>(2) 注意点</p>
+<ul>
+<li>多模块 spring fatjar 应用，一般只有 web 模块包含启动类。所以除了 web 模块，其他模块 gradle task 里 <code>build bootJar</code>应该默认都禁用掉。<br><br></li>
+<li>多模块 spring 应用，web 模块作为入口 jar，所以其他模块都是普通的 library 型的 jar，所以除了 web 模块，其他模块 gradle task 里 <code>build jar</code> 应该应该启用<br><br></li>
+<li>由于只有 web 模块是入口 jar，所以其他模块的 gradle task 里的 <code>application bootRun</code> 都应该禁用，这样执行根项目的 <code>applicatoin bootRun</code> 就会只执行 web 模块的 main，不会报错。</li>
+</ul>
+<p>(3) 根项目 gradle 配置</p>
+<ul>
+<li>build.gradle</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url 'http://maven.aliyun.com/nexus/content/groups/public/' &#125;</span><br><span class="line">        mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.2.RELEASE"</span><br><span class="line">        classpath "io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE"</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subprojects &#123;</span><br><span class="line"></span><br><span class="line">    apply plugin: 'org.springframework.boot'</span><br><span class="line">    apply plugin: 'io.spring.dependency-management'</span><br><span class="line">    apply plugin: 'java'</span><br><span class="line"></span><br><span class="line">    group 'com.fc.test'</span><br><span class="line">    version '1.0-SNAPSHOT'</span><br><span class="line">    sourceCompatibility = 1.8</span><br><span class="line"></span><br><span class="line">    bootJar &#123;</span><br><span class="line">        enabled = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    jar &#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bootRun &#123;</span><br><span class="line">        enabled = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    configurations &#123;</span><br><span class="line">        compileOnly &#123;</span><br><span class="line">            extendsFrom annotationProcessor</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url 'http://maven.aliyun.com/nexus/content/groups/public/' &#125;</span><br><span class="line">        mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该配置设置了 springboot 两个插件的版本，并且禁用了子模块的 bootJar, bootRun，启用了 jar，注意在 web 模块需要这三个任务做相反的配置。</p>
+<ul>
+<li>settings.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">rootProject.name = 'demo-parent'</span><br><span class="line">include 'biz'</span><br><span class="line">include 'web'</span><br><span class="line">include 'common-dao'</span><br><span class="line">include 'common-utils'</span><br></pre></td></tr></table></figure>
+<p>(4) 一级子模块配置-biz</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-cache'</span><br><span class="line">    compile 'org.ehcache:ehcache:3.8.1'</span><br><span class="line">    compile project(":common:dao")</span><br><span class="line">    compileOnly 'org.projectlombok:lombok'</span><br><span class="line">    annotationProcessor 'org.projectlombok:lombok'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(5) 二级子模块 common/utils, common/dao</p>
+<ul>
+<li>common:utils</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">//    compile group: 'org.springframework', name: 'spring-core'</span><br><span class="line">//    compile group: 'org.springframework', name: 'spring-beans'</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-web'</span><br><span class="line">    compileOnly 'org.projectlombok:lombok'</span><br><span class="line">    annotationProcessor 'org.projectlombok:lombok'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>common:dao</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile group: &apos;tk.mybatis&apos;, name: &apos;mapper-spring-boot-starter&apos;, version: &apos;2.1.1&apos;</span><br><span class="line">    compile group: &apos;org.xerial&apos;, name: &apos;sqlite-jdbc&apos;, version: &apos;3.28.0&apos;</span><br><span class="line">    compile project(&apos;:common:utils&apos;)</span><br><span class="line">    compileOnly &apos;org.projectlombok:lombok&apos;</span><br><span class="line">    annotationProcessor &apos;org.projectlombok:lombok&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意lombok的传递依赖问题， 本文使用lombok的方式，即使把 compileOnly改为 compile 也会导致编译时lombok不识别的问题，所以每个用到lombok的模块单独引入，最好的方式还是手写get/set等方法。</p>
+]]></content>
+      <categories>
+        <category>gradle</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>About Git commands</title>
     <url>/2019/08/01/git/About-Git-commands/</url>
     <content><![CDATA[<p>git命令，从本地新建一个git工程关联到远程空工程。<br>从远程新建一个新工程拉到本地。</p>
@@ -2257,50 +2301,6 @@
         <tag>git</tag>
         <tag>reset</tag>
         <tag>误删回退</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>gradle6+springboot多模块构建</title>
-    <url>/2019/12/16/gradle/gradle6+springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E6%9E%84%E5%BB%BA/</url>
-    <content><![CDATA[<p>gradle 6.0.1<br>springboot 2.2.2<br>构建多模块应用</p>
-<a id="more"></a>
-<p>(1) 应用结构</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── biz</span><br><span class="line">│   ├── build.gradle</span><br><span class="line">│   └── src</span><br><span class="line">│       └── main</span><br><span class="line">├── build.gradle</span><br><span class="line">├── common</span><br><span class="line">│   ├── dao</span><br><span class="line">│   │   ├── build.gradle</span><br><span class="line">│   │   └── src</span><br><span class="line">│   └── utils</span><br><span class="line">│       ├── build.gradle</span><br><span class="line">│       └── src</span><br><span class="line">├── settings.gradle</span><br><span class="line">└── web</span><br><span class="line">    ├── build.gradle</span><br><span class="line">    └── src</span><br></pre></td></tr></table></figure>
-<p>(2) 注意点</p>
-<ul>
-<li>多模块 spring fatjar 应用，一般只有 web 模块包含启动类。所以除了 web 模块，其他模块 gradle task 里 <code>build bootJar</code>应该默认都禁用掉。<br><br></li>
-<li>多模块 spring 应用，web 模块作为入口 jar，所以其他模块都是普通的 library 型的 jar，所以除了 web 模块，其他模块 gradle task 里 <code>build jar</code> 应该应该启用<br><br></li>
-<li>由于只有 web 模块是入口 jar，所以其他模块的 gradle task 里的 <code>application bootRun</code> 都应该禁用，这样执行根项目的 <code>applicatoin bootRun</code> 就会只执行 web 模块的 main，不会报错。</li>
-</ul>
-<p>(3) 根项目 gradle 配置</p>
-<ul>
-<li>build.gradle</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url 'http://maven.aliyun.com/nexus/content/groups/public/' &#125;</span><br><span class="line">        mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.2.RELEASE"</span><br><span class="line">        classpath "io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE"</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subprojects &#123;</span><br><span class="line"></span><br><span class="line">    apply plugin: 'org.springframework.boot'</span><br><span class="line">    apply plugin: 'io.spring.dependency-management'</span><br><span class="line">    apply plugin: 'java'</span><br><span class="line"></span><br><span class="line">    group 'com.fc.test'</span><br><span class="line">    version '1.0-SNAPSHOT'</span><br><span class="line">    sourceCompatibility = 1.8</span><br><span class="line"></span><br><span class="line">    bootJar &#123;</span><br><span class="line">        enabled = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    jar &#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bootRun &#123;</span><br><span class="line">        enabled = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    configurations &#123;</span><br><span class="line">        compileOnly &#123;</span><br><span class="line">            extendsFrom annotationProcessor</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123; url 'http://maven.aliyun.com/nexus/content/groups/public/' &#125;</span><br><span class="line">        mavenCentral()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该配置设置了 springboot 两个插件的版本，并且禁用了子模块的 bootJar, bootRun，启用了 jar，注意在 web 模块需要这三个任务做相反的配置。</p>
-<ul>
-<li>settings.xml</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">rootProject.name = 'demo-parent'</span><br><span class="line">include 'biz'</span><br><span class="line">include 'web'</span><br><span class="line">include 'common-dao'</span><br><span class="line">include 'common-utils'</span><br></pre></td></tr></table></figure>
-<p>(4) 一级子模块配置-biz</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-cache'</span><br><span class="line">    compile 'org.ehcache:ehcache:3.8.1'</span><br><span class="line">    compile project(":common:dao")</span><br><span class="line">    compileOnly 'org.projectlombok:lombok'</span><br><span class="line">    annotationProcessor 'org.projectlombok:lombok'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>(5) 二级子模块 common/utils, common/dao</p>
-<ul>
-<li>common:utils</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">//    compile group: 'org.springframework', name: 'spring-core'</span><br><span class="line">//    compile group: 'org.springframework', name: 'spring-beans'</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-web'</span><br><span class="line">    compileOnly 'org.projectlombok:lombok'</span><br><span class="line">    annotationProcessor 'org.projectlombok:lombok'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>common:dao</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile group: &apos;tk.mybatis&apos;, name: &apos;mapper-spring-boot-starter&apos;, version: &apos;2.1.1&apos;</span><br><span class="line">    compile group: &apos;org.xerial&apos;, name: &apos;sqlite-jdbc&apos;, version: &apos;3.28.0&apos;</span><br><span class="line">    compile project(&apos;:common:utils&apos;)</span><br><span class="line">    compileOnly &apos;org.projectlombok:lombok&apos;</span><br><span class="line">    annotationProcessor &apos;org.projectlombok:lombok&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意lombok的传递依赖问题， 本文使用lombok的方式，即使把 compileOnly改为 compile 也会导致编译时lombok不识别的问题，所以每个用到lombok的模块单独引入，最好的方式还是手写get/set等方法。</p>
-]]></content>
-      <categories>
-        <category>gradle</category>
-      </categories>
-      <tags>
-        <tag>gradle</tag>
-        <tag>spring</tag>
       </tags>
   </entry>
   <entry>
@@ -3002,6 +3002,20 @@
       </tags>
   </entry>
   <entry>
+    <title>my.cnf standard</title>
+    <url>/2019/07/26/mysql/my-cnf-standard/</url>
+    <content><![CDATA[<p>mysql 开启了慢查询日志和二进制日志的配置文件。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">max_connections=800</span><br><span class="line"># O_DIRECT for local, and fsync for san</span><br><span class="line">innodb_flush_method=O_DIRECT</span><br><span class="line">lower_case_table_names=1</span><br><span class="line"></span><br><span class="line"># mysqld log</span><br><span class="line">log_error=/var/log/mysql/mysqld.log</span><br><span class="line"># slow query log</span><br><span class="line">slow_query_log=on</span><br><span class="line">slow_query_log_file=/var/log/mysql/mysql_slow_query.log</span><br><span class="line">long_query_time=2</span><br><span class="line"># bin log</span><br><span class="line">server_id=1</span><br><span class="line">log_bin=/var/log/mysql/mysql-bin</span><br><span class="line">log_bin_index=/var/log/mysql/mysql-bin.index</span><br><span class="line"># default is 0, for master and slaves, creating functions is unsafe if the functions will change the data.</span><br><span class="line"># and slaves want copy unsafe functions from master unless log_bin_trust_function_creators=1 on slaves.</span><br><span class="line"># so you can set log_bin_trust_function_creators=1.</span><br><span class="line"># Or you specify the types of the functions in [DETERMINISTIC,NO SQL,READS SQL DATA]</span><br><span class="line">log_bin_trust_function_creators=1</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql db and user disapear</title>
     <url>/2019/07/26/mysql/mysql-db-and-user-disapear/</url>
     <content><![CDATA[<p>mysql 创建的数据库和用户消失的问题。<br>win10上能重复安装mysql service，但每次只能启动一个。<br>每个service的库是不一样的，会导致库和用户消失的问题。</p>
@@ -3023,20 +3037,6 @@
         <tag>mysql</tag>
         <tag>windows</tag>
         <tag>mysql service</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>my.cnf standard</title>
-    <url>/2019/07/26/mysql/my-cnf-standard/</url>
-    <content><![CDATA[<p>mysql 开启了慢查询日志和二进制日志的配置文件。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">max_connections=800</span><br><span class="line"># O_DIRECT for local, and fsync for san</span><br><span class="line">innodb_flush_method=O_DIRECT</span><br><span class="line">lower_case_table_names=1</span><br><span class="line"></span><br><span class="line"># mysqld log</span><br><span class="line">log_error=/var/log/mysql/mysqld.log</span><br><span class="line"># slow query log</span><br><span class="line">slow_query_log=on</span><br><span class="line">slow_query_log_file=/var/log/mysql/mysql_slow_query.log</span><br><span class="line">long_query_time=2</span><br><span class="line"># bin log</span><br><span class="line">server_id=1</span><br><span class="line">log_bin=/var/log/mysql/mysql-bin</span><br><span class="line">log_bin_index=/var/log/mysql/mysql-bin.index</span><br><span class="line"># default is 0, for master and slaves, creating functions is unsafe if the functions will change the data.</span><br><span class="line"># and slaves want copy unsafe functions from master unless log_bin_trust_function_creators=1 on slaves.</span><br><span class="line"># so you can set log_bin_trust_function_creators=1.</span><br><span class="line"># Or you specify the types of the functions in [DETERMINISTIC,NO SQL,READS SQL DATA]</span><br><span class="line">log_bin_trust_function_creators=1</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>mysql</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -3408,23 +3408,6 @@
       </tags>
   </entry>
   <entry>
-    <title>(14) redux全家桶</title>
-    <url>/2020/07/02/nodejs/(14)%20redux%E5%85%A8%E5%AE%B6%E6%A1%B6/</url>
-    <content><![CDATA[<p><code>redux</code> redux提供了一个store组件，store使用自身的state管理所有数据，并提供api让其他组件注册数据到state和订阅state里的数据，这样react的数据就无需逐层的props传递了。<br><code>react-redux</code>   该组件封装了redux的注册和订阅逻辑编程Provider组件和connect函数，使redux使用更简单。Provider就是把store引入ui, connect函数就是把各个组件的数据注册到sotre里。<br><code>redux-saga</code>    使用es6的异步编程模型实现异步能力，使redux可以把网络请求和数据返回变成异步，从而全面结果网络数据。</p>
-<a id="more"></a>
-<p>正文</p>
-]]></content>
-      <categories>
-        <category>nodejs</category>
-      </categories>
-      <tags>
-        <tag>react</tag>
-        <tag>node</tag>
-        <tag>redux</tag>
-        <tag>redux-saga</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>(15) redux与router</title>
     <url>/2020/07/02/nodejs/(15)%20redux%E4%B8%8Erouter/</url>
     <content><![CDATA[<p>redux虽然实现了数据管理，但它无法直接使用router的功能，比如redux-saga异步请求的要根据请求结果做url跳转，只能是组件收到数据后自行跳转。<br><code>connected-react-router</code> 把跳转过程封装成reducer dispatch，从而实现了一个类似于router push的api，这个api可以在redux-saga里使用。</p>
@@ -3439,6 +3422,23 @@
         <tag>node</tag>
         <tag>redux</tag>
         <tag>router</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>(14) redux全家桶</title>
+    <url>/2020/07/02/nodejs/(14)%20redux%E5%85%A8%E5%AE%B6%E6%A1%B6/</url>
+    <content><![CDATA[<p><code>redux</code> redux提供了一个store组件，store使用自身的state管理所有数据，并提供api让其他组件注册数据到state和订阅state里的数据，这样react的数据就无需逐层的props传递了。<br><code>react-redux</code>   该组件封装了redux的注册和订阅逻辑编程Provider组件和connect函数，使redux使用更简单。Provider就是把store引入ui, connect函数就是把各个组件的数据注册到sotre里。<br><code>redux-saga</code>    使用es6的异步编程模型实现异步能力，使redux可以把网络请求和数据返回变成异步，从而全面结果网络数据。</p>
+<a id="more"></a>
+<p>正文</p>
+]]></content>
+      <categories>
+        <category>nodejs</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+        <tag>node</tag>
+        <tag>redux</tag>
+        <tag>redux-saga</tag>
       </tags>
   </entry>
   <entry>
@@ -4042,352 +4042,6 @@ select * from role_tab_privs;
       </tags>
   </entry>
   <entry>
-    <title>ansible (1) install by pip</title>
-    <url>/2019/07/31/python3/ansible-1-install-by-pip/</url>
-    <content><![CDATA[<p>ansible也是一款高级ssh操作的包。<br>ansible的优点是，不需要写python脚本，友好的文本输出，可回滚。<br>使用yaml编写任务内容，这在ansible里称为剧本。</p>
-<a id="more"></a>
-<p>(1) install ansible</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo pip3 install ansible</span><br></pre></td></tr></table></figure>
-<p>(2) use ssh pass</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo apt-get install sshpass</span><br></pre></td></tr></table></figure>
-<p>(3) create /etc/ansible/hosts</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo mkdir -p /etc/ansible</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>/etc/ansible/hosts</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[test]</span><br><span class="line">192.168.0.100  ansible_ssh_user=root  ansible_ssh_pass=root123</span><br><span class="line"></span><br><span class="line">[server1]</span><br><span class="line">192.168.0.101 ansible_ssh_user=root  ansible_ssh_pass=root123</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>(4) usage ping</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:ansible test -m ping</span><br><span class="line">192.168.0.100 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">~:ansible all -m ping</span><br><span class="line">192.168.0.100 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br><span class="line">192.168.0.101 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ansible</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ansible (2) simple usage</title>
-    <url>/2019/07/31/python3/ansible-2-simple-usage/</url>
-    <content><![CDATA[<p>ansible的简单示例</p>
-<a id="more"></a>
-<p>(1) hosts group</p>
-<p>服务器配置</p>
-<ul>
-<li><p>/etc/ansible/hosts</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[group_name1]</span><br><span class="line">host_ip1 [ansible_ssh_user=] [ansible_ssh_pass=]</span><br><span class="line">host_ip2</span><br><span class="line"></span><br><span class="line">[group_name1]</span><br><span class="line">ansible_ssh_user=</span><br><span class="line">ansible_ssh_pass=</span><br></pre></td></tr></table></figure>
-<p>  以上配置 指定了一组服务器, 默认ssh用户信息可在组名下另行配置,单独的host用户信息则在同行配置</p>
-</li>
-</ul>
-<p>(2) command format</p>
-<p>命令格式<br><code>ansible ip/group -m module_name -a arg</code><br>其中ip可以是某个具体的ip, group则是组名,使用group将会对组内所有服务器执行相同操作<br>-m 指定要运行的功能模块, module_name就是功能模块的名字<br>-a 为要运行的功能模块传入参数</p>
-<p>(3) specify ip collection</p>
-<p>以ping为例<br>-i 表示自行制定host文件,而不用默认的/etc/ansible/hosts<br><code>ansible all -i ./hosts -m ping</code></p>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ansible</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ansible (3) install by apt</title>
-    <url>/2019/07/31/python3/ansible-3-install-by-apt/</url>
-    <content><![CDATA[<p>使用apt安装ansible。</p>
-<a id="more"></a>
-<p>(1) install<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo apt-get install ansible</span><br></pre></td></tr></table></figure></p>
-<p>(2) use ssh passwords<br>缺少模块导致不支持ssh登录需要安装sshpass模块<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo apt-get install sshpass</span><br></pre></td></tr></table></figure></p>
-<p>(3) skip host checking 跳过首次连接检查</p>
-<ul>
-<li>/etc/ansible/ansible.cfg<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">host_key_checking = False</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ansible</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ansible (4) playbooks</title>
-    <url>/2019/07/31/python3/ansible-4-playbooks/</url>
-    <content><![CDATA[<p>剧本是ansible最重要的概念。<br>剧本定义了所有远端操作的内容。</p>
-<a id="more"></a>
-<p>(1) playbooks 剧本</p>
-<p>所有要执行的操作流程写到playbooks<br>ansible会为指定的服务器执行playbooks里的所有操作</p>
-<p>(2) playbooks 内容</p>
-<ul>
-<li><p>local.yml</p>
-  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">- hosts:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">connection:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">vars:</span></span><br><span class="line"><span class="attr">    project_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    project_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    mvn_settings_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    module_dir_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">tasks:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">build</span> <span class="string">file</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">mvn</span> <span class="bullet">-s</span> <span class="string">&#123;&#123;mvn_settings_dir&#125;&#125;</span> <span class="bullet">-f</span> <span class="string">&#123;&#123;project_dir&#125;&#125;/&#123;&#123;module_dir_name&#125;&#125;/pom.xml</span> <span class="string">clean</span> <span class="string">compile</span> <span class="string">package</span> <span class="bullet">-DskipTests</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">mvnInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">print</span> <span class="string">package</span></span><br><span class="line"><span class="attr">    debug:</span> <span class="string">var=mvnInfo.stdout_lines</span> <span class="string">verbosity=0</span></span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:ansible-playbook -i ../hosts local.yml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>remote.yml</p>
-  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">- hosts:</span> <span class="string">'<span class="template-variable">&#123;&#123;profile&#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">vars:</span></span><br><span class="line"><span class="attr">    project_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    project_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    mvn_settings_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    module_dir_name:</span> <span class="string">xxxx</span></span><br><span class="line"><span class="attr">    file_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">tasks:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">file</span> <span class="string">exist</span> <span class="string">test</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">test</span> <span class="bullet">-e</span> <span class="string">&#123;&#123;upload_dir&#125;&#125;/&#123;&#123;file_name&#125;&#125;;echo</span> <span class="string">$?</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">outputInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">get</span> <span class="string">format</span> <span class="string">time</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">date</span> <span class="string">+'%Y-%m-%d-%H-%M-%S'</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">timeInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">backup</span> <span class="string">file</span> <span class="string">if</span> <span class="string">exist</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">mv</span> <span class="string">'<span class="template-variable">&#123;&#123;upload_dir&#125;&#125;</span>/<span class="template-variable">&#123;&#123;file_name&#125;&#125;</span>'</span> <span class="string">'<span class="template-variable">&#123;&#123;upload_dir&#125;&#125;</span>/<span class="template-variable">&#123;&#123;file_name&#125;&#125;</span>.bak.<span class="template-variable">&#123;&#123;timeInfo.stdout&#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">    when:</span> <span class="string">outputInfo.stdout.find("0")!=-1</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">backupInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">print</span> <span class="string">backup</span> <span class="string">process</span> <span class="string">info</span></span><br><span class="line"><span class="attr">    debug:</span> <span class="string">var=backupInfo</span> <span class="string">verbosity=0</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">upload</span> <span class="string">file</span></span><br><span class="line"><span class="attr">    copy:</span> </span><br><span class="line"><span class="attr">        src:</span> <span class="string">'<span class="template-variable">&#123;&#123;project_dir&#125;&#125;</span>/<span class="template-variable">&#123;&#123;module_dir_name&#125;&#125;</span>/target/<span class="template-variable">&#123;&#123;file_name&#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">        dest:</span> <span class="string">'<span class="template-variable">&#123;&#123;upload_dir&#125;&#125;</span>'</span></span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:ansible-playbook -i ../hosts local.yml -e &quot;profile=prod upload_dir=/home/user/upload&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ansible</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (1) basic usage</title>
-    <url>/2019/07/31/python3/fabric-1-basic-usage/</url>
-    <content><![CDATA[<p>本文介绍了fabric基础用法。<br>fabric是一个python ssh操作的包。它比paramiko更方便和高级。</p>
-<a id="more"></a>
-<h3 id="1-install-python-module-and-shell"><a href="#1-install-python-module-and-shell" class="headerlink" title="(1) install python module and shell"></a>(1) install python module and shell</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:sudo pip3 install fabric</span><br><span class="line">~:sudo apt-get fabric</span><br></pre></td></tr></table></figure>
-<h3 id="2-help-and-version"><a href="#2-help-and-version" class="headerlink" title="(2) help and version"></a>(2) help and version</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:fab -h</span><br><span class="line">~:fab -V</span><br></pre></td></tr></table></figure>
-<h3 id="3-tasks"><a href="#3-tasks" class="headerlink" title="(3) tasks"></a>(3) tasks</h3><ul>
-<li><p>fabfile.py</p>
-  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> task</span><br><span class="line"></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(c)</span>:</span></span><br><span class="line">print(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>intro</p>
-<p>  <code>from fabric import task</code> is necessary for <code>@task</code>.<br>  <code>hello(c)</code> is a task, it must have a default initial argument here is <code>c</code>.</p>
-</li>
-<li><p>fab</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:fab -l</span><br><span class="line">hello</span><br><span class="line">~:fab hello</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (2) local connection</title>
-    <url>/2019/07/31/python3/fabric-2-local-connection/</url>
-    <content><![CDATA[<p>fabric connection。<br>connection是建立ssh的基础。<br>本文介绍如何使用connection操作本地（类似于本地的terminal）。</p>
-<a id="more"></a>
-<p>(1) connection</p>
-<p><code>def hello(c):</code> is a task. <code>c</code> is the default argument. In fact, <code>c</code> means a connection. This connection locate at localhost if you don’t config with any host information.</p>
-<p>(2) local connection</p>
-<ul>
-<li><p>fabfile.py</p>
-  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> task</span><br><span class="line"></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">runLocal</span><span class="params">(c)</span>:</span></span><br><span class="line">c.run(<span class="string">'pwd'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>fab</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:fab runLocal</span><br><span class="line">/home/user01</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>sudo pass from putty</p>
-  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.run(<span class="string">'sudo ls -a'</span>, pty=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>sudo pass from config</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from invoke import Responder</span><br><span class="line">...</span><br><span class="line">passconf = Responder(</span><br><span class="line">pattern=r&apos;\[sudo]\ password .*:&apos;,</span><br><span class="line">response=&apos;password\n&apos;,</span><br><span class="line">)</span><br><span class="line">c.run(&apos;sudo ls -a&apos;, pty=True, watchers=[passconf])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (3) remote connection</title>
-    <url>/2019/07/31/python3/fabric-3-remote-connection/</url>
-    <content><![CDATA[<p>介绍使用connection连接远程服务器并执行简单的命令。</p>
-<a id="more"></a>
-<p>(1) config connection</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection</span><br><span class="line">...</span><br><span class="line">c = Connection(host=<span class="string">'web1'</span>, user=<span class="string">'deploy'</span>, port=<span class="number">2202</span>)</span><br><span class="line"><span class="comment"># [user@]host[:port] </span></span><br><span class="line"><span class="comment"># c = Connection('deploy@web1:2202')</span></span><br></pre></td></tr></table></figure>
-<p>(2) connection with password</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = Connection(host=<span class="string">'web1'</span>, user=<span class="string">'deploy'</span>, port=<span class="number">2202</span>, connect_kwargs=&#123;<span class="string">'password'</span>:<span class="string">'pass_word'</span>&#125;)</span><br><span class="line">c.run(<span class="string">'pwd'</span>)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (4) gateway-a local use a remote to control another remote</title>
-    <url>/2019/07/31/python3/fabric-4-gateway-a-local-use-a-remote-to-control-another-remote/</url>
-    <content><![CDATA[<p>fabric也支持跳板机。可以连接远程跳板机A并操作远程机器B，实际相当于连接上A，A ssh 连接B。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection</span><br><span class="line">...</span><br><span class="line">gateway = Connection(host=<span class="string">'remote_pub_host'</span>,user=<span class="string">'root'</span>,port=<span class="string">"22"</span>,connect_kwargs=&#123;<span class="string">'password'</span>:<span class="string">'password'</span>&#125;)</span><br><span class="line">c = Connection(host=<span class="string">'remote_pub_or_private_host'</span>,user=<span class="string">'root'</span>,port=<span class="string">"22"</span>,connect_kwargs=&#123;<span class="string">'password'</span>:<span class="string">'password'</span>&#125;,gateway=gateway)</span><br><span class="line"><span class="keyword">with</span> c.cd(<span class="string">'/home/user'</span>):</span><br><span class="line">  c.run(<span class="string">'echo a&gt;&gt;a.txt'</span>)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (5) change directory cd</title>
-    <url>/2019/07/31/python3/fabric-5-change-directory-cd/</url>
-    <content><![CDATA[<p>fabric提供一些api可以替代常用的命令。<br>本文介绍<code>cd()</code>接口替代<code>cd</code>命令。</p>
-<a id="more"></a>
-<p>(1) command</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">c.cd(dir)</span><br><span class="line">c.run(&apos;cd /home&apos;)</span><br></pre></td></tr></table></figure>
-<p>(2) keep path context<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dir = &apos;/home&apos;</span><br><span class="line">c.run(&apos;pwd&apos;) # /home/user</span><br><span class="line">with c.cd(dir):</span><br><span class="line">  c.run(&apos;pwd&apos;) # /home</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (6) get return</title>
-    <url>/2019/07/31/python3/fabric-6-get-return/</url>
-    <content><![CDATA[<p>fabric可以获取远程命令执行结果作为返回值。<br>这些返回值可以用做成功判断和回滚操作。</p>
-<a id="more"></a>
-<p>c.run(‘ls’) will return a result</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Result(stdout=<span class="string">''</span>, stderr=<span class="string">''</span>, encoding=<span class="literal">None</span>, command=<span class="string">''</span>, shell=<span class="string">''</span>, env=<span class="literal">None</span>, exited=<span class="number">0</span>, pty=<span class="literal">False</span>, hide=())</span><br></pre></td></tr></table></figure>
-<p>get return like this</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">result = c.run(<span class="string">'echo hello'</span>)</span><br><span class="line">print(<span class="string">'stdout is %s'</span>%result.stdout)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (7) other</title>
-    <url>/2019/07/31/python3/fabric-7-other/</url>
-    <content><![CDATA[<p>一些常见的问题。<br>fabric连接可能不支持某些命令。<br>远端命令执行上下文问题。<br>远端的环境变量需要在脚本代码里配置等问题。</p>
-<a id="more"></a>
-<p>(1) </p>
-<p><code>lsof</code> don’t use it if not necessary</p>
-<p>(2) cotext manage</p>
-<p>use  <code>with</code> for context</p>
-<p>(3) environment var</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> c.prefix(<span class="string">"export TEST_ENV_VAR='this is test'"</span>):</span><br><span class="line">      c.run(<span class="string">"echo $&#123;TEST_ENV_VAR&#125;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> c.prefix(<span class="string">"export PATH=$&#123;PATH&#125;:"</span>+server[<span class="string">"/home/user/bin/node/bin"</span>]):</span><br><span class="line">        cmd = <span class="string">"node -v"</span></span><br><span class="line">        print(cmd)</span><br><span class="line">        c.run(cmd)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fabric (8) task collection</title>
-    <url>/2019/07/31/python3/fabric-8-task-collection/</url>
-    <content><![CDATA[<p>fabric可以通过指定脚本文件运行特定的任务，这样不同的环境就可以执行不同的脚本。</p>
-<p>最新版本可能是通过指定文件夹的方式指定运行的脚本目录。<br>在之前的版本里可以直接指定脚本文件。</p>
-<a id="more"></a>
-<p>(1) collection</p>
-<p>collection is a task list like fabfile</p>
-<ul>
-<li><p>myTasks.py</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@task</span><br><span class="line">def task1(c):</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">@task</span><br><span class="line">def task2(c):</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>fabfile.py</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@task</span><br><span class="line">def task3(c):</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">@task</span><br><span class="line">def task4(c):</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>(2) specify collection</p>
-<p>use <code>-c</code> to specify a task collection<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:fab -l</span><br><span class="line">task3</span><br><span class="line">task4</span><br><span class="line"></span><br><span class="line">~:fab -c myTasks -l</span><br><span class="line">task1</span><br><span class="line">task2</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-        <tag>fabric</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>quick start</title>
-    <url>/2019/07/31/python3/quick-start/</url>
-    <content><![CDATA[<p>paramiko的使用。python ssh操作的基础组件。</p>
-<a id="more"></a>
-<p>install pip3<br><figure class="highlight plain"><figcaption><span>apt-get install python3-pip```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">install a module</span><br><span class="line">```~:pip3 install paramiko</span><br></pre></td></tr></table></figure></p>
-<p>use a module<br>Test.py<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import paramiko</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">      ssh = paramiko.SSHClient()</span><br><span class="line">      ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line">      ...</span><br><span class="line">except Exception as e:</span><br><span class="line">      ...</span><br><span class="line">      os._exit(0)</span><br></pre></td></tr></table></figure></p>
-<p>run the code<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:python3 Test.py</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>yield</title>
-    <url>/2019/07/31/python3/yield/</url>
-    <content><![CDATA[<p>python yield关键字用法</p>
-<a id="more"></a>
-<p>一个函数可以返回一个序列（字符串，列表，元组）。如果返回的序列很大，就会非常吃内存。<br>此时可以使用<code>yield</code>来节省内存。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span><span class="params">(n)</span>:</span> <span class="comment"># 生成器函数 - 斐波那契</span></span><br><span class="line">    a, b, counter = <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> (counter &gt; n): </span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">yield</span> a</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">f = fibonacci(<span class="number">10</span>) <span class="comment"># f 是一个迭代器，由生成器返回生成</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">print</span> (next(f), end=<span class="string">" "</span>)</span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">        sys.exit()</span><br></pre></td></tr></table></figure>
-<p>0自增100次，需要对每次自增的结果做处理。<br>写一个自增函数，在函数里把参数+1返回结果。调用这个函数，处理结果，重复100次。<br>写一个自增函数，在函数里循环100次，每次+1结果存进列表；最后返回列表。调用这个函数，遍历列表，处理结果。<br>第一种逻辑封装不够彻底但是省内存，第二种逻辑封装的好但是需要生成完整列表很占内存。<br>使用yield的函数会变成一个生成器，可以理解为该函数生成了迭代器，即接收该函数执行结果的变量变成了迭代器可以调用的<code>next()</code>方法。实际过程相当于函数变成了动态执行，函数执行时遇到<code>yield</code>会保存运行状态并暂停，等到生成的迭代器执行<code>next()</code>方法时函数恢复状态继续执行。实际上每次都只是返回一个数据，但是在调用者看来就像返回了一整个集合，逻辑上独立，也节省了内存。<br>并且使用yield，可以获取函数运行过程中的数据，不再只是冷冰冰的结果。</p>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-        <tag>yield</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类变量 实例变量 self</title>
-    <url>/2019/07/31/python3/%E7%B1%BB%E5%8F%98%E9%87%8F-%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F-self/</url>
-    <content><![CDATA[<p>python3 面向对象里的类变量和示例变量的区别</p>
-<a id="more"></a>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>尽管类里可以定义全局变量，但是在类的方法里调用这些全局变量时仍然要加上前缀类名或者实例（self）加以区分。加类名就是类变量（全局变量），加self就是实例变量，不加的话就是方法的局部变量。<br>对于同名的类变量和实例变量，实例变量初始值等于类变量，对实例变量做赋值操作不会影响类变量。如果实例变量没有做过赋值操作，它将始终等于类变量，而发生了赋值之后，实例变量和类变量分家，类变量不会再影响实例变量</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def func1(self):</span><br><span class="line">      ...</span><br><span class="line"></span><br><span class="line">def func2():</span><br><span class="line">      ...</span><br></pre></td></tr></table></figure>
-<p>含有self参数的方法不能通过类名直接调用，只有实例才能调用。</p>
-]]></content>
-      <categories>
-        <category>python3</category>
-      </categories>
-      <tags>
-        <tag>python3</tag>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>cost/loss function</title>
     <url>/2019/07/31/python-machine-learning/cost-loss-function/</url>
     <content><![CDATA[<p>损失函数的引入和证明。</p>
@@ -4455,17 +4109,366 @@ select * from role_tab_privs;
       </tags>
   </entry>
   <entry>
-    <title>fetch的基础</title>
-    <url>/2019/07/31/reactjs/fetch%E7%9A%84%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fetch(url).then(<span class="function">(<span class="params">response</span>)=&gt;</span>&#123;<span class="keyword">return</span> response.json();&#125;).then(<span class="function"><span class="params">jsonData</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(jsonData);&#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="string">"出错"</span>);&#125;);</span><br></pre></td></tr></table></figure>
-<p>上面这是一个最基本的请求，200~299的成功处理在jsonData所在的then函数中，而400或者其他错误则在catch里处理。<br>在ajax里，成功和失败在success和error节点里处理。</p>
+    <title>ansible (1) install by pip</title>
+    <url>/2019/07/31/python3/ansible-1-install-by-pip/</url>
+    <content><![CDATA[<p>ansible也是一款高级ssh操作的包。<br>ansible的优点是，不需要写python脚本，友好的文本输出，可回滚。<br>使用yaml编写任务内容，这在ansible里称为剧本。</p>
+<a id="more"></a>
+<p>(1) install ansible</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo pip3 install ansible</span><br></pre></td></tr></table></figure>
+<p>(2) use ssh pass</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo apt-get install sshpass</span><br></pre></td></tr></table></figure>
+<p>(3) create /etc/ansible/hosts</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo mkdir -p /etc/ansible</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>/etc/ansible/hosts</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[test]</span><br><span class="line">192.168.0.100  ansible_ssh_user=root  ansible_ssh_pass=root123</span><br><span class="line"></span><br><span class="line">[server1]</span><br><span class="line">192.168.0.101 ansible_ssh_user=root  ansible_ssh_pass=root123</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(4) usage ping</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:ansible test -m ping</span><br><span class="line">192.168.0.100 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">~:ansible all -m ping</span><br><span class="line">192.168.0.100 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br><span class="line">192.168.0.101 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;changed&quot;: false,</span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ansible</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ansible (2) simple usage</title>
+    <url>/2019/07/31/python3/ansible-2-simple-usage/</url>
+    <content><![CDATA[<p>ansible的简单示例</p>
+<a id="more"></a>
+<p>(1) hosts group</p>
+<p>服务器配置</p>
+<ul>
+<li><p>/etc/ansible/hosts</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[group_name1]</span><br><span class="line">host_ip1 [ansible_ssh_user=] [ansible_ssh_pass=]</span><br><span class="line">host_ip2</span><br><span class="line"></span><br><span class="line">[group_name1]</span><br><span class="line">ansible_ssh_user=</span><br><span class="line">ansible_ssh_pass=</span><br></pre></td></tr></table></figure>
+<p>  以上配置 指定了一组服务器, 默认ssh用户信息可在组名下另行配置,单独的host用户信息则在同行配置</p>
+</li>
+</ul>
+<p>(2) command format</p>
+<p>命令格式<br><code>ansible ip/group -m module_name -a arg</code><br>其中ip可以是某个具体的ip, group则是组名,使用group将会对组内所有服务器执行相同操作<br>-m 指定要运行的功能模块, module_name就是功能模块的名字<br>-a 为要运行的功能模块传入参数</p>
+<p>(3) specify ip collection</p>
+<p>以ping为例<br>-i 表示自行制定host文件,而不用默认的/etc/ansible/hosts<br><code>ansible all -i ./hosts -m ping</code></p>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ansible</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ansible (3) install by apt</title>
+    <url>/2019/07/31/python3/ansible-3-install-by-apt/</url>
+    <content><![CDATA[<p>使用apt安装ansible。</p>
+<a id="more"></a>
+<p>(1) install<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo apt-get install ansible</span><br></pre></td></tr></table></figure></p>
+<p>(2) use ssh passwords<br>缺少模块导致不支持ssh登录需要安装sshpass模块<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:sudo apt-get install sshpass</span><br></pre></td></tr></table></figure></p>
+<p>(3) skip host checking 跳过首次连接检查</p>
+<ul>
+<li>/etc/ansible/ansible.cfg<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">host_key_checking = False</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ansible</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ansible (4) playbooks</title>
+    <url>/2019/07/31/python3/ansible-4-playbooks/</url>
+    <content><![CDATA[<p>剧本是ansible最重要的概念。<br>剧本定义了所有远端操作的内容。</p>
+<a id="more"></a>
+<p>(1) playbooks 剧本</p>
+<p>所有要执行的操作流程写到playbooks<br>ansible会为指定的服务器执行playbooks里的所有操作</p>
+<p>(2) playbooks 内容</p>
+<ul>
+<li><p>local.yml</p>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">- hosts:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">connection:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">vars:</span></span><br><span class="line"><span class="attr">    project_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    project_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    mvn_settings_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    module_dir_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">tasks:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">build</span> <span class="string">file</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">mvn</span> <span class="bullet">-s</span> <span class="string">&#123;&#123;mvn_settings_dir&#125;&#125;</span> <span class="bullet">-f</span> <span class="string">&#123;&#123;project_dir&#125;&#125;/&#123;&#123;module_dir_name&#125;&#125;/pom.xml</span> <span class="string">clean</span> <span class="string">compile</span> <span class="string">package</span> <span class="bullet">-DskipTests</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">mvnInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">print</span> <span class="string">package</span></span><br><span class="line"><span class="attr">    debug:</span> <span class="string">var=mvnInfo.stdout_lines</span> <span class="string">verbosity=0</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:ansible-playbook -i ../hosts local.yml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>remote.yml</p>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">- hosts:</span> <span class="string">'<span class="template-variable">&#123;&#123;profile&#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">vars:</span></span><br><span class="line"><span class="attr">    project_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    project_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    mvn_settings_dir:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">    module_dir_name:</span> <span class="string">xxxx</span></span><br><span class="line"><span class="attr">    file_name:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">tasks:</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">file</span> <span class="string">exist</span> <span class="string">test</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">test</span> <span class="bullet">-e</span> <span class="string">&#123;&#123;upload_dir&#125;&#125;/&#123;&#123;file_name&#125;&#125;;echo</span> <span class="string">$?</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">outputInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">get</span> <span class="string">format</span> <span class="string">time</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">date</span> <span class="string">+'%Y-%m-%d-%H-%M-%S'</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">timeInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">backup</span> <span class="string">file</span> <span class="string">if</span> <span class="string">exist</span></span><br><span class="line"><span class="attr">    shell:</span> <span class="string">mv</span> <span class="string">'<span class="template-variable">&#123;&#123;upload_dir&#125;&#125;</span>/<span class="template-variable">&#123;&#123;file_name&#125;&#125;</span>'</span> <span class="string">'<span class="template-variable">&#123;&#123;upload_dir&#125;&#125;</span>/<span class="template-variable">&#123;&#123;file_name&#125;&#125;</span>.bak.<span class="template-variable">&#123;&#123;timeInfo.stdout&#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">    when:</span> <span class="string">outputInfo.stdout.find("0")!=-1</span></span><br><span class="line"><span class="attr">    register:</span> <span class="string">backupInfo</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">print</span> <span class="string">backup</span> <span class="string">process</span> <span class="string">info</span></span><br><span class="line"><span class="attr">    debug:</span> <span class="string">var=backupInfo</span> <span class="string">verbosity=0</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">upload</span> <span class="string">file</span></span><br><span class="line"><span class="attr">    copy:</span> </span><br><span class="line"><span class="attr">        src:</span> <span class="string">'<span class="template-variable">&#123;&#123;project_dir&#125;&#125;</span>/<span class="template-variable">&#123;&#123;module_dir_name&#125;&#125;</span>/target/<span class="template-variable">&#123;&#123;file_name&#125;&#125;</span>'</span></span><br><span class="line"><span class="attr">        dest:</span> <span class="string">'<span class="template-variable">&#123;&#123;upload_dir&#125;&#125;</span>'</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:ansible-playbook -i ../hosts local.yml -e &quot;profile=prod upload_dir=/home/user/upload&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ansible</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (1) basic usage</title>
+    <url>/2019/07/31/python3/fabric-1-basic-usage/</url>
+    <content><![CDATA[<p>本文介绍了fabric基础用法。<br>fabric是一个python ssh操作的包。它比paramiko更方便和高级。</p>
+<a id="more"></a>
+<h3 id="1-install-python-module-and-shell"><a href="#1-install-python-module-and-shell" class="headerlink" title="(1) install python module and shell"></a>(1) install python module and shell</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:sudo pip3 install fabric</span><br><span class="line">~:sudo apt-get fabric</span><br></pre></td></tr></table></figure>
+<h3 id="2-help-and-version"><a href="#2-help-and-version" class="headerlink" title="(2) help and version"></a>(2) help and version</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:fab -h</span><br><span class="line">~:fab -V</span><br></pre></td></tr></table></figure>
+<h3 id="3-tasks"><a href="#3-tasks" class="headerlink" title="(3) tasks"></a>(3) tasks</h3><ul>
+<li><p>fabfile.py</p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> task</span><br><span class="line"></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(c)</span>:</span></span><br><span class="line">print(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>intro</p>
+<p>  <code>from fabric import task</code> is necessary for <code>@task</code>.<br>  <code>hello(c)</code> is a task, it must have a default initial argument here is <code>c</code>.</p>
+</li>
+<li><p>fab</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:fab -l</span><br><span class="line">hello</span><br><span class="line">~:fab hello</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (2) local connection</title>
+    <url>/2019/07/31/python3/fabric-2-local-connection/</url>
+    <content><![CDATA[<p>fabric connection。<br>connection是建立ssh的基础。<br>本文介绍如何使用connection操作本地（类似于本地的terminal）。</p>
+<a id="more"></a>
+<p>(1) connection</p>
+<p><code>def hello(c):</code> is a task. <code>c</code> is the default argument. In fact, <code>c</code> means a connection. This connection locate at localhost if you don’t config with any host information.</p>
+<p>(2) local connection</p>
+<ul>
+<li><p>fabfile.py</p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> task</span><br><span class="line"></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">runLocal</span><span class="params">(c)</span>:</span></span><br><span class="line">c.run(<span class="string">'pwd'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fab</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~:fab runLocal</span><br><span class="line">/home/user01</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sudo pass from putty</p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.run(<span class="string">'sudo ls -a'</span>, pty=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sudo pass from config</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from invoke import Responder</span><br><span class="line">...</span><br><span class="line">passconf = Responder(</span><br><span class="line">pattern=r&apos;\[sudo]\ password .*:&apos;,</span><br><span class="line">response=&apos;password\n&apos;,</span><br><span class="line">)</span><br><span class="line">c.run(&apos;sudo ls -a&apos;, pty=True, watchers=[passconf])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (3) remote connection</title>
+    <url>/2019/07/31/python3/fabric-3-remote-connection/</url>
+    <content><![CDATA[<p>介绍使用connection连接远程服务器并执行简单的命令。</p>
+<a id="more"></a>
+<p>(1) config connection</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection</span><br><span class="line">...</span><br><span class="line">c = Connection(host=<span class="string">'web1'</span>, user=<span class="string">'deploy'</span>, port=<span class="number">2202</span>)</span><br><span class="line"><span class="comment"># [user@]host[:port] </span></span><br><span class="line"><span class="comment"># c = Connection('deploy@web1:2202')</span></span><br></pre></td></tr></table></figure>
+<p>(2) connection with password</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c = Connection(host=<span class="string">'web1'</span>, user=<span class="string">'deploy'</span>, port=<span class="number">2202</span>, connect_kwargs=&#123;<span class="string">'password'</span>:<span class="string">'pass_word'</span>&#125;)</span><br><span class="line">c.run(<span class="string">'pwd'</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (4) gateway-a local use a remote to control another remote</title>
+    <url>/2019/07/31/python3/fabric-4-gateway-a-local-use-a-remote-to-control-another-remote/</url>
+    <content><![CDATA[<p>fabric也支持跳板机。可以连接远程跳板机A并操作远程机器B，实际相当于连接上A，A ssh 连接B。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fabric <span class="keyword">import</span> Connection</span><br><span class="line">...</span><br><span class="line">gateway = Connection(host=<span class="string">'remote_pub_host'</span>,user=<span class="string">'root'</span>,port=<span class="string">"22"</span>,connect_kwargs=&#123;<span class="string">'password'</span>:<span class="string">'password'</span>&#125;)</span><br><span class="line">c = Connection(host=<span class="string">'remote_pub_or_private_host'</span>,user=<span class="string">'root'</span>,port=<span class="string">"22"</span>,connect_kwargs=&#123;<span class="string">'password'</span>:<span class="string">'password'</span>&#125;,gateway=gateway)</span><br><span class="line"><span class="keyword">with</span> c.cd(<span class="string">'/home/user'</span>):</span><br><span class="line">  c.run(<span class="string">'echo a&gt;&gt;a.txt'</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (5) change directory cd</title>
+    <url>/2019/07/31/python3/fabric-5-change-directory-cd/</url>
+    <content><![CDATA[<p>fabric提供一些api可以替代常用的命令。<br>本文介绍<code>cd()</code>接口替代<code>cd</code>命令。</p>
+<a id="more"></a>
+<p>(1) command</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">c.cd(dir)</span><br><span class="line">c.run(&apos;cd /home&apos;)</span><br></pre></td></tr></table></figure>
+<p>(2) keep path context<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dir = &apos;/home&apos;</span><br><span class="line">c.run(&apos;pwd&apos;) # /home/user</span><br><span class="line">with c.cd(dir):</span><br><span class="line">  c.run(&apos;pwd&apos;) # /home</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (6) get return</title>
+    <url>/2019/07/31/python3/fabric-6-get-return/</url>
+    <content><![CDATA[<p>fabric可以获取远程命令执行结果作为返回值。<br>这些返回值可以用做成功判断和回滚操作。</p>
+<a id="more"></a>
+<p>c.run(‘ls’) will return a result</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Result(stdout=<span class="string">''</span>, stderr=<span class="string">''</span>, encoding=<span class="literal">None</span>, command=<span class="string">''</span>, shell=<span class="string">''</span>, env=<span class="literal">None</span>, exited=<span class="number">0</span>, pty=<span class="literal">False</span>, hide=())</span><br></pre></td></tr></table></figure>
+<p>get return like this</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">result = c.run(<span class="string">'echo hello'</span>)</span><br><span class="line">print(<span class="string">'stdout is %s'</span>%result.stdout)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (7) other</title>
+    <url>/2019/07/31/python3/fabric-7-other/</url>
+    <content><![CDATA[<p>一些常见的问题。<br>fabric连接可能不支持某些命令。<br>远端命令执行上下文问题。<br>远端的环境变量需要在脚本代码里配置等问题。</p>
+<a id="more"></a>
+<p>(1) </p>
+<p><code>lsof</code> don’t use it if not necessary</p>
+<p>(2) cotext manage</p>
+<p>use  <code>with</code> for context</p>
+<p>(3) environment var</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> c.prefix(<span class="string">"export TEST_ENV_VAR='this is test'"</span>):</span><br><span class="line">      c.run(<span class="string">"echo $&#123;TEST_ENV_VAR&#125;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> c.prefix(<span class="string">"export PATH=$&#123;PATH&#125;:"</span>+server[<span class="string">"/home/user/bin/node/bin"</span>]):</span><br><span class="line">        cmd = <span class="string">"node -v"</span></span><br><span class="line">        print(cmd)</span><br><span class="line">        c.run(cmd)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fabric (8) task collection</title>
+    <url>/2019/07/31/python3/fabric-8-task-collection/</url>
+    <content><![CDATA[<p>fabric可以通过指定脚本文件运行特定的任务，这样不同的环境就可以执行不同的脚本。</p>
+<p>最新版本可能是通过指定文件夹的方式指定运行的脚本目录。<br>在之前的版本里可以直接指定脚本文件。</p>
+<a id="more"></a>
+<p>(1) collection</p>
+<p>collection is a task list like fabfile</p>
+<ul>
+<li><p>myTasks.py</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@task</span><br><span class="line">def task1(c):</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">@task</span><br><span class="line">def task2(c):</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fabfile.py</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@task</span><br><span class="line">def task3(c):</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">@task</span><br><span class="line">def task4(c):</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(2) specify collection</p>
+<p>use <code>-c</code> to specify a task collection<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:fab -l</span><br><span class="line">task3</span><br><span class="line">task4</span><br><span class="line"></span><br><span class="line">~:fab -c myTasks -l</span><br><span class="line">task1</span><br><span class="line">task2</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+        <tag>fabric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>quick start</title>
+    <url>/2019/07/31/python3/quick-start/</url>
+    <content><![CDATA[<p>paramiko的使用。python ssh操作的基础组件。</p>
+<a id="more"></a>
+<p>install pip3<br><figure class="highlight plain"><figcaption><span>apt-get install python3-pip```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">install a module</span><br><span class="line">```~:pip3 install paramiko</span><br></pre></td></tr></table></figure></p>
+<p>use a module<br>Test.py<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import paramiko</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">      ssh = paramiko.SSHClient()</span><br><span class="line">      ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span><br><span class="line">      ...</span><br><span class="line">except Exception as e:</span><br><span class="line">      ...</span><br><span class="line">      os._exit(0)</span><br></pre></td></tr></table></figure></p>
+<p>run the code<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~:python3 Test.py</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>yield</title>
+    <url>/2019/07/31/python3/yield/</url>
+    <content><![CDATA[<p>python yield关键字用法</p>
+<a id="more"></a>
+<p>一个函数可以返回一个序列（字符串，列表，元组）。如果返回的序列很大，就会非常吃内存。<br>此时可以使用<code>yield</code>来节省内存。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span><span class="params">(n)</span>:</span> <span class="comment"># 生成器函数 - 斐波那契</span></span><br><span class="line">    a, b, counter = <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> (counter &gt; n): </span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">yield</span> a</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">f = fibonacci(<span class="number">10</span>) <span class="comment"># f 是一个迭代器，由生成器返回生成</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">print</span> (next(f), end=<span class="string">" "</span>)</span><br><span class="line">    <span class="keyword">except</span> StopIteration:</span><br><span class="line">        sys.exit()</span><br></pre></td></tr></table></figure>
+<p>0自增100次，需要对每次自增的结果做处理。<br>写一个自增函数，在函数里把参数+1返回结果。调用这个函数，处理结果，重复100次。<br>写一个自增函数，在函数里循环100次，每次+1结果存进列表；最后返回列表。调用这个函数，遍历列表，处理结果。<br>第一种逻辑封装不够彻底但是省内存，第二种逻辑封装的好但是需要生成完整列表很占内存。<br>使用yield的函数会变成一个生成器，可以理解为该函数生成了迭代器，即接收该函数执行结果的变量变成了迭代器可以调用的<code>next()</code>方法。实际过程相当于函数变成了动态执行，函数执行时遇到<code>yield</code>会保存运行状态并暂停，等到生成的迭代器执行<code>next()</code>方法时函数恢复状态继续执行。实际上每次都只是返回一个数据，但是在调用者看来就像返回了一整个集合，逻辑上独立，也节省了内存。<br>并且使用yield，可以获取函数运行过程中的数据，不再只是冷冰冰的结果。</p>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
+        <tag>yield</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>backface-visibility适配firefox的技巧</title>
+    <url>/2019/07/31/reactjs/backface-visibility%E9%80%82%E9%85%8Dfirefox%E7%9A%84%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>css3 backface-visibility使用技巧</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">transform-style:preserve-3d;</span><br><span class="line">transfrom:rotateY(180deg);</span><br><span class="line">backface-visibility:hidden;</span><br></pre></td></tr></table></figure>
+<p>以上三个样式可以对进行3d旋转，并且隐藏组件的背面，因此当组件的背面朝向屏幕时组件会被隐藏。<br>但是chrome、firefox、ie对三者的解析是不一样的。<br>(1) chrome<br>—&gt;继承transform<br>chrome默认所有后代组件都会继承父组件的transform特性，因此，后代组件在做旋转时，会在它外层组件旋转的基础上再做旋转。<br>(2) firefox<br>—&gt;继承transform<br>firefox默认transform不继承，父组件必须显式使用preserve-3d时，子组件才会继承父组件的transform特性，并且孙子及之后的不会继承，如果有需要就必须逐层添加preserve-3d。<br>(3) ie<br>—&gt;继承transform<br>ie全系列都不支持preserve-3d，因此它的组件不会继承父组件的transform。edge才开始支持preserve-3d。<br>(4) 使用preserve-3d带来的问题<br>该属性可能会使absolute position失效。在使用absolute时，组件默认会参照最靠近的一个absolute组件，这意味这如果组件的父组件是relative的，那么子组件就会越过父组件。但父组件使用了preserve-3d之后，子组件即使是absolute也会变成relative。<br>(5) 适配技巧<br>规划好组件的层级结构，避免在复杂的层级结构中出现联动的特效。像absolute和preserve-3d冲突的问题，可以把子组件提出变成兄弟，并在外层重新添加一层父组件。<br>(6) 关于ie的适配<br>不要适配它。</p>
 ]]></content>
       <categories>
         <category>reactjs</category>
       </categories>
       <tags>
-        <tag>fetch</tag>
         <tag>reactjs</tag>
+        <tag>backface-visibility</tag>
+        <tag>css3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>类变量 实例变量 self</title>
+    <url>/2019/07/31/python3/%E7%B1%BB%E5%8F%98%E9%87%8F-%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F-self/</url>
+    <content><![CDATA[<p>python3 面向对象里的类变量和示例变量的区别</p>
+<a id="more"></a>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>尽管类里可以定义全局变量，但是在类的方法里调用这些全局变量时仍然要加上前缀类名或者实例（self）加以区分。加类名就是类变量（全局变量），加self就是实例变量，不加的话就是方法的局部变量。<br>对于同名的类变量和实例变量，实例变量初始值等于类变量，对实例变量做赋值操作不会影响类变量。如果实例变量没有做过赋值操作，它将始终等于类变量，而发生了赋值之后，实例变量和类变量分家，类变量不会再影响实例变量</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def func1(self):</span><br><span class="line">      ...</span><br><span class="line"></span><br><span class="line">def func2():</span><br><span class="line">      ...</span><br></pre></td></tr></table></figure>
+<p>含有self参数的方法不能通过类名直接调用，只有实例才能调用。</p>
+]]></content>
+      <categories>
+        <category>python3</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>python3</tag>
       </tags>
   </entry>
   <entry>
@@ -4484,6 +4487,19 @@ select * from role_tab_privs;
       </tags>
   </entry>
   <entry>
+    <title>jsx里组件style的写法</title>
+    <url>/2019/07/31/reactjs/jsx%E9%87%8C%E7%BB%84%E4%BB%B6style%E7%9A%84%E5%86%99%E6%B3%95/</url>
+    <content><![CDATA[<p>在jsx里属性都被变成了对象，所以style应该被赋予一个对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">style=&#123;&#123;<span class="attr">width</span>:<span class="string">"100px"</span>,<span class="attr">height</span>:<span class="string">"100px"</span>,&#125;&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>reactjs</category>
+      </categories>
+      <tags>
+        <tag>reactjs</tag>
+        <tag>css3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>material-ui theme和3阶色</title>
     <url>/2019/07/31/reactjs/material-ui-theme%E5%92%8C3%E9%98%B6%E8%89%B2/</url>
     <content><![CDATA[<p>reactjs 组件库 material-ui theme设置。</p>
@@ -4496,19 +4512,6 @@ select * from role_tab_privs;
       <tags>
         <tag>reactjs</tag>
         <tag>material-ui</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jsx里组件style的写法</title>
-    <url>/2019/07/31/reactjs/jsx%E9%87%8C%E7%BB%84%E4%BB%B6style%E7%9A%84%E5%86%99%E6%B3%95/</url>
-    <content><![CDATA[<p>在jsx里属性都被变成了对象，所以style应该被赋予一个对象。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">style=&#123;&#123;<span class="attr">width</span>:<span class="string">"100px"</span>,<span class="attr">height</span>:<span class="string">"100px"</span>,&#125;&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>reactjs</category>
-      </categories>
-      <tags>
-        <tag>reactjs</tag>
-        <tag>css3</tag>
       </tags>
   </entry>
   <entry>
@@ -5098,6 +5101,20 @@ option: 操作，多个操作需要使用 分号;分隔。
       </tags>
   </entry>
   <entry>
+    <title>fetch的基础</title>
+    <url>/2019/07/31/reactjs/fetch%E7%9A%84%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fetch(url).then(<span class="function">(<span class="params">response</span>)=&gt;</span>&#123;<span class="keyword">return</span> response.json();&#125;).then(<span class="function"><span class="params">jsonData</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(jsonData);&#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="string">"出错"</span>);&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面这是一个最基本的请求，200~299的成功处理在jsonData所在的then函数中，而400或者其他错误则在catch里处理。<br>在ajax里，成功和失败在success和error节点里处理。</p>
+]]></content>
+      <categories>
+        <category>reactjs</category>
+      </categories>
+      <tags>
+        <tag>fetch</tag>
+        <tag>reactjs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell expect git</title>
     <url>/2019/07/31/shell/shell-expect-git/</url>
     <content><![CDATA[<p>使用ecpect为git填充密码</p>
@@ -5110,23 +5127,6 @@ option: 操作，多个操作需要使用 分号;分隔。
         <tag>git</tag>
         <tag>shell</tag>
         <tag>expect</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell expect scp file</title>
-    <url>/2019/07/31/shell/shell-expect-scp-file/</url>
-    <content><![CDATA[<p>scp下载远端指定文件</p>
-<a id="more"></a>
-<p>use shell and expect to scp a file to a remote server</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">upload file or folder to server</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">source</span> scp_profile.sh</span></span><br><span class="line"></span><br><span class="line">FILE_NAME=""</span><br><span class="line">SERVER_HOST="123.123.123.123"</span><br><span class="line">SERVER_PORT=123</span><br><span class="line">LOGIN_USER="username"</span><br><span class="line">PASSWORD="password"</span><br><span class="line">UPLOAD_ROOT_FOLDER="/upload_path"</span><br><span class="line"></span><br><span class="line">while getopts "f:" OPTS; do</span><br><span class="line">        case $OPTS in</span><br><span class="line">                f)</span><br><span class="line">                        FILE_NAME=$OPTARG</span><br><span class="line">                        ;;</span><br><span class="line">                ?)</span><br><span class="line">                        echo "Error"</span><br><span class="line">                        exit 1</span><br><span class="line">                        ;;</span><br><span class="line">        esac</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">if [ ! -n "$FILE_NAME" ]; then</span><br><span class="line">        echo "Error!"</span><br><span class="line">        echo "File name must be figured out!"   </span><br><span class="line">        exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ ! -f "$&#123;FILE_NAME&#125;" ]; then</span><br><span class="line">        echo "Error!"</span><br><span class="line">        echo "$&#123;FILE_NAME&#125; doesn't exist in current folder!"</span><br><span class="line">        echo 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">/usr/bin/expect &lt;&lt;-EOF</span><br><span class="line">set timeout 30</span><br><span class="line">spawn scp -P$&#123;SERVER_PORT&#125; -r $&#123;FILE_NAME&#125; $&#123;LOGIN_USER&#125;@$&#123;SERVER_HOST&#125;:$&#123;UPLOAD_ROOT_FOLDER&#125;/</span><br><span class="line">expect "password:"</span><br><span class="line">send "$&#123;PASSWORD&#125;\r"</span><br><span class="line">expect eof</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>ssh</tag>
-        <tag>shell</tag>
-        <tag>scp</tag>
       </tags>
   </entry>
   <entry>
@@ -5152,6 +5152,23 @@ option: 操作，多个操作需要使用 分号;分隔。
       <tags>
         <tag>mysql</tag>
         <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell expect scp file</title>
+    <url>/2019/07/31/shell/shell-expect-scp-file/</url>
+    <content><![CDATA[<p>scp下载远端指定文件</p>
+<a id="more"></a>
+<p>use shell and expect to scp a file to a remote server</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">upload file or folder to server</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">source</span> scp_profile.sh</span></span><br><span class="line"></span><br><span class="line">FILE_NAME=""</span><br><span class="line">SERVER_HOST="123.123.123.123"</span><br><span class="line">SERVER_PORT=123</span><br><span class="line">LOGIN_USER="username"</span><br><span class="line">PASSWORD="password"</span><br><span class="line">UPLOAD_ROOT_FOLDER="/upload_path"</span><br><span class="line"></span><br><span class="line">while getopts "f:" OPTS; do</span><br><span class="line">        case $OPTS in</span><br><span class="line">                f)</span><br><span class="line">                        FILE_NAME=$OPTARG</span><br><span class="line">                        ;;</span><br><span class="line">                ?)</span><br><span class="line">                        echo "Error"</span><br><span class="line">                        exit 1</span><br><span class="line">                        ;;</span><br><span class="line">        esac</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">if [ ! -n "$FILE_NAME" ]; then</span><br><span class="line">        echo "Error!"</span><br><span class="line">        echo "File name must be figured out!"   </span><br><span class="line">        exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ ! -f "$&#123;FILE_NAME&#125;" ]; then</span><br><span class="line">        echo "Error!"</span><br><span class="line">        echo "$&#123;FILE_NAME&#125; doesn't exist in current folder!"</span><br><span class="line">        echo 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">/usr/bin/expect &lt;&lt;-EOF</span><br><span class="line">set timeout 30</span><br><span class="line">spawn scp -P$&#123;SERVER_PORT&#125; -r $&#123;FILE_NAME&#125; $&#123;LOGIN_USER&#125;@$&#123;SERVER_HOST&#125;:$&#123;UPLOAD_ROOT_FOLDER&#125;/</span><br><span class="line">expect "password:"</span><br><span class="line">send "$&#123;PASSWORD&#125;\r"</span><br><span class="line">expect eof</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+        <tag>shell</tag>
+        <tag>scp</tag>
       </tags>
   </entry>
   <entry>
@@ -5727,24 +5744,6 @@ option: 操作，多个操作需要使用 分号;分隔。
       </tags>
   </entry>
   <entry>
-    <title>tomcat readonly jsp注入</title>
-    <url>/2019/07/31/tomcat/tomcat-readonly-jsp%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<p>tomcat readonly bug导致put和delete注入攻击。</p>
-<a id="more"></a>
-<p>在tomcat的conf/web.xml中<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>default<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.apache.catalina.servlets.DefaultServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>这个节点下可以配置readonly(该参数默认true，可能是拒绝put和delete请求)<br>true即防止注入。现在改为false。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;readonly&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;false&lt;/param-value&gt;</span><br><span class="line">&lt;/init-param&gt;</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以配置put/delete请求，具体可以通过chrome或者firefox的调试工具或者插件模拟，也可以用curl或者nc等命令行工具模拟。<br>使用chrome restlet配置一个注入：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//以下在webapps/ROOT/目录下创建test.txt，填入body指定的内容</span><br><span class="line">//可以指定其他工程的某个目录，上传一个jsp，之后就能直接访问</span><br><span class="line">METHOD: PUT</span><br><span class="line">http://localhost:8080/test.txt  </span><br><span class="line">Content-Length:  11</span><br><span class="line">Accept-Language: en-US</span><br><span class="line">BODY:  hello world</span><br></pre></td></tr></table></figure></p>
-<p>使用chrome restlet配置一次删除:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//删除指定工程下某个html</span><br><span class="line">METHOD: DELETE</span><br><span class="line">http://localhost:8080/testproject/test.html</span><br><span class="line">Content-Length:  11</span><br><span class="line">Accept-Language: en-US</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>tomcat</category>
-      </categories>
-      <tags>
-        <tag>tomcat</tag>
-        <tag>注入</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>tomcat https+domain+port 80</title>
     <url>/2019/07/31/tomcat/tomcat-https-domain-port-80/</url>
     <content><![CDATA[<p>为tomcat配置域名。<br>tomcat的host可以配置域名。</p>
@@ -5769,6 +5768,24 @@ option: 操作，多个操作需要使用 分号;分隔。
       </categories>
       <tags>
         <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tomcat readonly jsp注入</title>
+    <url>/2019/07/31/tomcat/tomcat-readonly-jsp%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<p>tomcat readonly bug导致put和delete注入攻击。</p>
+<a id="more"></a>
+<p>在tomcat的conf/web.xml中<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>default<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.apache.catalina.servlets.DefaultServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这个节点下可以配置readonly(该参数默认true，可能是拒绝put和delete请求)<br>true即防止注入。现在改为false。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;readonly&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;false&lt;/param-value&gt;</span><br><span class="line">&lt;/init-param&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以配置put/delete请求，具体可以通过chrome或者firefox的调试工具或者插件模拟，也可以用curl或者nc等命令行工具模拟。<br>使用chrome restlet配置一个注入：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//以下在webapps/ROOT/目录下创建test.txt，填入body指定的内容</span><br><span class="line">//可以指定其他工程的某个目录，上传一个jsp，之后就能直接访问</span><br><span class="line">METHOD: PUT</span><br><span class="line">http://localhost:8080/test.txt  </span><br><span class="line">Content-Length:  11</span><br><span class="line">Accept-Language: en-US</span><br><span class="line">BODY:  hello world</span><br></pre></td></tr></table></figure></p>
+<p>使用chrome restlet配置一次删除:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//删除指定工程下某个html</span><br><span class="line">METHOD: DELETE</span><br><span class="line">http://localhost:8080/testproject/test.html</span><br><span class="line">Content-Length:  11</span><br><span class="line">Accept-Language: en-US</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>tomcat</category>
+      </categories>
+      <tags>
+        <tag>tomcat</tag>
+        <tag>注入</tag>
       </tags>
   </entry>
   <entry>
@@ -6370,6 +6387,20 @@ This could stop the fan noise.
       </tags>
   </entry>
   <entry>
+    <title>create-react-app发布时文件路径错误的解决方法</title>
+    <url>/2019/07/31/reactjs/create-react-app%E5%8F%91%E5%B8%83%E6%97%B6%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>在工程的依赖文件package.json的根节点里添加一个元素如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&quot;homepage&quot;:&quot;./&quot;,</span><br></pre></td></tr></table></figure>
+<p>在打包时自动为页面文件添加工程根目录。</p>
+]]></content>
+      <categories>
+        <category>reactjs</category>
+      </categories>
+      <tags>
+        <tag>reactjs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>elasticsearch-1-docker安装</title>
     <url>/2020/11/02/%E4%B8%AD%E9%97%B4%E4%BB%B6/elasticsearch-1-docker%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<p>使用elasticsearch的docker镜像搭建测试环境</p>
@@ -6663,37 +6694,6 @@ mkdir logs
         <tag>docker</tag>
         <tag>中间件</tag>
         <tag>nacos</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>backface-visibility适配firefox的技巧</title>
-    <url>/2019/07/31/reactjs/backface-visibility%E9%80%82%E9%85%8Dfirefox%E7%9A%84%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>css3 backface-visibility使用技巧</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">transform-style:preserve-3d;</span><br><span class="line">transfrom:rotateY(180deg);</span><br><span class="line">backface-visibility:hidden;</span><br></pre></td></tr></table></figure>
-<p>以上三个样式可以对进行3d旋转，并且隐藏组件的背面，因此当组件的背面朝向屏幕时组件会被隐藏。<br>但是chrome、firefox、ie对三者的解析是不一样的。<br>(1) chrome<br>—&gt;继承transform<br>chrome默认所有后代组件都会继承父组件的transform特性，因此，后代组件在做旋转时，会在它外层组件旋转的基础上再做旋转。<br>(2) firefox<br>—&gt;继承transform<br>firefox默认transform不继承，父组件必须显式使用preserve-3d时，子组件才会继承父组件的transform特性，并且孙子及之后的不会继承，如果有需要就必须逐层添加preserve-3d。<br>(3) ie<br>—&gt;继承transform<br>ie全系列都不支持preserve-3d，因此它的组件不会继承父组件的transform。edge才开始支持preserve-3d。<br>(4) 使用preserve-3d带来的问题<br>该属性可能会使absolute position失效。在使用absolute时，组件默认会参照最靠近的一个absolute组件，这意味这如果组件的父组件是relative的，那么子组件就会越过父组件。但父组件使用了preserve-3d之后，子组件即使是absolute也会变成relative。<br>(5) 适配技巧<br>规划好组件的层级结构，避免在复杂的层级结构中出现联动的特效。像absolute和preserve-3d冲突的问题，可以把子组件提出变成兄弟，并在外层重新添加一层父组件。<br>(6) 关于ie的适配<br>不要适配它。</p>
-]]></content>
-      <categories>
-        <category>reactjs</category>
-      </categories>
-      <tags>
-        <tag>reactjs</tag>
-        <tag>css3</tag>
-        <tag>backface-visibility</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>create-react-app发布时文件路径错误的解决方法</title>
-    <url>/2019/07/31/reactjs/create-react-app%E5%8F%91%E5%B8%83%E6%97%B6%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>在工程的依赖文件package.json的根节点里添加一个元素如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&quot;homepage&quot;:&quot;./&quot;,</span><br></pre></td></tr></table></figure>
-<p>在打包时自动为页面文件添加工程根目录。</p>
-]]></content>
-      <categories>
-        <category>reactjs</category>
-      </categories>
-      <tags>
-        <tag>reactjs</tag>
       </tags>
   </entry>
   <entry>
