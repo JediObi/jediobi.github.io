@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="使用docker搭建samba nas">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-23T10:59:12.272Z">
+<meta property="og:updated_time" content="2021-08-01T13:29:05.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-nas-samba">
 <meta name="twitter:description" content="使用docker搭建samba nas">
@@ -219,7 +219,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-23 18:59:12" itemprop="dateModified" datetime="2021-01-23T18:59:12+08:00">2021-01-23</time>
+                <time title="Modified: 2021-08-01 21:29:05" itemprop="dateModified" datetime="2021-08-01T21:29:05+08:00">2021-08-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,7 +246,7 @@
 <a id="more"></a>
 <h2 id="1-镜像"><a href="#1-镜像" class="headerlink" title="1. 镜像"></a>1. 镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull dperson/samba</span><br></pre></td></tr></table></figure>
 <h2 id="2-创建容器"><a href="#2-创建容器" class="headerlink" title="2. 创建容器"></a>2. 创建容器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name samba_docker -p 139:139 -p 445:445 -v /home/user_name/nas_data:/home/shares/shareA -d dperson/samba -w &quot;WORKGROUP&quot; -u &quot;userA;123456789&quot; -s &quot;shareA;/home/shares/shareA;yes;no;no;userA;userA;userA&quot;</span><br><span class="line"></span><br><span class="line">docker run -it --name samba_docker -p 139:139 -p 445:445 -p 137:137/udp -p 138:138/udp -v /run/media/nomq/linux_work/work/mi-camera:/home/shares/shareA -d dperson/samba -w &quot;WORKGROUP&quot; -u &quot;userA;123456789&quot; -s &quot;shareA;/home/shares/shareA;yes;no;no;userA;userA;userA&quot; -n</span><br></pre></td></tr></table></figure>
-<p>参数说明<br>139/445端口 samba默认使用的两个端口<br>-n  开启nmbd广播进程，samba使用nmbd做局域网广播，一些iot设备只支持扫描发现nas，不支持手动输入ip，所以要开启nmbd服务<br>137-138/udb nmbd默认使用这两个端口做udp广播<br>-w 工作组<br>-u 用户名和密码<br>-s samba配置文件新增配置节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">shareA;/home/shares/shareA;yes;no;no;userA;userA;userA</span><br><span class="line">shareA 节点shareA</span><br><span class="line">/home/shares/shareA 共享目录/home/shares/shareA</span><br><span class="line">yes 共享名称对所有工作组用户可见</span><br><span class="line">no 不是只读（也就是说可写）</span><br><span class="line">no 不允许guest用户</span><br><span class="line">userA 指定共享的所有权用户</span><br><span class="line">userA 指定共享的超级用户</span><br><span class="line">userA 指定具有写权限的用户</span><br></pre></td></tr></table></figure></p>
+<p>参数说明<br>139/445端口 samba默认使用的两个端口<br>-n  开启nmbd广播进程，samba使用nmbd做局域网广播，一些iot设备只支持扫描发现nas，不支持手动输入ip，所以要开启nmbd服务<br>137-138/udb nmbd默认使用这两个端口做udp广播<br>-w 工作组<br>-u 用户名和密码<br>-s samba配置文件新增配置节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">shareA;/home/shares/shareA;yes;no;no;userA;userA;userA</span><br><span class="line">shareA samba容器中共享文件夹的别名,也就是进入samba后显示的文件夹名称为shareA</span><br><span class="line">/home/shares/shareA 要共享到samba的目录目录，这里就是/home/shares/shareA</span><br><span class="line">yes 共享名称对所有工作组用户可见</span><br><span class="line">no 不是只读（也就是说可写）</span><br><span class="line">no 不允许guest用户</span><br><span class="line">userA 指定共享的所有权用户</span><br><span class="line">userA 指定共享的超级用户</span><br><span class="line">userA 指定具有写权限的用户</span><br></pre></td></tr></table></figure></p>
 <h2 id="3-其他配置"><a href="#3-其他配置" class="headerlink" title="3. 其他配置"></a>3. 其他配置</h2><p>上边创建的容器没有挂载samba的配置文件smb.cnf， samba配置文件默认位于 /etc/samba/smb.conf。<br>我们可以通过docker cp执行覆盖</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 从容器里复制出来</span><br><span class="line">~:docker cp samba_docker:/etc/samba/smb.conf ./smb.conf</span><br><span class="line"></span><br><span class="line"># 复制到容器里</span><br><span class="line">~:docker cp ./smb.conf samba_docker:/etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
 <p>一般要修改的可能是降低samba的协议版本，以兼容某些旧的客户端（比如app或者iot设备），协议版本位于 global节点<br>这里把协议降低到smbv1 -&gt; NT1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server min protocol = NT1</span><br></pre></td></tr></table></figure></p>
@@ -352,7 +352,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">247</span>
+          <span class="site-state-item-count">248</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

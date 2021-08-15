@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/koala_avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/koala_32_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/koala_16_16.png">
+  <link rel="mask-icon" href="/images/koala_avatar.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jediobi.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="docker-compose是一个本地docker容器管理工具，通过yml脚本实现容器的批量管理,可以理解为k8s的简化版">
+<meta name="keywords" content="docker,docker-compose">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-compose教程">
+<meta property="og:url" content="https://jediobi.github.io/2021/08/15/docker/docker-compose教程/index.html">
+<meta property="og:site_name" content="nomq">
+<meta property="og:description" content="docker-compose是一个本地docker容器管理工具，通过yml脚本实现容器的批量管理,可以理解为k8s的简化版">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-08-15T14:04:42.458Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-compose教程">
+<meta name="twitter:description" content="docker-compose是一个本地docker容器管理工具，通过yml脚本实现容器的批量管理,可以理解为k8s的简化版">
+
+<link rel="canonical" href="https://jediobi.github.io/2021/08/15/docker/docker-compose教程/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>docker-compose教程 | nomq</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">nomq</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jediobi.github.io/2021/08/15/docker/docker-compose教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/koala_avatar.png">
+      <meta itemprop="name" content="nomq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nomq">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docker-compose教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-08-15 21:06:25 / Modified: 22:04:42" itemprop="dateCreated datePublished" datetime="2021-08-15T21:06:25+08:00">2021-08-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>docker-compose是一个本地docker容器管理工具，通过yml脚本实现容器的批量管理,可以理解为k8s的简化版</p>
+<a id="more"></a>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p>docker-compose 通过脚本来批量管理容器，这些容器可以从既有镜像创建，也可以从Dockerfile开始创建。</p>
+<p>此外还可以管理网卡，挂载卷等</p>
+<h2 id="2-从既有镜像开始-基本使用"><a href="#2-从既有镜像开始-基本使用" class="headerlink" title="2. 从既有镜像开始-基本使用"></a>2. 从既有镜像开始-基本使用</h2><h3 id="2-1-脚本demo"><a href="#2-1-脚本demo" class="headerlink" title="2.1 脚本demo"></a>2.1 脚本demo</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">    nginx1:</span></span><br><span class="line"><span class="attr">        container_name:</span> <span class="string">"nginx-test"</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"8080:8080"</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"8081:8081"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    mariadb1:</span></span><br><span class="line"><span class="attr">        container_name:</span> <span class="string">"mysql-test"</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">mariadb</span></span><br><span class="line"><span class="attr">        ports:</span> </span><br><span class="line"><span class="bullet">            -</span> <span class="string">"3306:3306"</span></span><br><span class="line"><span class="attr">        environment:</span></span><br><span class="line"><span class="attr">            MYSQL_ROOT_PASSWORD:</span> <span class="string">"123456"</span></span><br><span class="line"><span class="attr">        volumes:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"/etc/localtime:/etc/localtime:ro"</span></span><br><span class="line"><span class="attr">        command:</span> <span class="string">[</span></span><br><span class="line">            <span class="string">"--character-set-server=utf8"</span><span class="string">,</span></span><br><span class="line">            <span class="string">"--collation-server=utf8_bin"</span></span><br><span class="line">        <span class="string">]</span></span><br></pre></td></tr></table></figure>
+<p>脚本解释<br><code>version</code> 固定格式，必须要写，版本号看你的docker-compose<br><code>services</code> 容器列表， 每个容器节点有自己的名称比如demo里的 nginx1, mariadb1<br>然后是<code>容器节点</code>, 基本和 <code>docker run</code> 命令差不多， 这里对比下 <code>mariadb1</code> 这个节点的run命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=&quot;123456&quot; -v /etc/localtime:/etc/localtime:ro mariadb --character-set-server=utf8 --collation-server=utf8_bin</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-docker-compose-命令"><a href="#2-2-docker-compose-命令" class="headerlink" title="2.2 docker-compose 命令"></a>2.2 docker-compose 命令</h3><p>docker-compose 默认使用当前目录下的 docker-compose.yml, 如果要指定其他配置文件，请用 <code>-f &lt;yml路径&gt;</code></p>
+<h4 id="2-2-1-创建并启动容器"><a href="#2-2-1-创建并启动容器" class="headerlink" title="2.2.1 创建并启动容器"></a>2.2.1 创建并启动容器</h4><p>会创建容器并启动，如果容器依赖的镜像有改变，则会重新创建容器，也就是容器的更新功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+<p>如果需要在后台启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-2-停止服务"><a href="#2-2-2-停止服务" class="headerlink" title="2.2.2 停止服务"></a>2.2.2 停止服务</h4><p>会停止当前配置文件管理的所有容器, 不会删除容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-3-删除停止的容器"><a href="#2-2-3-删除停止的容器" class="headerlink" title="2.2.3 删除停止的容器"></a>2.2.3 删除停止的容器</h4><p>会删除已经停止的容器和网络，但不会删除卷和镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose rm</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-4-重启应用"><a href="#2-2-4-重启应用" class="headerlink" title="2.2.4 重启应用"></a>2.2.4 重启应用</h4><p>仅仅是重启容器，不会更新容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose restart</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-5-进程查看"><a href="#2-2-5-进程查看" class="headerlink" title="2.2.5 进程查看"></a>2.2.5 进程查看</h4><p>输出当前管理的容器的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-5-删除所有容器"><a href="#2-2-5-删除所有容器" class="headerlink" title="2.2.5 删除所有容器"></a>2.2.5 删除所有容器</h4><p>删除所有管理的容器和网络，但不会删除卷和镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
+<h2 id="3-从-Dockerfile-创建"><a href="#3-从-Dockerfile-创建" class="headerlink" title="3. 从 Dockerfile 创建"></a>3. 从 Dockerfile 创建</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yaml 配置实例</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  web:</span></span><br><span class="line"><span class="attr">    build:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">"5000:5000"</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">.:/code</span></span><br><span class="line"><span class="attr">        - logvolume01:</span><span class="string">/var/log</span></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">redis</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line"><span class="attr">  logvolume01:</span> <span class="string">&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p><code>build</code> 容器节点中的 build 用于指定 Dockerfile, 此处就是使用 当前目录下的 Dockerfile, 如果想要细化可以如下<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build:</span></span><br><span class="line"><span class="attr">    context:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">    dockerfile:</span> <span class="string">Dockerfile-prod</span></span><br></pre></td></tr></table></figure></p>
+<p><code>context</code> 指定Dockerfile路径<br><code>dockerfile</code> 指定 Dockerfile文件名</p>
+<h2 id="4-网络配置"><a href="#4-网络配置" class="headerlink" title="4. 网络配置"></a>4. 网络配置</h2><p>这里主讲 services 中为各个容器指定网络并分配固定ip。</p>
+<p>用途：一般各个服务通过ip访问，docker需要配置独立的自定义网络才能指定ip。<br><code>注意：虽然 docker-compose 的 links 提供了按服务名称访问忽略ip变动的快捷方式，但这里主要讲ip直接访问的形式，感兴趣可以自行查找links资料。</code></p>
+<h3 id="4-1-脚本"><a href="#4-1-脚本" class="headerlink" title="4.1 脚本"></a>4.1 脚本</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yaml 配置实例</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  app1:</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="attr">      network1:</span></span><br><span class="line"><span class="attr">        app_net:</span></span><br><span class="line"><span class="attr">            ipv4_address:</span> <span class="number">172.0</span><span class="number">.0</span><span class="number">.3</span></span><br><span class="line"><span class="attr">            ipv6_address:</span> <span class="number">2001</span><span class="string">:3984:3989::10</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  network1:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">bridge/host/none/container</span> <span class="string">四种驱动之一</span></span><br><span class="line"><span class="attr">    ipam:</span></span><br><span class="line"><span class="attr">        config:</span></span><br><span class="line"><span class="attr">            - subnet:</span> <span class="number">172.16</span><span class="number">.0</span><span class="number">.0</span><span class="string">/16</span></span><br><span class="line"><span class="attr">              gateway:</span> <span class="number">172.16</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">            - subnet:</span> <span class="string">"2001:3984:3989::/64"</span></span><br></pre></td></tr></table></figure>
+<p>容器节点中的 <code>networks</code> 可以指定网络配置节点的名称来使用网络配置，可以配置多网络这里不多说了。<br>然后配置网络地址就是 <code>app_net</code> 里那样，一般都是 ipv4 和 ipv6 的地址</p>
+<p>网络配置节点，每个节点自定义一个名称，ipam就是网络的具体配置，subnet 可以配置多个</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+              <a href="/tags/docker-compose/" rel="tag"># docker-compose</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/09/react-demo/" rel="prev" title="react-demo">
+      <i class="fa fa-chevron-left"></i> react-demo
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介"><span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-从既有镜像开始-基本使用"><span class="nav-text">2. 从既有镜像开始-基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-脚本demo"><span class="nav-text">2.1 脚本demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-docker-compose-命令"><span class="nav-text">2.2 docker-compose 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-创建并启动容器"><span class="nav-text">2.2.1 创建并启动容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-停止服务"><span class="nav-text">2.2.2 停止服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-删除停止的容器"><span class="nav-text">2.2.3 删除停止的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-重启应用"><span class="nav-text">2.2.4 重启应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-5-进程查看"><span class="nav-text">2.2.5 进程查看</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-5-删除所有容器"><span class="nav-text">2.2.5 删除所有容器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-从-Dockerfile-创建"><span class="nav-text">3. 从 Dockerfile 创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-网络配置"><span class="nav-text">4. 网络配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-脚本"><span class="nav-text">4.1 脚本</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nomq"
+      src="/images/koala_avatar.png">
+  <p class="site-author-name" itemprop="name">nomq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">248</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">199</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jediobi" title="GitHub → https://github.com/jediobi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nomq</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+    <script>
+        var isDesktopEnv = true;
+        var isTransparentActive = false;
+        var transparentActiveHeight = 200;
+
+        /**
+        * 组件加载时
+        * 初始化系统环境变量：桌面 or 移动端
+        * 初始化live2d的透明度
+        * 桌面与移动端切换时修改透明度及live2d bottom
+        **/
+        function initLive2dOpacityAndBottomOnload() {
+            // console.log("初始化");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            if(windowMatch.matches){
+                isDesktopEnv = false;
+            }else{
+                return;
+            }
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                if(!isDesktopEnv){
+                    live2dWidget.style.bottom = "-55px";
+                }else{
+                    live2dWidget.style.bottom = "-35px";
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        /**
+        * 页面滚动时修改live2d透明度
+        **/
+        function changeLive2dOpacityAndBottomOnScroll() {
+            // console.log("滑动");
+            var windowMatch = window.matchMedia('(max-width: 991px)');
+            var isDesktop = !windowMatch.matches;
+
+            // 当前窗口body的top位置相对于全文高度所处的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollWindow = document.body;
+            // 窗口高度
+            var clientHeight = scrollWindow.clientHeight;
+            // 当前body的全部高度
+            var scrollHeight = scrollWindow.scrollHeight;
+            // 当前窗口底部距离内容底部的绝对距离
+            var clientBottomToScrollBottom = scrollHeight - (scrollTop + clientHeight);
+            
+            var live2dWidget = document.querySelector("#live2d-widget");
+            if(live2dWidget != undefined && live2dWidget != null ){
+                // env mobile -> desktop
+                if(!isDesktopEnv && isDesktop){
+                    live2dWidget.style.bottom = "-55px";
+                }else if(isDesktopEnv && !isDesktop){
+                    live2dWidget.style.bottom = "-35px";
+                }
+                // env desktop -> mobile
+                if(isDesktop){
+                    if(isTransparentActive){
+                        isTransparentActive = false;
+                        live2dWidget.style.opacity = 1;
+                    }
+                    return;
+                }
+                if (clientBottomToScrollBottom <= transparentActiveHeight && !isTransparentActive){
+                    live2dWidget.style.setProperty("opacity", "0.5");
+                    isTransparentActive = true;
+                }else if(clientBottomToScrollBottom > transparentActiveHeight && isTransparentActive){
+                    live2dWidget.style.opacity = 1;
+                    isTransparentActive = false;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.onload = function () {
+                initLive2dOpacityAndBottomOnload();
+            }
+
+            window.onscroll = function(){
+                changeLive2dOpacityAndBottomOnScroll();
+            }
+        });
+    </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":35,"vOffset":-35},"mobile":{"show":true},"react":{"opacity":1}});</script></body>
+</html>

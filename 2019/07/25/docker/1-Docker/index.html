@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="docker的安装配置。镜像管理和容器管理。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-07-04T13:40:58.226Z">
+<meta property="og:updated_time" content="2021-07-04T15:18:02.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(1) Docker">
 <meta name="twitter:description" content="docker的安装配置。镜像管理和容器管理。">
@@ -219,7 +219,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 21:40:58" itemprop="dateModified" datetime="2021-07-04T21:40:58+08:00">2021-07-04</time>
+                <time title="Modified: 2021-07-04 23:18:02" itemprop="dateModified" datetime="2021-07-04T23:18:02+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -284,11 +284,9 @@
 <p>  ps:<br>  任务中的前台任务决定了容器的运行时间。docker的机制是如果没有任何前台任务，则认为容器空闲，容器会自动exit。所以对于一些service类型的任务可能需要改到前台执行。</p>
 <p>  自定义容器时，一般用一个空的Linux镜像，没有指定任务，为了保持容器运行，一般会指定 /bin/bash, 然后使用 -t 创建一个终端使之在前台运行，但是终端的exit命令会退出终端导致前台任务结束，容器也就停止了。所以要增加一个 -d 守护进程，退出或在后台可以继续保持前台任务执行。 -i 参数可以连接到容器的标准输入，标准输入也是一个前台任务(使用ctrl+c会退出stdin)，一般不单独用。</p>
 <ul>
-<li><p>指定网络</p>
-<p>run … —network=网络名称</p>
-</li>
-<li><p>指定ip<br>在网络限定的ip段内指定</p>
-<p>run … —ip 172.17.0.3</p>
+<li><p>指定网络和ip</p>
+<p>run … —network 网络名称 —ip 172.17.0.3</p>
+<p>注意必须自定义网络 ip才有效</p>
 </li>
 </ul>
 </li>
@@ -450,7 +448,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">247</span>
+          <span class="site-state-item-count">248</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
