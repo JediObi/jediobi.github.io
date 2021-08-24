@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="nomq">
 <meta property="og:description" content="docker-compose是一个本地docker容器管理工具，通过yml脚本实现容器的批量管理,可以理解为k8s的简化版">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-08-15T14:04:42.458Z">
+<meta property="og:updated_time" content="2021-08-17T15:02:19.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-compose教程">
 <meta name="twitter:description" content="docker-compose是一个本地docker容器管理工具，通过yml脚本实现容器的批量管理,可以理解为k8s的简化版">
@@ -211,10 +211,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-08-15 21:06:25 / Modified: 22:04:42" itemprop="dateCreated datePublished" datetime="2021-08-15T21:06:25+08:00">2021-08-15</time>
+              <time title="Created: 2021-08-15 21:06:25" itemprop="dateCreated datePublished" datetime="2021-08-15T21:06:25+08:00">2021-08-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-17 23:02:19" itemprop="dateModified" datetime="2021-08-17T23:02:19+08:00">2021-08-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -263,7 +269,7 @@
 <p><code>context</code> 指定Dockerfile路径<br><code>dockerfile</code> 指定 Dockerfile文件名</p>
 <h2 id="4-网络配置"><a href="#4-网络配置" class="headerlink" title="4. 网络配置"></a>4. 网络配置</h2><p>这里主讲 services 中为各个容器指定网络并分配固定ip。</p>
 <p>用途：一般各个服务通过ip访问，docker需要配置独立的自定义网络才能指定ip。<br><code>注意：虽然 docker-compose 的 links 提供了按服务名称访问忽略ip变动的快捷方式，但这里主要讲ip直接访问的形式，感兴趣可以自行查找links资料。</code></p>
-<h3 id="4-1-脚本"><a href="#4-1-脚本" class="headerlink" title="4.1 脚本"></a>4.1 脚本</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yaml 配置实例</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  app1:</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="attr">      network1:</span></span><br><span class="line"><span class="attr">        app_net:</span></span><br><span class="line"><span class="attr">            ipv4_address:</span> <span class="number">172.0</span><span class="number">.0</span><span class="number">.3</span></span><br><span class="line"><span class="attr">            ipv6_address:</span> <span class="number">2001</span><span class="string">:3984:3989::10</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  network1:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">bridge/host/none/container</span> <span class="string">四种驱动之一</span></span><br><span class="line"><span class="attr">    ipam:</span></span><br><span class="line"><span class="attr">        config:</span></span><br><span class="line"><span class="attr">            - subnet:</span> <span class="number">172.16</span><span class="number">.0</span><span class="number">.0</span><span class="string">/16</span></span><br><span class="line"><span class="attr">              gateway:</span> <span class="number">172.16</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">            - subnet:</span> <span class="string">"2001:3984:3989::/64"</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-1-脚本"><a href="#4-1-脚本" class="headerlink" title="4.1 脚本"></a>4.1 脚本</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yaml 配置实例</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  app1:</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="attr">      network1:</span></span><br><span class="line"><span class="attr">          ipv4_address:</span> <span class="number">172.0</span><span class="number">.0</span><span class="number">.3</span></span><br><span class="line"><span class="attr">          ipv6_address:</span> <span class="number">2001</span><span class="string">:3984:3989::10</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  network1:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">bridge/host/none/container</span> <span class="string">四种驱动之一</span></span><br><span class="line"><span class="attr">    ipam:</span></span><br><span class="line"><span class="attr">        config:</span></span><br><span class="line"><span class="attr">            - subnet:</span> <span class="number">172.16</span><span class="number">.0</span><span class="number">.0</span><span class="string">/16</span></span><br><span class="line"><span class="attr">              gateway:</span> <span class="number">172.16</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">            - subnet:</span> <span class="string">"2001:3984:3989::/64"</span></span><br></pre></td></tr></table></figure>
 <p>容器节点中的 <code>networks</code> 可以指定网络配置节点的名称来使用网络配置，可以配置多网络这里不多说了。<br>然后配置网络地址就是 <code>app_net</code> 里那样，一般都是 ipv4 和 ipv6 的地址</p>
 <p>网络配置节点，每个节点自定义一个名称，ipam就是网络的具体配置，subnet 可以配置多个</p>
 
